@@ -29,7 +29,7 @@ export default function Hero() {
           </div>
 
           {/* Bottom right — tagline + CTA */}
-          <div className="absolute bottom-[57px] right-[25px] z-10 text-right flex flex-col items-end gap-4">
+          <div className="absolute bottom-[25px] right-[25px] z-10 text-right flex flex-col items-end gap-[15px]">
             <div>
               <p className="text-[44px] lg:text-[70px] font-heading font-bold !text-cream leading-[0.95]">Breathe Easy</p>
             </div>

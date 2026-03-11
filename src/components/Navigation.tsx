@@ -34,8 +34,6 @@ export default function Navigation() {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-7 ml-auto mr-6">
 
-            <a href="#" className="text-[18px] font-heading font-bold text-charcoal hover:text-accent transition-colors whitespace-nowrap">Home</a>
-
             {/* Treatments dropdown */}
             <div className="relative group">
               <button className="flex items-center gap-1 text-[18px] font-heading font-bold text-charcoal hover:text-accent transition-colors py-2 whitespace-nowrap">
@@ -114,8 +112,6 @@ export default function Navigation() {
             className="lg:hidden bg-cream border-t soft-border overflow-hidden"
           >
             <div className="px-[25px] py-6 flex flex-col gap-4">
-              <a href="#" className="text-[18px] font-medium text-charcoal">Home</a>
-
               <div>
                 <button
                   onClick={() => setMobileExpanded(mobileExpanded === 'treatments' ? null : 'treatments')}
