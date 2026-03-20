@@ -10,7 +10,7 @@ export default function AboutPractice() {
   ];
 
   return (
-    <section className="py-36 bg-cream relative overflow-hidden">
+    <section id="about" className="py-28 lg:py-36 bg-cream relative overflow-hidden">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px]">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
@@ -21,8 +21,8 @@ export default function AboutPractice() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <span className="text-xs font-medium tracking-widest uppercase text-accent mb-6 block">Our Legacy</span>
-            <h2 className="text-5xl lg:text-6xl font-heading font-semibold text-charcoal mb-8 leading-tight">
+            <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-6 block">Our Legacy</span>
+            <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal mb-8 leading-[1.0]">
               Rooted in Waco Since 1978.
             </h2>
             
@@ -65,7 +65,7 @@ export default function AboutPractice() {
             </div>
 
             {/* Floating Location Card */}
-            <div className="absolute -bottom-8 -left-8 bg-cream-dark p-8 rounded-2xl max-w-[320px] hidden md:block">
+            <div className="absolute bottom-6 -left-10 w-52 bg-cream-dark px-5 py-4 rounded-2xl hidden md:block z-10">
               <div className="flex items-start gap-4 mb-4">
                 <MapPin className="w-6 h-6 text-accent shrink-0 mt-1" />
                 <div>

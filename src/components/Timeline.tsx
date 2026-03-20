@@ -29,7 +29,7 @@ export default function Timeline() {
     <section className="py-36 bg-cream relative overflow-hidden">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px]">
         <div className="text-center max-w-3xl mx-auto mb-32">
-          <span className="text-xs font-medium tracking-widest uppercase text-accent mb-4 block">What to Expect</span>
+          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">What to Expect</span>
           <h2 className="text-5xl lg:text-6xl font-heading font-semibold text-charcoal mb-6">
             Your Journey to Relief
           </h2>

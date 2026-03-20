@@ -1,91 +1,81 @@
 import { motion } from 'motion/react';
-import { XCircle, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function RootCause() {
   return (
-    <section className="py-36 bg-cream">
+    <section className="py-28 lg:py-36 bg-cream">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px]">
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <span className="text-xs font-medium tracking-widest uppercase text-accent mb-4 block">Our Philosophy</span>
-          <h2 className="text-5xl lg:text-6xl font-heading font-semibold text-charcoal mb-6">
-            Treat the Cause, Not Just the Reaction
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-cream-dark rounded-3xl p-10 lg:p-16 flex flex-col min-h-[480px] lg:min-h-[580px]"
+        >
+          {/* Eyebrow */}
+          <span className="text-[11px] font-semibold tracking-widest uppercase text-charcoal/35 mb-10 block">
+            Our Philosophy
+          </span>
+
+          {/* Large title */}
+          <h2 className="text-[44px] lg:text-[72px] font-heading font-semibold text-charcoal leading-[1.0]">
+            Treat the Cause,<br />
+            Not Just the Reaction
           </h2>
-          <p className="text-lg text-charcoal font-light leading-relaxed">
-            We believe in addressing the underlying immune response that causes your allergies and asthma, rather than simply suppressing the symptoms.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
-          {/* Symptom Management (The Old Way) */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-cream-dark rounded-2xl p-10 lg:p-14 flex flex-col items-center text-center"
-          >
-            <div className="w-20 h-20 rounded-full bg-cream flex items-center justify-center mb-8">
-              <XCircle className="w-10 h-10 text-charcoal/40" />
-            </div>
-            <h3 className="text-2xl font-heading text-charcoal mb-6">Symptom Management</h3>
-            <p className="text-charcoal font-light leading-relaxed mb-8">
-              Relying solely on over-the-counter medications to temporarily relieve symptoms without addressing the underlying cause.
-            </p>
-            <ul className="space-y-4 text-left w-full max-w-sm mx-auto">
-              <li className="flex items-start gap-3">
-                <span className="text-charcoal/40 mt-1">✗</span>
-                <span className="text-charcoal font-light">Temporary relief</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-charcoal/40 mt-1">✗</span>
-                <span className="text-charcoal font-light">Daily medication dependency</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-charcoal/40 mt-1">✗</span>
-                <span className="text-charcoal font-light">Symptoms return when medication stops</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-charcoal/40 mt-1">✗</span>
-                <span className="text-charcoal font-light">Potential side effects from long-term use</span>
-              </li>
-            </ul>
-          </motion.div>
+          {/* Flex spacer */}
+          <div className="flex-1 min-h-12" />
 
-          {/* Root Cause Treatment (Our Approach) */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-charcoal rounded-2xl p-10 lg:p-14 flex flex-col items-center text-center text-white"
-          >
-            <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-8">
-              <CheckCircle className="w-10 h-10 text-white" />
+          {/* Divider + content */}
+          <div className="border-t border-charcoal/10 pt-8 lg:pt-10">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-16 mb-8 lg:mb-10">
+
+              {/* Without us */}
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-charcoal/35 mb-5">Without us</p>
+                <ul className="space-y-3">
+                  {[
+                    'Temporary relief only',
+                    'Daily medication dependency',
+                    'Symptoms return when meds stop',
+                    'Potential long-term side effects',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-[16px] text-charcoal/50 font-light">
+                      <span className="mt-0.5 text-charcoal/25 shrink-0 text-[18px] leading-none">×</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* With us */}
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-sage mb-5">With us</p>
+                <ul className="space-y-3">
+                  {[
+                    'Long-term, sustainable relief',
+                    'Reduces or eliminates daily meds',
+                    'Changes how your body responds',
+                    'May prevent new allergies from developing',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-[16px] text-charcoal/80 font-light">
+                      <span className="mt-0.5 text-sage shrink-0 text-[18px] leading-none">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <h3 className="text-2xl font-heading mb-6">Root Cause Treatment</h3>
-            <p className="font-light leading-relaxed mb-8 text-white/90">
-              Identifying specific triggers and modifying the immune system's response for lasting, natural relief.
-            </p>
-            <ul className="space-y-4 text-left w-full max-w-sm mx-auto">
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span className="font-light text-white/90">Long-term, sustainable relief</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span className="font-light text-white/90">Reduces or eliminates need for daily meds</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span className="font-light text-white/90">Changes how your body reacts to allergens</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span className="font-light text-white/90">May prevent new allergies from developing</span>
-              </li>
-            </ul>
-          </motion.div>
-        </div>
+
+            <a
+              href="#"
+              className="group w-full flex items-center justify-center gap-2 bg-charcoal hover:bg-accent text-white py-4 rounded-2xl text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors"
+            >
+              Start Treatment
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

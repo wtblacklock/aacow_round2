@@ -4,14 +4,13 @@
  */
 
 import Navigation from './components/Navigation';
+import JumpNav from './components/JumpNav';
 import Hero from './components/Hero';
 import PollenSection from './components/PollenSection';
 import SymptomsSection from './components/SymptomsSection';
 import TreatmentsSection from './components/TreatmentsSection';
 import DoctorReassurance from './components/DoctorReassurance';
 import AllergyShots from './components/AllergyShots';
-import Timeline from './components/Timeline';
-import RootCause from './components/RootCause';
 import Education from './components/Education';
 import Testimonials from './components/Testimonials';
 import AboutPractice from './components/AboutPractice';
@@ -21,8 +20,9 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-cream font-sans text-charcoal selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-cream font-sans text-charcoal selection:bg-terracotta selection:text-white">
       <Navigation />
+      <JumpNav />
       <main>
         <Hero />
         <PollenSection />
@@ -30,8 +30,6 @@ export default function App() {
         <TreatmentsSection />
         <DoctorReassurance />
         <AllergyShots />
-        <Timeline />
-        <RootCause />
         <Education />
         <Testimonials />
         <AboutPractice />

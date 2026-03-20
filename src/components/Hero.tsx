@@ -1,57 +1,103 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import ClinicInfoBar from './ClinicInfoBar';
 
 export default function Hero() {
-  return (
-    <section className="pt-8 pb-14">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Hero video */}
-        <div className="px-[25px]">
-        <div className="relative w-full min-h-[48vh] rounded-2xl overflow-hidden">
-          <video
-            src="/videos/clinic_front.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[#372426]/50 mix-blend-multiply" />
+  const heroRef = useRef<HTMLElement>(null);
 
-          {/* H1 — top left */}
-          <div className="absolute top-[25px] left-[25px] z-10 max-w-xl">
-            <h1 className="text-[57px] lg:text-[90px] font-heading font-bold !text-cream leading-[0.95] tracking-normal">
-              <span className="block">Waco's Allergy Clinic</span>
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  // Fade the video (no blur) as content scrolls over it
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+
+  return (
+    <section id="hero" className="relative" ref={heroRef}>
+
+      {/* ── Sticky video — fades as content scrolls over it ── */}
+      <div className="sticky top-[78px] z-0 px-[18px] lg:px-[25px] pt-6">
+        <div className="relative w-full min-h-[68vh] lg:min-h-[68vh] rounded-2xl overflow-hidden">
+
+          {/* Video + gradient fade together, H1 stays full opacity */}
+          <motion.div
+            style={{ opacity: videoOpacity }}
+            className="absolute inset-0"
+          >
+            <video
+              src="/videos/clinic_front.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </motion.div>
+
+          {/* H1 — top left, unaffected by scroll fade */}
+          <div className="absolute top-[22px] left-[22px] lg:top-[32px] lg:left-[32px] z-10 max-w-2xl">
+            <h1 className="text-[46px] lg:text-[82px] font-bold text-charcoal leading-[1.0]">
+              <span className="block font-heading tracking-tight">Waco's Allergy Clinic</span>
             </h1>
           </div>
 
-          {/* Bottom right — tagline + CTA */}
-          <div className="absolute bottom-[25px] right-[25px] z-10 text-right flex flex-col items-end gap-[15px]">
-            <div>
-              <p className="text-[44px] lg:text-[70px] font-heading font-bold !text-cream leading-[0.95]">Breathe Easy</p>
-            </div>
-            <a href="#" className="inline-flex items-center justify-center bg-cream text-charcoal hover:bg-white px-8 py-4 rounded-2xl text-[16px] font-semibold transition-all shadow-lg hover:-translate-y-0.5">
-              Book Appointment
-            </a>
-          </div>
         </div>
+      </div>
+
+      {/* ── Scrolling content — closes over the video ── */}
+      {/* Extra top padding ensures Breathe Easy fully covers the video before 45yr content appears */}
+      <div className="relative z-10 bg-cream -mt-16 rounded-t-[2.5rem]">
+
+        {/* ── Clinic info bar — within padded area ── */}
+        <div className="px-[18px] lg:px-[25px] pt-7 lg:pt-9">
+          <ClinicInfoBar />
         </div>
 
-        {/* Below image — headline */}
-        <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px] flex flex-col items-center text-center">
-          <img
-            src="/images/icons/texas_aacow.svg"
-            alt="Allergy & Asthma Care of Waco — Texas"
-            className="mt-20 mb-8 h-20 w-auto"
-          />
-          <h2 className="text-[41px] lg:text-[61px] font-heading font-normal text-charcoal leading-[1.05] mb-16 max-w-5xl">
-            <strong>For over 45 years</strong>, our board-certified allergists have helped Waco families breathe easier, live more fully, and stop guessing at their symptoms.
-          </h2>
+        {/* ── Breathe [SVG] Easy. ── */}
+        <div className="px-[18px] lg:px-[25px] pt-10 lg:pt-10 pb-10 lg:pb-16">
+          <div className="flex items-center justify-center gap-3 lg:gap-5">
+            <span
+              className="font-display italic font-semibold text-charcoal leading-none"
+              style={{ fontSize: 'clamp(50px, 10.5vw, 182px)' }}
+            >
+              Breathe
+            </span>
+
+            <img
+              src="/images/icons/texas_aacow.svg"
+              alt="Allergy & Asthma Care of Waco — Texas"
+              className="shrink-0"
+              style={{ height: 'clamp(57px, 9.75vw, 168px)', width: 'auto', filter: 'brightness(0)' }}
+            />
+
+            <span
+              className="font-display italic font-semibold text-charcoal leading-none"
+              style={{ fontSize: 'clamp(50px, 10.5vw, 182px)' }}
+            >
+              Easy.
+            </span>
+          </div>
         </div>
-      </motion.div>
+
+        {/* ── 45 years statement + CTA ── */}
+        <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px] flex flex-col items-center text-center pb-16 lg:pb-20">
+          <h2 className="text-[36px] lg:text-[58px] font-heading font-normal text-charcoal leading-[1.06] mb-10 lg:mb-12 max-w-4xl">
+            <strong>For over 45 years</strong>, our board-certified allergists
+            have helped Waco families breathe easier, live more fully, and stop
+            guessing at their symptoms.
+          </h2>
+
+          <a
+            href="#"
+            className="inline-flex items-center justify-center bg-terracotta hover:bg-terracotta-hover text-white px-7 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[15px] lg:text-[16px] font-semibold transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Book Appointment
+          </a>
+        </div>
+
+      </div>
+
     </section>
   );
 }

@@ -12,7 +12,7 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-xs font-medium tracking-widest uppercase text-accent mb-6 block">Ready for Relief?</span>
+          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-6 block">Ready for Relief?</span>
           <h2 className="text-5xl lg:text-7xl font-heading font-semibold text-charcoal mb-8 leading-[1.05]">
             Take the First Step Toward Breathing Easier.
           </h2>
@@ -21,9 +21,9 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="#" className="inline-flex items-center justify-center gap-2 bg-charcoal text-white hover:bg-accent px-10 py-5 rounded-2xl text-lg font-medium transition-all shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+            <a href="#" className="group inline-flex items-center justify-center gap-2 bg-charcoal text-white hover:bg-accent px-10 py-5 rounded-2xl text-lg font-medium transition-all shadow-xl hover:-translate-y-1 w-full sm:w-auto">
               Request Appointment
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="tel:254-555-0199" className="inline-flex items-center justify-center gap-2 bg-transparent border border-charcoal/30 text-charcoal hover:bg-charcoal/5 px-10 py-5 rounded-2xl text-lg font-medium transition-all w-full sm:w-auto">
               <Phone className="w-5 h-5" />

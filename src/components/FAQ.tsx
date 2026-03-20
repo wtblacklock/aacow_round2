@@ -29,30 +29,32 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-36 bg-cream">
+    <section id="faq" className="py-28 lg:py-36 bg-cream">
       <div className="max-w-4xl mx-auto px-6 lg:px-[90px]">
-        <div className="text-center mb-24">
-          <span className="text-xs font-medium tracking-widest uppercase text-accent mb-4 block">Common Questions</span>
-          <h2 className="text-5xl lg:text-6xl font-heading font-semibold text-charcoal mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-24"
+        >
+          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">Common Questions</span>
+          <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal leading-[1.0]">
             Frequently Asked Questions
           </h2>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
               className="bg-cream-dark rounded-2xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
+                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none"
               >
-                <span className="text-lg font-heading text-charcoal pr-8">{faq.question}</span>
+                <span className="text-[20px] font-heading text-charcoal pr-8">{faq.question}</span>
                 <span className="text-accent shrink-0">
                   {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </span>
@@ -65,13 +67,13 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-8 pb-6 text-charcoal font-light leading-relaxed">
+                    <div className="px-8 pb-7 text-[16px] text-charcoal font-light leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
