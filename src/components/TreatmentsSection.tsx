@@ -46,9 +46,9 @@ export default function TreatmentsSection() {
                 key={idx}
                 initial={{ opacity: 0, rotateX: -22 }}
                 whileInView={{ opacity: 1, rotateX: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.45, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.45 } }}
+                transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
                 className="group bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[420px] lg:min-h-[480px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
               >
                 {/* Top: title + oval icon */}

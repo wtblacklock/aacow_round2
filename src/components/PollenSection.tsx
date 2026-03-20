@@ -175,14 +175,14 @@ export default function PollenSection() {
                       key={item.name}
                       initial={{ opacity: 0, rotateX: -22 }}
                       whileInView={{ opacity: 1, rotateX: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                       style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
                       transition={{
                         type: 'spring',
                         stiffness: 80,
                         damping: 18,
-                        delay: index * 0.45,
-                        opacity: { duration: 0.2, ease: 'easeOut', delay: index * 0.45 },
+                        delay: index * 0.2,
+                        opacity: { duration: 0.2, ease: 'easeOut', delay: index * 0.2 },
                       }}
                       className="group bg-cream/95 backdrop-blur-sm rounded-2xl p-5 lg:p-6 flex flex-col gap-4 hover:bg-cream hover:shadow-md transition-all duration-300 cursor-pointer"
                     >
@@ -196,7 +196,7 @@ export default function PollenSection() {
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
-                          transition={{ delay: index * 0.45 + 0.3, duration: 0.35, ease: 'easeOut' }}
+                          transition={{ delay: index * 0.2 + 0.3, duration: 0.35, ease: 'easeOut' }}
                         >
                           <Icon className={`w-5 h-5 text-charcoal/35 shrink-0 mt-1 group-hover:text-terracotta/50 transition-colors duration-300 ${item.iconClass ?? ''}`} strokeWidth={1.5} />
                         </motion.div>
@@ -207,7 +207,7 @@ export default function PollenSection() {
                         initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: index * 0.45 + 0.35, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ delay: index * 0.2 + 0.35, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col gap-4"
                       >
                         {/* Spectrum track + dot */}
@@ -233,7 +233,7 @@ export default function PollenSection() {
                               initial={{ scaleX: 0, opacity: 0 }}
                               whileInView={{ scaleX: 1, opacity: 1 }}
                               viewport={{ once: true }}
-                              transition={{ delay: index * 0.45 + 0.5, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                              transition={{ delay: index * 0.2 + 0.5, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                             >
                               <path
                                 d="M 0,13 C 14,13 26,8 40,1 C 54,8 66,13 80,13 C 66,13 54,18 40,25 C 26,18 14,13 0,13 Z"

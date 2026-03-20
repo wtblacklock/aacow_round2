@@ -61,9 +61,9 @@ export default function Education() {
             key={idx}
             initial={{ opacity: 0, rotateX: -22 }}
             whileInView={{ opacity: 1, rotateX: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
-            transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.45, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.45 } }}
+            transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
             className="group bg-cream-dark rounded-2xl overflow-hidden cursor-pointer flex flex-col hover:bg-sand/30 transition-colors duration-300"
           >
             <div className="aspect-[4/3] overflow-hidden relative">
