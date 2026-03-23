@@ -28,8 +28,8 @@ export default function App() {
         <PollenSection />
         <SymptomsSection />
         <TreatmentsSection />
-        <DoctorReassurance />
         <AllergyShots />
+        <DoctorReassurance />
         <Education />
         <Testimonials />
         <AboutPractice />

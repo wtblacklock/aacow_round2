@@ -2,13 +2,13 @@ import { motion } from 'motion/react';
 import { ArrowRight, Stethoscope, Droplets, Wind, Activity, Apple, Video, FileText } from 'lucide-react';
 
 const treatments = [
-  { title: "Immunotherapy (Allergy Shots)", desc: "Build tolerance and reduce symptoms long-term.", icon: Activity },
-  { title: "Asthma Care", desc: "Breathe easier with personalized management plans.", icon: Wind },
-  { title: "Allergy Testing", desc: "Pinpoint exactly what's causing your reactions.", icon: Stethoscope },
-  { title: "Medication & Infusions", desc: "Targeted therapies for severe allergies and asthma.", icon: Droplets },
-  { title: "Food Allergy Care", desc: "Safe testing and guidance for food sensitivities.", icon: Apple },
-  { title: "Virtual Allergy Care", desc: "Expert advice from the comfort of your home.", icon: Video },
-  { title: "Diagnosis & Care Planning", desc: "Comprehensive evaluations to find the root cause.", icon: FileText },
+  { title: "Immunotherapy (Allergy Shots)", desc: "Build tolerance and reduce symptoms long-term.", icon: Activity, href: "/treatment-immunotherapy.html" },
+  { title: "Asthma Care", desc: "Breathe easier with personalized management plans.", icon: Wind, href: null },
+  { title: "Allergy Testing", desc: "Pinpoint exactly what's causing your reactions.", icon: Stethoscope, href: null },
+  { title: "Medication & Infusions", desc: "Targeted therapies for severe allergies and asthma.", icon: Droplets, href: null },
+  { title: "Food Allergy Care", desc: "Safe testing and guidance for food sensitivities.", icon: Apple, href: null },
+  { title: "Virtual Allergy Care", desc: "Expert advice from the comfort of your home.", icon: Video, href: null },
+  { title: "Diagnosis & Care Planning", desc: "Comprehensive evaluations to find the root cause.", icon: FileText, href: null },
 ];
 
 export default function TreatmentsSection() {
@@ -32,24 +32,27 @@ export default function TreatmentsSection() {
               We offer a full spectrum of diagnostic and treatment options tailored to your unique needs, from traditional allergy shots to advanced biologics.
             </p>
           </motion.div>
-          <a href="#" className="group inline-flex items-center justify-center gap-2 bg-cream-dark hover:bg-sand/50 text-charcoal px-8 py-4 rounded-2xl text-base font-medium transition-all shrink-0">
+          <a href="#" className="hidden md:inline-flex group items-center justify-center gap-2 bg-cream-dark hover:bg-sand/50 text-charcoal px-8 py-4 rounded-2xl text-base font-medium transition-all shrink-0">
             View All Treatments
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {treatments.map((treatment, idx) => {
             const Icon = treatment.icon;
+            const Tag = treatment.href ? motion.a : motion.div;
+            const linkProps = treatment.href ? { href: treatment.href } : {};
             return (
-              <motion.div
+              <Tag
                 key={idx}
+                {...linkProps}
                 initial={{ opacity: 0, rotateX: -22 }}
                 whileInView={{ opacity: 1, rotateX: 0 }}
                 viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
-                className="group bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[420px] lg:min-h-[480px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
+                className="group bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[330px] lg:min-h-[390px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
               >
                 {/* Top: title + oval icon */}
                 <div className="flex justify-between items-start gap-6">
@@ -73,7 +76,7 @@ export default function TreatmentsSection() {
                     Explore <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-              </motion.div>
+              </Tag>
             );
           })}
         </div>

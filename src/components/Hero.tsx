@@ -31,7 +31,7 @@ export default function Hero() {
               muted
               loop
               playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
             />
           </motion.div>
 
@@ -49,8 +49,8 @@ export default function Hero() {
       {/* Extra top padding ensures Breathe Easy fully covers the video before 45yr content appears */}
       <div className="relative z-10 bg-cream -mt-16 rounded-t-[2.5rem]">
 
-        {/* ── Clinic info bar — within padded area ── */}
-        <div className="px-[18px] lg:px-[25px] pt-7 lg:pt-9">
+        {/* ── Clinic info bar — left edge aligns with H1 above ── */}
+        <div className="px-10 lg:px-[57px] pt-7 lg:pt-9">
           <ClinicInfoBar />
         </div>
 
@@ -58,7 +58,7 @@ export default function Hero() {
         <div className="px-[18px] lg:px-[25px] pt-10 lg:pt-10 pb-10 lg:pb-16">
           <div className="flex items-center justify-center gap-3 lg:gap-5">
             <span
-              className="font-display italic font-semibold text-charcoal leading-none"
+              className="font-display font-semibold text-charcoal leading-none"
               style={{ fontSize: 'clamp(50px, 10.5vw, 182px)' }}
             >
               Breathe
@@ -72,7 +72,7 @@ export default function Hero() {
             />
 
             <span
-              className="font-display italic font-semibold text-charcoal leading-none"
+              className="font-display font-semibold text-charcoal leading-none"
               style={{ fontSize: 'clamp(50px, 10.5vw, 182px)' }}
             >
               Easy.
@@ -90,7 +90,7 @@ export default function Hero() {
 
           <a
             href="#"
-            className="inline-flex items-center justify-center bg-terracotta hover:bg-terracotta-hover text-white px-7 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[15px] lg:text-[16px] font-semibold transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center justify-center bg-terracotta hover:bg-terracotta-hover text-white px-7 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[15px] lg:text-[16px] font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0"
           >
             Book Appointment
           </a>

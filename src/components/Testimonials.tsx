@@ -50,13 +50,13 @@ export default function Testimonials() {
               className="flex flex-col gap-6"
             >
               {/* Quote */}
-              <blockquote className="font-display text-[22px] lg:text-[28px] italic text-charcoal leading-[1.4] font-normal flex-1">
+              <blockquote className="font-display italic text-[22px] lg:text-[28px] text-charcoal leading-[1.55] font-light flex-1">
                 "{t.quote}"
               </blockquote>
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-charcoal font-heading text-lg shrink-0">
+                <div className="w-[60px] h-[60px] rounded-full bg-sand flex items-center justify-center text-charcoal font-heading text-2xl shrink-0">
                   {t.initial}
                 </div>
                 <div>

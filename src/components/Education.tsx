@@ -6,21 +6,21 @@ const articles = [
     category: "Allergy Seasons",
     title: "Surviving Cedar Fever in Central Texas",
     readTime: "4 min read",
-    image: "https://picsum.photos/seed/cedar/800/600?blur=1",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&auto=format&q=80",
     excerpt: "Everything you need to know about Mountain Cedar pollen, when it peaks, and how to prepare before the season hits.",
   },
   {
     category: "Asthma Care",
     title: "Is It a Cold or Allergy-Induced Asthma?",
     readTime: "5 min read",
-    image: "https://picsum.photos/seed/asthma/800/600?blur=1",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop&auto=format&q=80",
     excerpt: "Learn to spot the subtle differences between a lingering winter cold and asthma symptoms triggered by indoor allergens.",
   },
   {
     category: "Treatments",
     title: "What to Expect at Your First Allergy Test",
     readTime: "3 min read",
-    image: "https://picsum.photos/seed/testing/800/600?blur=1",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format&q=80",
     excerpt: "Demystifying the skin prick test: how it works, what it feels like, and why it's the gold standard for diagnosis.",
   },
 ];
@@ -47,14 +47,15 @@ export default function Education() {
               Stay informed with the latest insights, practical tips, and expert advice from our board-certified allergists.
             </p>
           </motion.div>
-          <a href="#" className="group inline-flex items-center justify-center gap-2 bg-cream-dark hover:bg-sand/50 text-charcoal px-8 py-4 rounded-2xl text-base font-medium transition-all shrink-0">
+          {/* Desktop only */}
+          <a href="#" className="hidden lg:inline-flex group items-center justify-center gap-2 bg-cream-dark hover:bg-sand/50 text-charcoal px-8 py-4 rounded-2xl text-base font-medium transition-all shrink-0">
             View All Articles
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>
 
-      {/* Full-width card grid — cards span browser width with rounded corners */}
+      {/* Full-width card grid */}
       <div className="grid md:grid-cols-3 gap-3 px-3">
         {articles.map((article, idx) => (
           <motion.div
@@ -64,14 +65,13 @@ export default function Education() {
             viewport={{ once: true, margin: '0px 0px 200px 0px' }}
             style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
             transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
-            className="group bg-cream-dark rounded-2xl overflow-hidden cursor-pointer flex flex-col hover:bg-sand/30 transition-colors duration-300"
+            className="group rounded-2xl overflow-hidden cursor-pointer flex flex-col transition-colors duration-300"
           >
             <div className="aspect-[4/3] overflow-hidden relative">
               <img
                 src={article.image}
                 alt={article.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase text-terracotta">
                 {article.category}
@@ -86,15 +86,23 @@ export default function Education() {
               <h3 className="text-[24px] lg:text-[28px] font-heading font-semibold text-charcoal mb-4 group-hover:text-terracotta transition-colors leading-snug">
                 {article.title}
               </h3>
-              <p className="text-[15px] text-charcoal/65 font-light leading-relaxed mb-8 flex-grow">
+              <p className="text-[15px] text-charcoal font-light leading-relaxed mb-8 flex-grow">
                 {article.excerpt}
               </p>
-              <div className="flex items-center text-[14px] font-medium text-charcoal/55 group-hover:text-terracotta transition-colors mt-auto">
+              <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-terracotta transition-colors mt-auto">
                 Read Article <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Mobile-only View All button — below cards */}
+      <div className="lg:hidden mt-10 px-3">
+        <a href="#" className="group inline-flex w-full items-center justify-center gap-2 bg-cream-dark hover:bg-sand/50 text-charcoal px-8 py-4 rounded-2xl text-base font-medium transition-all">
+          View All Articles
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
       </div>
 
     </section>

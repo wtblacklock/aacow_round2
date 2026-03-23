@@ -58,7 +58,7 @@ export default function RootCause() {
                     'Changes how your body responds',
                     'May prevent new allergies from developing',
                   ].map(item => (
-                    <li key={item} className="flex items-start gap-3 text-[16px] text-charcoal/80 font-light">
+                    <li key={item} className="flex items-start gap-3 text-[16px] text-charcoal font-light">
                       <span className="mt-0.5 text-sage shrink-0 text-[18px] leading-none">✓</span>
                       {item}
                     </li>
@@ -69,7 +69,7 @@ export default function RootCause() {
 
             <a
               href="#"
-              className="group w-full flex items-center justify-center gap-2 bg-charcoal hover:bg-accent text-white py-4 rounded-2xl text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors"
+              className="group w-full flex items-center justify-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white py-4 rounded-2xl text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors"
             >
               Start Treatment
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

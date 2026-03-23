@@ -47,7 +47,7 @@ export default function ClinicInfoBar() {
 
         <span className="flex items-center gap-1.5 text-[13px] text-charcoal font-medium whitespace-nowrap">
           <MapPin className="w-3 h-3 shrink-0 text-terracotta" />
-          123 Medical Pkwy, Waco TX
+          221 Jewell Drive, Waco TX
         </span>
 
         <span className="w-px h-3.5 bg-charcoal/15 shrink-0" />
@@ -67,11 +67,11 @@ export default function ClinicInfoBar() {
         <span className="w-px h-3.5 bg-charcoal/15 shrink-0" />
 
         <a
-          href="tel:2545550199"
+          href="tel:2547533646"
           className="flex items-center gap-1.5 text-[13px] font-medium text-charcoal hover:text-terracotta transition-colors whitespace-nowrap"
         >
           <Phone className="w-3 h-3" />
-          (254) 555-0199
+          (254) 753-3646
         </a>
 
         <a
@@ -85,9 +85,9 @@ export default function ClinicInfoBar() {
       {/* ── Mobile ── */}
       <div className="md:hidden">
         <div className="flex items-center justify-between py-1">
-          <a href="tel:2545550199" className="flex items-center gap-2 text-[15px] font-semibold text-charcoal">
+          <a href="tel:2547533646" className="flex items-center gap-2 text-[15px] font-semibold text-charcoal">
             <Phone className="w-4 h-4 text-terracotta shrink-0" />
-            (254) 555-0199
+            (254) 753-3646
           </a>
           <a href="#" className="bg-terracotta text-white px-4 py-2 rounded-xl text-[12px] font-semibold">
             Book Now
@@ -109,9 +109,9 @@ export default function ClinicInfoBar() {
           </span>
         </button>
 
-        <div className="flex items-center gap-1.5 border-t border-charcoal/10 py-2 text-[11px] text-charcoal font-medium">
+        <div className="flex items-center gap-1.5 border-t border-charcoal/10 py-2 text-[13px] text-charcoal font-medium">
           <MapPin className="w-3 h-3 text-terracotta shrink-0" />
-          123 Medical Pkwy, Suite 100 · Waco, TX 76712
+          221 Jewell Drive · Waco, TX 76712
         </div>
       </div>
 
@@ -129,7 +129,7 @@ export default function ClinicInfoBar() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-widest text-charcoal/40 mb-0.5">Clinic Hours</p>
-                  <p className="text-[13px] font-medium text-charcoal">123 Medical Pkwy, Suite 100 · Waco, TX 76712</p>
+                  <p className="text-[13px] font-medium text-charcoal">221 Jewell Drive · Waco, TX 76712</p>
                 </div>
                 <button
                   onClick={() => setOpen(false)}

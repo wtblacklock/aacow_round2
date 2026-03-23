@@ -21,13 +21,13 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="#" className="group inline-flex items-center justify-center gap-2 bg-charcoal text-white hover:bg-accent px-10 py-5 rounded-2xl text-lg font-medium transition-all shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+            <a href="#" className="group inline-flex items-center justify-center gap-2 bg-terracotta text-white hover:bg-terracotta-hover px-10 py-5 rounded-2xl text-lg font-medium transition-all hover:-translate-y-1 w-full sm:w-auto">
               Request Appointment
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="tel:254-555-0199" className="inline-flex items-center justify-center gap-2 bg-transparent border border-charcoal/30 text-charcoal hover:bg-charcoal/5 px-10 py-5 rounded-2xl text-lg font-medium transition-all w-full sm:w-auto">
+            <a href="tel:2547533646" className="inline-flex items-center justify-center gap-2 bg-transparent border border-charcoal/30 text-charcoal hover:bg-charcoal/5 px-10 py-5 rounded-2xl text-lg font-medium transition-all w-full sm:w-auto">
               <Phone className="w-5 h-5" />
-              (254) 555-0199
+              (254) 753-3646
             </a>
           </div>
         </motion.div>

@@ -87,15 +87,15 @@ export default function Footer() {
             <ul className="space-y-4 text-sm font-light">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-accent" />
-                <span>123 Medical Parkway, Suite 100<br />Waco, TX 76712</span>
+                <span>221 Jewell Drive<br />Waco, TX 76712</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 shrink-0 text-accent" />
-                <a href="tel:254-555-0199" className="hover:text-accent transition-colors">(254) 555-0199</a>
+                <a href="tel:2547533646" className="hover:text-accent transition-colors">(254) 753-3646</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 shrink-0 text-accent" />
-                <a href="mailto:info@aacow.com" className="hover:text-accent transition-colors">info@aacow.com</a>
+                <a href="mailto:info@allergywaco.com" className="hover:text-accent transition-colors">info@allergywaco.com</a>
               </li>
             </ul>
           </div>

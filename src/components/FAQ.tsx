@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 const faqs = [
   {
@@ -52,11 +52,11 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none"
+                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none group/btn hover:text-terracotta transition-colors"
               >
-                <span className="text-[20px] font-heading text-charcoal pr-8">{faq.question}</span>
-                <span className="text-accent shrink-0">
-                  {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                <span className="text-[20px] font-heading font-semibold leading-tight text-charcoal group-hover/btn:text-terracotta transition-colors pr-8">{faq.question}</span>
+                <span className={`shrink-0 transition-all duration-300 ${openIndex === idx ? 'text-terracotta rotate-45' : 'text-charcoal'}`}>
+                  <Plus className="w-5 h-5" />
                 </span>
               </button>
               <AnimatePresence>

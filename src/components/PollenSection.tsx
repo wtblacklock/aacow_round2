@@ -114,9 +114,9 @@ export default function PollenSection() {
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
+          style={{ objectPosition: '25% center' }}
           />
-          <div className="absolute inset-0 bg-charcoal/40" />
 
           {/* Date badge — desktop only, absolute top-left */}
           <a
@@ -255,7 +255,7 @@ export default function PollenSection() {
 
                         {/* Context line + local note */}
                         <div className="border-t border-charcoal/8 pt-3">
-                          <p className="text-[12px] text-charcoal/55 font-light leading-snug">
+                          <p className="text-[12px] text-charcoal font-light leading-snug">
                             {item.context}
                           </p>
                           {item.localNote && (
@@ -310,7 +310,7 @@ export default function PollenSection() {
             <div className="h-px lg:h-auto lg:w-px bg-charcoal/10 shrink-0 lg:self-stretch" />
 
             {/* Forecast copy */}
-            <p className="text-[15px] lg:text-[16px] text-charcoal/70 font-light leading-relaxed">
+            <p className="text-[15px] lg:text-[16px] text-charcoal font-light leading-relaxed">
               Spring is the fireworks finale of allergy season. Oak, elm, pecan, ash, hackberry, and mulberry all peak between March and May — and grasses are building right behind them. If your symptoms feel like they're coming from every direction, they probably are.
             </p>
 

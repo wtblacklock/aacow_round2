@@ -3,6 +3,7 @@
         "pkill": true,
         "npx vite": true,
         "npx tsc": true,
-        "lsof": true
+        "lsof": true,
+        "csplit": true
     }
 }
