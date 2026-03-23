@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { Plus } from 'lucide-react';
 import CardGradientOverlay, { cardMouseHandlers } from './CardGradientOverlay';
 
@@ -62,20 +62,15 @@ export default function FAQ() {
                   <Plus className="w-5 h-5" />
                 </span>
               </button>
-              <AnimatePresence>
-                {openIndex === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-8 pb-7 text-[16px] text-charcoal font-light leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div
+                className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
+                  openIndex === idx ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                }`}
+              >
+                <div className={`min-h-0 overflow-hidden px-8 text-[16px] text-charcoal font-light leading-relaxed transition-[padding-bottom] duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${openIndex === idx ? 'pb-7' : 'pb-0'}`}>
+                  {faq.answer}
+                </div>
+              </div>
             </div>
           ))}
         </div>

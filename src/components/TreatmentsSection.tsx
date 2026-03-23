@@ -45,6 +45,10 @@ export default function TreatmentsSection() {
             const Tag = treatment.href ? motion.a : motion.div;
             const linkProps = treatment.href ? { href: treatment.href } : {};
             const mouseHandlers = cardMouseHandlers();
+            // Keep stagger consistent by row/column so the last card does not lag.
+            const row = Math.floor(idx / 2);
+            const col = idx % 2;
+            const delay = row * 0.16 + col * 0.08;
             return (
               <Tag
                 key={idx}
@@ -54,7 +58,7 @@ export default function TreatmentsSection() {
                 whileInView={{ opacity: 1, rotateX: 0 }}
                 viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
-                transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
+                transition={{ type: 'spring', stiffness: 80, damping: 18, delay, opacity: { duration: 0.2, ease: 'easeOut', delay } }}
                 className="group relative overflow-hidden bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[330px] lg:min-h-[390px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
               >
                 <CardGradientOverlay index={idx} />

@@ -88,7 +88,7 @@ export default function Hero() {
             guessing at their symptoms.
           </h2>
 
-          <
+          <a
             href="#"
             className="inline-flex items-center justify-center bg-terracotta hover:bg-terracotta-hover text-white px-7 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[15px] lg:text-[16px] font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0"
           >

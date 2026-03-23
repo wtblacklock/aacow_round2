@@ -636,6 +636,9 @@
       transform-origin: bottom center;
       /* animation driven by WAAPI in JS — no CSS transition */
     }
+    .anim-card-down--soft {
+      transform: perspective(900px) rotateX(-12deg);
+    }
     .anim-card-rtl {
       opacity: 0;
       transform: perspective(900px) rotateY(18deg) translateX(20px);
@@ -756,6 +759,7 @@
       line-height: 0.98;
       letter-spacing: -0.01em;
       max-width: 14ch;
+      margin-bottom: 16px;
     }
     .tx-intro__display em {
       font-family: var(--font-display);
@@ -768,7 +772,7 @@
       line-height: 1.8;
       color: var(--charcoal);
       max-width: 54ch;
-      margin-top: 24px;
+      margin-top: 0;
       margin-bottom: 20px;
     }
     .tx-intro__cards {
@@ -918,6 +922,12 @@
       align-items: start;
       margin-bottom: 0;
     }
+    .tx-facts__header .t-headline {
+      margin: 10px 0 0;
+    }
+    .tx-facts__header .t-body {
+      margin-top: 12px;
+    }
     .tx-facts__header > div {
       padding-left: 20px;
     }
@@ -961,7 +971,7 @@
       line-height: 1.75;
       color: var(--charcoal);
       font-weight: 300;
-      margin-top: 6px;
+      margin: 6px 0 0;
       max-width: 380px;
     }
     .tx-fact__illust {
@@ -1079,12 +1089,43 @@
       grid-template-columns: repeat(5, 1fr);
       gap: clamp(16px, 2vw, 32px);
     }
+    .tx-step-shared-media {
+      grid-column: 3 / span 2;
+      grid-row: 1;
+      position: relative;
+      min-height: clamp(480px, 60vh, 860px);
+      border-radius: 16px;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .tx-step-shared-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(1.04);
+    }
     .tx-step {
       position: relative;
       min-height: clamp(480px, 60vh, 860px);
       overflow: hidden;
       border-radius: 16px;
       cursor: pointer;
+    }
+    .tx-step--shared-left {
+      grid-column: 3;
+      grid-row: 1;
+      z-index: 1;
+    }
+    .tx-step--shared-right {
+      grid-column: 4;
+      grid-row: 1;
+      z-index: 1;
+    }
+    .tx-step--shared-left .tx-step__img,
+    .tx-step--shared-right .tx-step__img {
+      display: none;
     }
     .tx-step__img {
       position: absolute;
@@ -1098,6 +1139,11 @@
       transform: scale(1.04);
     }
     .tx-step:hover .tx-step__img img {
+      transform: scale(1.09);
+    }
+    .tx-step-grid:has(.tx-step--shared-left:hover) .tx-step-shared-media img,
+    .tx-step-grid:has(.tx-step--shared-right:hover) .tx-step-shared-media img,
+    .tx-step-shared-media:hover img {
       transform: scale(1.09);
     }
     .tx-step__overlay {
@@ -1117,6 +1163,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      transition: background-color 0.46s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.46s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-step:hover .tx-step__overlay {
       background: transparent;
@@ -1129,6 +1177,7 @@
       text-transform: uppercase;
       color: var(--terracotta);
       margin-bottom: 8px;
+      transition: color 0.46s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.46s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-step__title {
       font-family: var(--font-heading);
@@ -1137,6 +1186,7 @@
       line-height: 1.1;
       color: var(--charcoal);
       margin-bottom: 12px;
+      transition: color 0.46s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-step__body {
       font-size: 16px;
@@ -1144,6 +1194,7 @@
       color: var(--charcoal);
       font-weight: 400;
       max-width: 26ch;
+      transition: color 0.46s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Timeline strip — extension of treatment journey */
@@ -1248,21 +1299,23 @@
       text-transform: uppercase;
       color: var(--terracotta);
       opacity: 0.75;
+      transition: color 0.46s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.46s cubic-bezier(0.16, 1, 0.3, 1);
     }
     /* Terracotta text-box accent — stages 3 & 4 */
-    .tx-step__text-box--accent {
+    .tx-step__text-box--accent.is-accented {
       background: var(--terracotta);
+      box-shadow: 0 18px 38px rgba(192, 96, 68, 0.22);
     }
-    .tx-step__text-box--accent .tx-step__num {
+    .tx-step__text-box--accent.is-accented .tx-step__num {
       color: rgba(251,242,233,0.7);
     }
-    .tx-step__text-box--accent .tx-step__title {
+    .tx-step__text-box--accent.is-accented .tx-step__title {
       color: #fbf2e9;
     }
-    .tx-step__text-box--accent .tx-step__body {
+    .tx-step__text-box--accent.is-accented .tx-step__body {
       color: rgba(251,242,233,0.75);
     }
-    .tx-step__text-box--accent .tx-step__detail-link {
+    .tx-step__text-box--accent.is-accented .tx-step__detail-link {
       color: rgba(251,242,233,0.8);
       opacity: 1;
     }
@@ -1274,9 +1327,11 @@
     .tx-why__layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 7vw, 112px);
-      align-items: center;
+      gap: clamp(24px, 4vw, 40px);
+      align-items: start;
     }
+    .tx-why__layout > div:first-child { order: 2; }
+    .tx-why__layout > div:last-child { order: 1; }
     .tx-why__pull {
       font-family: var(--font-heading);
       font-size: clamp(38px, 4.5vw, 64px);
@@ -1292,11 +1347,23 @@
       line-height: 1.8;
       color: var(--charcoal);
     }
+    @media (min-width: 1041px) {
+      .tx-why__layout {
+        gap: clamp(40px, 6vw, 96px);
+        align-items: center;
+      }
+      .tx-why__layout > div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+      }
+    }
     .tx-outcomes {
       list-style: none;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(16px, 2vw, 32px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 2vw, 24px);
     }
     .tx-outcome {
       background: var(--cream-dark);
@@ -1529,18 +1596,28 @@
       transform: rotate(45deg);
     }
     .tx-faq__answer {
+      display: grid;
+      grid-template-rows: 0fr;
       overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-faq__answer-inner {
-      padding: 0 32px 28px;
+      overflow: hidden;
+      min-height: 0;
+      padding: 0 32px 0;
       font-size: 16px;
       font-weight: 300;
       line-height: 1.65;
       color: var(--charcoal);
+      transition: padding-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .tx-faq__item.is-open .tx-faq__answer { max-height: 600px; }
+    .tx-faq__item.is-open .tx-faq__answer {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .tx-faq__item.is-open .tx-faq__answer-inner { padding-bottom: 28px; }
 
 
 
@@ -1662,6 +1739,10 @@
       .tx-gallery__card--feature { grid-column: span 2; }
       .tx-step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .tx-facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tx-why__layout { grid-template-columns: 1fr; }
+      .tx-why__layout > div:first-child,
+      .tx-why__layout > div:last-child { order: initial; }
+      .tx-outcomes { grid-template-columns: 1fr; }
       .tx-related__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 780px) {
@@ -1675,7 +1756,18 @@
       .tx-conditions__layout { grid-template-columns: 1fr; }
       .tx-conditions__img { display: none; }
       .tx-process__header { flex-direction: column; align-items: flex-start; }
-      .tx-step-grid { grid-template-columns: 1fr 1fr; }
+      .tx-step-grid { grid-template-columns: 1fr; }
+      .tx-step { min-height: clamp(360px, 68vw, 560px); }
+      .tx-step-shared-media { display: none; }
+      .tx-step--shared-left,
+      .tx-step--shared-right {
+        grid-column: auto;
+        grid-row: auto;
+        background-image: url('/images/treatments/aacow_shot.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
       .tx-intro__cards,
       .tx-facts__grid,
       .tx-related__grid,
@@ -1996,7 +2088,7 @@
 
     <section class="tx-facts" id="the-science" aria-labelledby="facts-heading">
       <div class="container">
-        <figure class="tx-facts__media anim-card-down" aria-label="Immunotherapy visit in clinic">
+        <figure class="tx-facts__media anim-card-down anim-card-down--soft" aria-label="Immunotherapy visit in clinic">
           <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection visit" />
         </figure>
         <div class="tx-facts__content">
@@ -2084,7 +2176,7 @@
 
         <article class="tx-step anim-card-ltr" role="listitem">
           <div class="tx-step__img">
-            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&h=1100&fit=crop&auto=format&q=80" alt="Allergy testing" loading="lazy" />
+            <img src="/images/treatments/aacow_pricktest.jpg" alt="Allergy testing" loading="lazy" />
           </div>
           <div class="tx-step__overlay">
             <div class="tx-step__text-box">
@@ -2097,7 +2189,7 @@
 
         <article class="tx-step anim-card-ltr" role="listitem">
           <div class="tx-step__img">
-            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=700&h=1100&fit=crop&auto=format&q=80" alt="Custom vial preparation" loading="lazy" />
+            <img src="/images/treatments/aacow_vial.jpg" alt="Custom vial preparation" loading="lazy" />
           </div>
           <div class="tx-step__overlay">
             <div class="tx-step__text-box">
@@ -2108,12 +2200,13 @@
           </div>
         </article>
 
-        <article class="tx-step anim-card-ltr" role="listitem">
-          <div class="tx-step__img">
-            <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection" loading="lazy" />
-          </div>
+        <div class="tx-step-shared-media" aria-hidden="true">
+          <img src="/images/treatments/aacow_shot.png" alt="" loading="lazy" />
+        </div>
+
+        <article class="tx-step tx-step--shared-left anim-card-ltr" role="listitem">
           <div class="tx-step__overlay">
-            <div class="tx-step__text-box tx-step__text-box--accent">
+            <div class="tx-step__text-box tx-step__text-box--accent" data-accent-stage="3">
               <p class="tx-step__num">Stage 3</p>
               <h3 class="tx-step__title">Grow Your Tolerance</h3>
               <p class="tx-step__body">Weekly injections gradually increase your dose as your immune system adapts.</p>
@@ -2122,12 +2215,9 @@
           </div>
         </article>
 
-        <article class="tx-step anim-card-ltr" role="listitem">
-          <div class="tx-step__img">
-            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=700&h=1100&fit=crop&auto=format&q=80" alt="Follow-up visit" loading="lazy" />
-          </div>
+        <article class="tx-step tx-step--shared-right anim-card-ltr" role="listitem">
           <div class="tx-step__overlay">
-            <div class="tx-step__text-box tx-step__text-box--accent">
+            <div class="tx-step__text-box tx-step__text-box--accent" data-accent-stage="4">
               <p class="tx-step__num">Stage 4</p>
               <h3 class="tx-step__title">Hold the Progress</h3>
               <p class="tx-step__body">Visits space out to monthly as your symptom burden steadily drops in daily life.</p>
@@ -2138,7 +2228,7 @@
 
         <article class="tx-step anim-card-ltr" role="listitem">
           <div class="tx-step__img">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&h=1100&fit=crop&auto=format&q=80" alt="Patient enjoying outdoors" loading="lazy" />
+            <img src="/images/treatments/aacow_waco.jpg" alt="Patient enjoying outdoors" loading="lazy" />
           </div>
           <div class="tx-step__overlay">
             <div class="tx-step__text-box">
@@ -2189,6 +2279,11 @@
       <div class="container">
         <div class="tx-why__layout anim-fade-up">
           <div>
+            <span class="eyebrow">What patients notice over time</span>
+            <h2 class="tx-why__pull" id="why-heading">Pills can quiet a day. Shots can reshape a season.</h2>
+            <p class="tx-why__body">Antihistamines manage the symptom. Immunotherapy changes the reaction. For patients dealing with persistent allergies, shots gradually retrain your immune system — so the cedar season that used to knock you out stops being an event you dread.</p>
+          </div>
+          <div>
             <ul class="tx-outcomes" aria-label="Expected outcomes">
               <li class="tx-outcome anim-card-rtl">
                 <div class="tx-outcome__top">
@@ -2231,11 +2326,6 @@
                 <span>A clear, long-term plan with your Waco allergist — not seasonal guesswork — with benefits that persist well after treatment ends.</span>
               </li>
             </ul>
-          </div>
-          <div>
-            <span class="eyebrow">What patients notice over time</span>
-            <h2 class="tx-why__pull" id="why-heading">Pills can quiet a day. Shots can reshape a season.</h2>
-            <p class="tx-why__body">Antihistamines manage the symptom. Immunotherapy changes the reaction. For patients dealing with persistent allergies, shots gradually retrain your immune system — so the cedar season that used to knock you out stops being an event you dread.</p>
           </div>
         </div>
       </div>
@@ -2493,12 +2583,15 @@
       var SPRING_DURATION = 800;  // ms
       var OPACITY_DURATION = 200; // ms — Framer Motion opacity override
       var STAGGER = 200; // ms per card — idx * 0.2s
+      var PROCESS_SECTION_SETTLE = 90;
+      var processPanelsCompleteAt = 0;
 
       function playCardDown(el, delay) {
+        var startAngle = el.classList.contains('anim-card-down--soft') ? -12 : -22;
         // Transform: perspective(900px) rotateX(-22deg → 0deg), 800ms spring curve
         el.animate(
           [
-            { transform: 'perspective(900px) rotateX(-22deg)', transformOrigin: 'bottom center' },
+            { transform: 'perspective(900px) rotateX(' + startAngle + 'deg)', transformOrigin: 'bottom center' },
             { transform: 'perspective(900px) rotateX(0deg)',   transformOrigin: 'bottom center' }
           ],
           { duration: SPRING_DURATION, delay: delay, fill: 'both', easing: SPRING_EASING }
@@ -2563,6 +2656,7 @@
         panels.forEach(function (p) { handledCards.add(p); });
         var obs = new IntersectionObserver(function (entries) {
           if (!entries[0].isIntersecting) return;
+          processPanelsCompleteAt = performance.now() + ((panels.length - 1) * STAGGER) + SPRING_DURATION + PROCESS_SECTION_SETTLE;
           panels.forEach(function (panel, i) { playCardLtr(panel, i * STAGGER); });
           obs.disconnect();
         }, IO_OPTS);
@@ -2610,6 +2704,42 @@
         if (!handledCards.has(el)) soloObserver.observe(el);
       });
 
+      // Mobile-only layout: place timeline between Stage 3 and Stage 4
+      (function() {
+        var timelineEl = document.querySelector('.tx-timeline');
+        var stepGrid = document.querySelector('.tx-step-grid');
+        if (!timelineEl || !stepGrid) return;
+
+        var stage4Card = stepGrid.querySelector('.tx-step--shared-right')
+          || (document.querySelectorAll('.tx-step')[3] || null);
+
+        // Anchor keeps the original desktop position for seamless restore on resize.
+        var desktopAnchor = document.createComment('tx-timeline-desktop-anchor');
+        timelineEl.parentNode.insertBefore(desktopAnchor, timelineEl);
+
+        function placeDesktop() {
+          if (desktopAnchor.parentNode) {
+            desktopAnchor.parentNode.insertBefore(timelineEl, desktopAnchor.nextSibling);
+          }
+        }
+
+        function placeMobile() {
+          if (!stage4Card) return;
+          stepGrid.insertBefore(timelineEl, stage4Card);
+        }
+
+        function syncTimelineOrder() {
+          if (window.innerWidth <= 780) {
+            placeMobile();
+          } else {
+            placeDesktop();
+          }
+        }
+
+        syncTimelineOrder();
+        window.addEventListener('resize', syncTimelineOrder);
+      }());
+
       // Generate timeline tick marks — start hidden for scroll animation
       document.querySelectorAll('.tx-timeline__ticks[data-ticks]').forEach(function(el) {
         var n = parseInt(el.dataset.ticks, 10);
@@ -2627,15 +2757,14 @@
       (function() {
         var timelineEl = document.querySelector('.tx-timeline');
         if (!timelineEl) return;
+        var accentBoxes = Array.from(document.querySelectorAll('.tx-step__text-box--accent[data-accent-stage]'));
 
         // Keep hidden until triggered
         timelineEl.style.cssText += 'opacity:0;transform:translateY(-40px);';
 
         var fired = false;
+        var accentPlayed = false;
         function runTimelineAnim() {
-          if (fired) return;
-          fired = true;
-
           // Drop in with fade — feels like it falls from Stage 3/4
           timelineEl.animate(
             [{ opacity: 0, transform: 'translateY(-40px)' },
@@ -2658,23 +2787,51 @@
           });
         }
 
-        // Watch Stage 3 — fire when it's well into view, then hold 450ms
+        function runAccentAnim(done) {
+          if (!accentBoxes.length || accentPlayed) {
+            done();
+            return;
+          }
+
+          accentPlayed = true;
+          var ACCENT_STAGGER = 180;
+          var ACCENT_DURATION = 460;
+
+          accentBoxes.forEach(function(box, index) {
+            window.setTimeout(function() {
+              box.classList.add('is-accented');
+            }, index * ACCENT_STAGGER);
+          });
+
+          window.setTimeout(done, ((accentBoxes.length - 1) * ACCENT_STAGGER) + ACCENT_DURATION);
+        }
+
+        function runAccentThenTimeline() {
+          if (fired) return;
+          fired = true;
+
+          var waitForSection = Math.max(0, processPanelsCompleteAt - performance.now());
+          window.setTimeout(function() {
+            runAccentAnim(runTimelineAnim);
+          }, waitForSection);
+        }
+
+        // Watch Stage 3 — once the whole panel sequence has finished, accent 3/4, then reveal the timeline
         var stage3 = document.querySelectorAll('.tx-step')[2];
         var triggerEl = stage3 || timelineEl;
         var triggerObs = new IntersectionObserver(function(entries) {
           if (!entries[0].isIntersecting) return;
           triggerObs.disconnect();
-          setTimeout(runTimelineAnim, 450);
+          window.setTimeout(runAccentThenTimeline, 450);
         }, { rootMargin: '0px 0px -10% 0px', threshold: 0.4 });
 
         triggerObs.observe(triggerEl);
 
-        // Fallback: fire immediately if timeline itself enters view
-        // (catches fast scrollers who skip past Stage 3)
+        // Fallback: keep the same sequence for fast scrollers who reach the timeline before Stage 3 settles
         var fallbackObs = new IntersectionObserver(function(entries) {
           if (!entries[0].isIntersecting) return;
           fallbackObs.disconnect();
-          runTimelineAnim();
+          runAccentThenTimeline();
         }, { threshold: 0.05 });
         fallbackObs.observe(timelineEl);
       }());
