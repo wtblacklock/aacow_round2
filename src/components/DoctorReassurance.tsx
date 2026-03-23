@@ -40,7 +40,7 @@ export default function DoctorReassurance() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/25 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white/85 backdrop-blur-sm rounded-full flex items-center justify-center text-accent group-hover:scale-110 transition-transform shadow-xl">
+                <div className="w-20 h-20 bg-white/85 backdrop-blur-sm rounded-full flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
                   <Play className="w-7 h-7 ml-1" fill="currentColor" />
                 </div>
               </div>

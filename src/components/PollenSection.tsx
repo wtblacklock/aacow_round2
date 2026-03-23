@@ -96,7 +96,7 @@ export default function PollenSection() {
               >
                 <CircleHelp className="h-3 w-3" />
               </button>
-              <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-[280px] -translate-x-1/2 rounded-xl bg-charcoal px-4 py-3 text-left text-sm font-sans font-normal leading-relaxed text-cream opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
+              <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-[280px] -translate-x-1/2 rounded-xl bg-charcoal px-4 py-3 text-left text-sm font-sans font-normal leading-relaxed text-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
                 Grains of pollen per cubic meter of air. High counts can trigger symptoms even in mild allergy sufferers.
               </span>
             </span>
@@ -121,7 +121,7 @@ export default function PollenSection() {
           {/* Date badge — desktop only, absolute top-left */}
           <a
             href="#education"
-            className="group hidden lg:block absolute left-7 top-7 z-20 rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal shadow-sm hover:shadow-md transition-all"
+            className="group hidden lg:block absolute left-7 top-7 z-20 rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal transition-all"
           >
             <div className="flex items-center gap-2.5">
               <CalendarDays className="h-4 w-4 shrink-0 text-terracotta" />
@@ -146,7 +146,7 @@ export default function PollenSection() {
               {/* Date badge — mobile/tablet only, sits above cards in flow */}
               <a
                 href="#education"
-                className="group lg:hidden self-start rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal shadow-sm hover:shadow-md transition-all"
+                className="group lg:hidden self-start rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal transition-all"
               >
                 <div className="flex items-center gap-2.5">
                   <CalendarDays className="h-4 w-4 shrink-0 text-terracotta" />
@@ -184,7 +184,7 @@ export default function PollenSection() {
                         delay: index * 0.2,
                         opacity: { duration: 0.2, ease: 'easeOut', delay: index * 0.2 },
                       }}
-                      className="group bg-cream/95 backdrop-blur-sm rounded-2xl p-5 lg:p-6 flex flex-col gap-4 hover:bg-cream hover:shadow-md transition-all duration-300 cursor-pointer"
+                      className="group bg-cream/95 backdrop-blur-sm rounded-2xl p-5 lg:p-6 flex flex-col gap-4 hover:bg-cream transition-all duration-300 cursor-pointer"
                     >
                       {/* Title — visible immediately with the card */}
                       <div className="flex items-start justify-between gap-3">

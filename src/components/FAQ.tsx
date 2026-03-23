@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus } from 'lucide-react';
+import CardGradientOverlay, { cardMouseHandlers } from './CardGradientOverlay';
 
 const faqs = [
   {
@@ -48,8 +49,10 @@ export default function FAQ() {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="bg-cream-dark rounded-2xl overflow-hidden"
+              {...cardMouseHandlers()}
+              className="relative bg-cream-dark rounded-2xl overflow-hidden"
             >
+              <CardGradientOverlay index={idx} />
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none group/btn hover:text-terracotta transition-colors"

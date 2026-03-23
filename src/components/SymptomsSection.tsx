@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Wind, Droplets, Eye, Activity, Heart, Apple } from 'lucide-react';
+import CardGradientOverlay, { cardMouseHandlers } from './CardGradientOverlay';
 
 const symptoms = [
   { title: "Chronic Cough", desc: "Persistent coughing that won't go away, especially at night or after exercise.", icon: Wind },
@@ -37,13 +38,15 @@ export default function SymptomsSection() {
             return (
               <motion.div
                 key={idx}
+                {...cardMouseHandlers()}
                 initial={{ opacity: 0, rotateX: -22 }}
                 whileInView={{ opacity: 1, rotateX: 0 }}
                 viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
-                className="group bg-cream-dark rounded-3xl p-8 lg:p-10 flex flex-col min-h-[360px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
+                className="group relative overflow-hidden bg-cream-dark rounded-3xl p-8 lg:p-10 flex flex-col min-h-[360px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
               >
+                <CardGradientOverlay index={idx} />
                 {/* Top: title + oval icon */}
                 <div className="flex justify-between items-start gap-4">
                   <h3 className="text-[30px] lg:text-[34px] font-heading font-semibold text-charcoal group-hover:text-terracotta transition-colors duration-300 leading-[1.1]">

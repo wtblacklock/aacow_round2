@@ -82,11 +82,15 @@ export default function Hero() {
 
         {/* ── 45 years statement + CTA ── */}
         <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px] flex flex-col items-center text-center pb-16 lg:pb-20">
-          <h2 className="text-[36px] lg:text-[58px] font-heading font-normal text-charcoal leading-[1.06] mb-10 lg:mb-12 max-w-4xl">
-            <strong>For over 45 years</strong>, our board-certified allergists
-            have helped Waco families breathe easier, live more fully, and stop
-            guessing at their symptoms.
+          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-6 block">
+            Immunotherapy · Allergy Shots
+          </span>
+          <h2 className="text-[36px] lg:text-[58px] font-heading font-normal text-charcoal leading-[1.06] mb-7 lg:mb-8 max-w-4xl">
+            Build a Calmer Immune System
           </h2>
+          <p className="text-[17px] lg:text-[19px] text-charcoal font-light leading-relaxed mb-10 lg:mb-12 max-w-2xl">
+            This is not symptom patchwork. Allergy shots retrain your immune system so pollen, dust, and dander stop running your days. A personalized plan built for long-term relief in Waco.
+          </p>
 
           <a
             href="#"

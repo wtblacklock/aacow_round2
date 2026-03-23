@@ -4,6 +4,7 @@
         "npx vite": true,
         "npx tsc": true,
         "lsof": true,
-        "csplit": true
+        "csplit": true,
+        "cp": true
     }
 }

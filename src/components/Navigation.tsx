@@ -61,7 +61,7 @@ export default function Navigation() {
                   Treatments <ChevronDown className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" />
                 </button>
                 <div className="absolute top-full left-0 pt-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
-                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden" style={{ width: '320px' }}>
+                  <div className="bg-white rounded-2xl border border-sand/50 overflow-hidden" style={{ width: '320px' }}>
                     {treatments.map((item, i) => (
                       <a
                         key={item.label}
@@ -88,7 +88,7 @@ export default function Navigation() {
                   Resources <ChevronDown className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" />
                 </button>
                 <div className="absolute top-full left-0 pt-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
-                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden" style={{ width: '280px' }}>
+                  <div className="bg-white rounded-2xl border border-sand/50 overflow-hidden" style={{ width: '280px' }}>
                     {resources.map((item, i) => (
                       <a
                         key={item.label}

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/images/icons/favicon.svg" type="image/svg+xml" />
   <title>Immunotherapy &amp; Allergy Shots in Waco, TX | Allergy &amp; Asthma Care of Waco</title>
   <meta name="description" content="Immunotherapy (allergy shots) at Allergy &amp; Asthma Care of Waco — the only treatment that changes how your immune system responds to allergens. 85% of patients see significant relief. Serving Waco and Central Texas since 1978." />
   <link rel="canonical" href="https://allergywaco.com/treatment-immunotherapy" />
@@ -145,7 +146,7 @@
     html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
     body {
       font-family: var(--font-sans);
-      background-color: var(--cream);
+      background-color: #fbf2e9;
       color: var(--charcoal);
       font-size: 16px;
       line-height: 1.7;
@@ -633,11 +634,20 @@
       opacity: 0;
       transform: perspective(900px) rotateX(-22deg);
       transform-origin: bottom center;
-      transition: opacity 0.2s ease,
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      /* animation driven by WAAPI in JS — no CSS transition */
     }
-    .anim-fade-up.is-visible,
-    .anim-card-down.is-visible {
+    .anim-card-rtl {
+      opacity: 0;
+      transform: perspective(900px) rotateY(18deg) translateX(20px);
+      transform-origin: right center;
+    }
+    .anim-card-ltr {
+      opacity: 0;
+      transform: perspective(1200px) rotateY(-18deg) translateX(-16px);
+      transform-origin: left center;
+      /* animation driven by WAAPI in JS */
+    }
+    .anim-fade-up.is-visible {
       opacity: 1;
       transform: none;
     }
@@ -649,359 +659,813 @@
     .delay-5 { transition-delay: 1.0s; }
 
     /* ==========================================================================
-       1. HERO
+       IMMUNOTHERAPY PAGE LAYOUT — editorial, open, and image-led
        ========================================================================== */
-    /* ==========================================================================
-       HERO — full-bleed split masthead
-       Left panel: text, vertically centered. Right panel: edge-to-edge image.
-       ========================================================================== */
+    .tx-page {
+      background: #fbf2e9;
+    }
+
     .tx-hero {
-      background: var(--cream);
-      min-height: 88vh;
+      padding: clamp(34px, 5vw, 66px) 0 clamp(70px, 8vw, 110px);
+    }
+    .tx-hero__grid {
       display: grid;
-      grid-template-columns: 55fr 45fr;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(26px, 4vw, 52px);
       align-items: stretch;
     }
-    .tx-hero__text {
-      display: flex;
-      align-items: center;
-      padding: clamp(60px, 8vw, 110px) clamp(24px, 5vw, 90px);
+    .tx-hero__panel {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: clamp(28px, 4vw, 56px) 0;
+      display: grid;
+      align-content: center;
+      gap: 20px;
     }
-    .tx-hero__text-inner { width: 100%; }
     .tx-hero__headline {
       font-family: var(--font-heading);
-      font-size: clamp(56px, 9vw, 120px);
-      font-weight: 700;
-      line-height: 0.95;
-      color: var(--charcoal);
-      letter-spacing: -0.01em;
-      margin-bottom: 28px;
+      font-size: clamp(52px, 8.2vw, 114px);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
     }
     .tx-hero__headline em {
-      font-family: var(--font-display);
       font-style: normal;
       font-weight: 400;
-      color: var(--terracotta);
     }
     .tx-hero__subhead {
+      max-width: 54ch;
       font-size: clamp(15px, 1.2vw, 18px);
-      font-weight: 300;
-      line-height: 1.85;
       color: var(--charcoal-light);
-      max-width: 460px;
-      margin-bottom: 36px;
+      line-height: 1.8;
     }
-    .tx-hero__trust {
+    .tx-hero__meta {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 16px;
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(55, 36, 38, 0.1);
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .tx-chip {
+      border-radius: 999px;
+      padding: 8px 14px;
       font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      color: var(--charcoal-light);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
     }
-    .tx-hero__trust-sep {
-      display: inline-block;
-      width: 1px;
-      height: 10px;
-      background: var(--sand);
-    }
-    /* Right panel — full bleed, no border radius */
     .tx-hero__media {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: clamp(420px, 64vw, 720px);
+    }
+    .tx-hero__media video,
+    .tx-hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.05);
+    }
+    .tx-hero__note {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(55, 36, 38, 0.78);
+      color: #fdf6ef;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .tx-intro {
+      padding: clamp(56px, 7vw, 100px) 0;
+    }
+    .tx-intro__grid {
+      display: grid;
+      grid-template-columns: 0.25fr 0.75fr;
+      gap: clamp(26px, 4vw, 56px);
+      align-items: start;
+    }
+    .tx-intro__display {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 4.3vw, 66px);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      max-width: 14ch;
+    }
+    .tx-intro__display em {
+      font-family: var(--font-display);
+      color: var(--terracotta);
+      font-style: normal;
+      font-weight: 400;
+    }
+    .tx-intro__lede {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--charcoal-light);
+      max-width: 54ch;
+      margin-top: 24px;
+      margin-bottom: 20px;
+    }
+    .tx-intro__cards {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 2vw, 32px);
+    }
+    .tx-intro__card {
+      background: var(--cream-dark);
+      border-radius: 24px;
+      padding: clamp(32px, 4vw, 56px);
+      min-height: clamp(330px, 30vw, 390px);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s;
       position: relative;
       overflow: hidden;
     }
-    .tx-hero__media .media-placeholder {
+    .tx-intro__card:hover { background: rgba(216, 195, 176, 0.4); }
+    .tx-intro__card::after {
+      content: '';
       position: absolute;
       inset: 0;
+      background: radial-gradient(
+        ellipse 90% 90% at var(--mx, 50%) var(--my, 50%),
+        rgba(192,96,68,0.07) 0%,
+        rgba(192,96,68,0.03) 45%,
+        transparent 75%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tx-intro__card > *:not(.card-gradient-cloud) {
+      position: relative;
+      z-index: 1;
+    }
+    .tx-intro__card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .tx-intro__card strong {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+    .tx-intro__card:hover strong { color: var(--terracotta); }
+    .tx-intro__icon {
+      width: 46px;
+      height: 62px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 36, 38, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: rgba(55, 36, 38, 0.55);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .tx-intro__card:hover .tx-intro__icon {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+    .tx-intro__card-spacer { flex: 1; }
+    .tx-intro__card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--charcoal-light);
+      margin-bottom: 0;
+    }
+
+    .tx-gallery {
+      padding: clamp(42px, 6vw, 84px) 0;
+    }
+    .tx-gallery__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: clamp(12px, 1.5vw, 18px);
+    }
+    .tx-gallery__card {
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 220px;
+      position: relative;
+    }
+    .tx-gallery__card--feature { min-height: clamp(320px, 45vw, 470px); }
+    .tx-gallery__card video,
+    .tx-gallery__card img {
       width: 100%;
       height: 100%;
-      border-radius: 0;
-      aspect-ratio: auto;
+      object-fit: cover;
+      display: block;
     }
-    @media (max-width: 860px) {
-      .tx-hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .tx-hero__text {
-        padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 40px);
-      }
-      .tx-hero__media {
-        height: 64vw;
-        min-height: 260px;
-      }
+    .tx-gallery__caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      background: rgba(55, 36, 38, 0.74);
+      color: #fdf6ef;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    /* ==========================================================================
-       2. TREATMENT INTRO
-       ========================================================================== */
-    .tx-intro { border-top: 1px solid rgba(55, 36, 38, 0.08); }
-    .tx-intro__grid {
+    .tx-facts {
+      padding: clamp(62px, 8vw, 110px) 0;
+    }
+    .tx-facts .container {
       display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: clamp(40px, 5vw, 96px);
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
       align-items: start;
     }
-    .tx-intro__quote {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 2.8vw, 38px);
-      font-weight: 400;
-      font-style: normal;
-      line-height: 1.38;
-      color: var(--charcoal);
-      position: sticky;
-      top: 96px;
+    .tx-facts__media {
+      grid-column: 1;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      justify-self: stretch;
+      margin-bottom: 0;
     }
-    .tx-intro__body p + p { margin-top: 18px; }
-    @media (max-width: 768px) {
-      .tx-intro__grid { grid-template-columns: 1fr; }
-      .tx-intro__quote { position: static; }
+    .tx-facts__content {
+      grid-column: 2;
+      display: grid;
+      gap: 12px;
+      align-content: start;
     }
-
-    /* ==========================================================================
-       3. QUICK FACTS — open columns like the home page cards
-       ========================================================================== */
-    .tx-facts { border-top: 1px solid rgba(55, 36, 38, 0.07); }
+    .tx-facts__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .tx-facts__header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 0;
+    }
+    .tx-facts__header > div {
+      padding-left: 20px;
+    }
     .tx-facts__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(24px, 3vw, 48px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(14px, 1.8vw, 22px);
+      margin-top: 0;
     }
-    /* Each fact styled like home page SymptomsSection cards but smaller */
     .tx-fact {
-      background: var(--cream);
-      border-radius: 24px; /* rounded-3xl */
-      padding: clamp(24px, 2.5vw, 36px);
+      border-radius: 20px;
+      padding: 22px 20px;
+    }
+    .tx-fact__top {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
     }
     .tx-fact__number {
       font-family: var(--font-display);
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 600;
-      font-style: normal;
+      font-size: clamp(43px, 5vw, 65px);
       color: var(--terracotta);
-      line-height: 1.0;
+      line-height: 0.95;
+      margin-bottom: 0;
     }
     .tx-fact__title {
       font-family: var(--font-heading);
-      font-size: clamp(18px, 1.8vw, 22px);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.1;
+      font-size: 22px;
+      line-height: 1.05;
+      margin-bottom: 8px;
     }
     .tx-fact__body {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--charcoal-light);
-    }
-    @media (max-width: 900px) {
-      .tx-facts__grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .tx-facts__grid { grid-template-columns: 1fr; }
-    }
-
-    /* ==========================================================================
-       4. DOCTOR VIDEO
-       ========================================================================== */
-    .tx-video__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 5vw, 80px);
-      align-items: center;
-    }
-    .tx-video__caption {
-      font-family: var(--font-display);
       font-size: 13px;
-      font-style: normal;
+      line-height: 1.7;
       color: var(--charcoal-light);
-      margin-top: 12px;
     }
-    .tx-video__text p + p { margin-top: 16px; }
-    .tx-video__doctor {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(55, 36, 38, 0.08);
+    .tx-facts__intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(55,36,38,0.5);
+      font-weight: 300;
+      margin-top: 6px;
+      max-width: 380px;
     }
-    .tx-video__doctor-name {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-    .tx-video__doctor-title {
-      font-size: 12.5px;
-      font-weight: 400;
-      color: var(--charcoal-light);
-      margin-top: 4px;
-    }
-    @media (max-width: 768px) {
-      .tx-video__grid { grid-template-columns: 1fr; }
-      .tx-video__grid > :first-child { order: 2; }
-      .tx-video__grid > :last-child  { order: 1; }
+    .tx-fact__illust {
+      margin: 0;
+      display: block;
+      overflow: visible;
+      flex-shrink: 0;
     }
 
-    /* ==========================================================================
-       5. HOW IT WORKS — light, open, cream background
-       ========================================================================== */
-    .tx-process { border-top: 1px solid rgba(55, 36, 38, 0.07); }
-    .tx-process .eyebrow { color: var(--terracotta); }
-    .tx-process__header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 5vw, 96px);
-      align-items: end;
-      margin-bottom: clamp(48px, 6vw, 80px);
-      padding-bottom: clamp(40px, 5vw, 64px);
-      border-bottom: 1px solid rgba(55, 36, 38, 0.08);
+    /* ── Fact illustration animations ── */
+
+    /* Stat 1 — growing progress bars */
+    @keyframes factBarGrow {
+      0%,8%   { transform: scaleX(0); opacity: 0; }
+      45%,72% { transform: scaleX(1); opacity: 1; }
+      92%,100%{ transform: scaleX(0); opacity: 0; }
     }
-    .tx-process__header .t-headline { color: var(--charcoal); }
+    .fi-bar {
+      fill: var(--charcoal);
+      opacity: 0.45;
+      transform-box: fill-box;
+      transform-origin: left center;
+    }
+    .fi-bar-1 { animation: factBarGrow 3.6s ease-in-out infinite; }
+    .fi-bar-2 { animation: factBarGrow 3.6s ease-in-out 0.22s infinite; }
+    .fi-bar-3 { animation: factBarGrow 3.6s ease-in-out 0.44s infinite; }
+    .fi-bar-4 { animation: factBarGrow 3.6s ease-in-out 0.66s infinite; }
+
+    /* Stat 2 — concentric relief rings */
+    @keyframes factRingPulse {
+      0%   { transform: scale(0.15); opacity: 0.75; }
+      75%  { transform: scale(1);    opacity: 0;    }
+      100% { transform: scale(1);    opacity: 0;    }
+    }
+    .fi-ring {
+      stroke: var(--charcoal);
+      fill: none;
+      opacity: 0.45;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .fi-ring-1 { animation: factRingPulse 2.6s ease-out infinite; }
+    .fi-ring-2 { animation: factRingPulse 2.6s ease-out 0.8s infinite; }
+    .fi-ring-3 { animation: factRingPulse 2.6s ease-out 1.6s infinite; }
+
+    /* Stat 3 — path drawing left to right */
+    @keyframes factPathDraw {
+      0%,5%   { stroke-dashoffset: 44; }
+      60%,78% { stroke-dashoffset: 0;  }
+      95%,100%{ stroke-dashoffset: 44; }
+    }
+    @keyframes factDotMove {
+      0%,5%   { transform: translateX(0);   opacity: 0.3; }
+      60%,78% { transform: translateX(44px); opacity: 0.7; }
+      95%,100%{ transform: translateX(0);   opacity: 0.3; }
+    }
+    .fi-path {
+      stroke: var(--charcoal);
+      opacity: 0.45;
+      animation: factPathDraw 3.8s ease-in-out infinite;
+    }
+    .fi-traveler {
+      fill: var(--charcoal);
+      opacity: 0.6;
+      animation: factDotMove 3.8s ease-in-out infinite;
+    }
+
+    /* Stat 4 — two shapes drawing together */
+    @keyframes factShapeLeft {
+      0%,100%  { transform: translateX(0);  }
+      45%,60%  { transform: translateX(4px); }
+    }
+    @keyframes factShapeRight {
+      0%,100%  { transform: translateX(0);   }
+      45%,60%  { transform: translateX(-4px); }
+    }
+    .fi-shape-a {
+      fill: var(--charcoal);
+      opacity: 0.35;
+      transform-box: fill-box;
+      transform-origin: right center;
+      animation: factShapeLeft 2.8s ease-in-out infinite;
+    }
+    .fi-shape-b {
+      fill: var(--charcoal);
+      opacity: 0.55;
+      transform-box: fill-box;
+      transform-origin: left center;
+      animation: factShapeRight 2.8s ease-in-out infinite;
+    }
+
+    .tx-process {
+      padding: clamp(62px, 8vw, 108px) 0 0;
+    }
+    .tx-process__header {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-end;
+      gap: 48px;
+      margin-bottom: clamp(40px, 5vw, 64px);
+    }
+    .tx-process__header > div {
+      max-width: 672px;
+    }
     .tx-process__intro {
       font-size: 16px;
-      font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.75;
       color: var(--charcoal-light);
+      margin-top: 16px;
+    }
+    /* Full-bleed panel strip */
+    .tx-step-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: clamp(16px, 2vw, 32px);
     }
     .tx-step {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: clamp(20px, 3vw, 44px);
-      padding: clamp(28px, 4vw, 48px) 0;
-      border-bottom: 1px solid rgba(55, 36, 38, 0.07);
-      align-items: start;
+      position: relative;
+      min-height: clamp(480px, 60vh, 860px);
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
     }
-    .tx-step:last-child { border-bottom: none; }
+    .tx-step__img {
+      position: absolute;
+      inset: 0;
+    }
+    .tx-step__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(1.04);
+    }
+    .tx-step:hover .tx-step__img img {
+      transform: scale(1.09);
+    }
+    .tx-step__overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(20px, 2.5vw, 36px) clamp(18px, 2vw, 28px);
+      transition: background 0.4s ease;
+    }
+    .tx-step__text-box {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: clamp(16px, 2vw, 24px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .tx-step:hover .tx-step__overlay {
+      background: transparent;
+    }
     .tx-step__num {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 2.5vw, 32px);
-      font-weight: 400;
-      font-style: normal;
-      color: rgba(55, 36, 38, 0.12);
-      line-height: 1;
-      padding-top: 6px;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
     }
     .tx-step__title {
       font-family: var(--font-heading);
-      font-size: clamp(22px, 2.2vw, 30px);
+      font-size: clamp(18px, 1.8vw, 26px);
       font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 10px;
       line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 12px;
     }
     .tx-step__body {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--charcoal-light);
-      max-width: 580px;
-    }
-    @media (max-width: 768px) {
-      .tx-process__header { grid-template-columns: 1fr; gap: 20px; }
-      .tx-step { grid-template-columns: 44px 1fr; gap: 14px; }
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(55,36,38,0.7);
+      font-weight: 400;
+      max-width: 26ch;
     }
 
-    /* ==========================================================================
-       6. WHY THIS MATTERS
-       ========================================================================== */
-    .tx-why { border-top: 1px solid rgba(55, 36, 38, 0.07); }
-    .tx-why__grid {
+    /* Timeline strip — extension of treatment journey */
+    .tx-timeline {
+      margin-top: clamp(16px, 2vw, 24px);
+      padding-top: clamp(20px, 2.5vw, 32px);
+      padding-bottom: clamp(56px, 7vw, 96px);
+      /* align with Stage 3 "Grow Your Tolerance" text:
+         2 columns (40%) + 2/5 gap + overlay left padding + text-box left padding */
+      padding-left: calc(40% + clamp(6.4px, 0.8vw, 12.8px) + clamp(18px, 2vw, 28px) + clamp(16px, 2vw, 24px));
+    }
+    .tx-timeline__header {
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+    .tx-timeline__title {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight: 600;
+      color: var(--terracotta);
+      margin: 10px 0 10px;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+    .tx-timeline__intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(55,36,38,0.55);
+      max-width: 520px;
+      font-weight: 300;
+    }
+    .tx-timeline__phases {
       display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: clamp(48px, 6vw, 96px);
-      align-items: start;
+      grid-template-columns: 1fr 1fr 1fr;
     }
-    .tx-why__pull {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 3vw, 40px);
-      font-weight: 400;
-      font-style: normal;
-      line-height: 1.38;
+    .tx-timeline__phase {
+      padding: 0 clamp(20px, 2.5vw, 40px);
+      border-left: 1px solid rgba(55,36,38,0.1);
+    }
+    .tx-timeline__phase:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+    .tx-timeline__phase-label {
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+    .tx-timeline__phase-duration {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 2.2vw, 34px);
+      font-weight: 700;
       color: var(--charcoal);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
-    .tx-why__body p + p { margin-top: 18px; }
-    .tx-compare-grid {
+    .tx-timeline__phase-freq {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(55,36,38,0.7);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .tx-timeline__phase-visits {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(55,36,38,0.45);
+      font-weight: 300;
+    }
+    .tx-timeline__ticks {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      gap: 3px;
+      margin-bottom: 18px;
+      height: 28px;
+      align-items: flex-end;
+    }
+    .tx-timeline__tick {
+      display: block;
+      width: 2px;
+      height: 28px;
+      background: var(--terracotta);
+      opacity: 0.45;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+    .tx-timeline__ticks--tight { gap: 1px 1px; }
+    .tx-timeline__ticks--loose { gap: 10px 10px; }
+    /* Subtle reference link inside Stage 3 & 4 cards */
+    .tx-step__detail-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      opacity: 0.75;
+    }
+    /* Terracotta text-box accent — stages 3 & 4 */
+    .tx-step__text-box--accent {
+      background: var(--terracotta);
+    }
+    .tx-step__text-box--accent .tx-step__num {
+      color: rgba(251,242,233,0.7);
+    }
+    .tx-step__text-box--accent .tx-step__title {
+      color: #fbf2e9;
+    }
+    .tx-step__text-box--accent .tx-step__body {
+      color: rgba(251,242,233,0.75);
+    }
+    .tx-step__text-box--accent .tx-step__detail-link {
+      color: rgba(251,242,233,0.8);
+      opacity: 1;
+    }
+
+    .tx-why {
+      background: var(--cream);
+      padding: clamp(66px, 8vw, 112px) 0;
+    }
+    .tx-why__layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 28px;
+      gap: clamp(48px, 7vw, 112px);
+      align-items: center;
     }
-    .tx-compare {
-      padding: 20px 22px;
-      border-radius: 16px;
-    }
-    .tx-compare--a { background: var(--cream); }
-    .tx-compare--b {
-      background: var(--cream-dark);
-      border: 1.5px solid rgba(55,36,38,0.12);
-    }
-    .tx-compare__label {
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      opacity: 0.55;
-    }
-    .tx-compare--b .tx-compare__label { color: var(--charcoal-light); }
-    .tx-compare__title {
+    .tx-why__pull {
       font-family: var(--font-heading);
-      font-size: 19px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      line-height: 1.1;
+      font-size: clamp(38px, 4.5vw, 64px);
+      line-height: 1.05;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-top: 16px;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
-    .tx-compare--a .tx-compare__title { color: var(--charcoal-light); }
-    .tx-compare--b .tx-compare__title { color: var(--charcoal); }
-    .tx-compare__body { font-size: 13px; font-weight: 300; line-height: 1.65; }
-    .tx-compare--a .tx-compare__body { color: var(--charcoal-light); }
-    .tx-compare--b .tx-compare__body { color: var(--charcoal-light); }
-    @media (max-width: 768px) {
-      .tx-why__grid { grid-template-columns: 1fr; }
-      .tx-compare-grid { grid-template-columns: 1fr; }
+    .tx-why__body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(55,36,38,0.6);
+    }
+    .tx-outcomes {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2vw, 32px);
+    }
+    .tx-outcome {
+      background: var(--cream-dark);
+      border-radius: 24px;
+      padding: clamp(32px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .tx-outcome:hover { background: rgba(216,195,176,0.4); }
+    /* Shared cloud class for all beige cards */
+    .card-gradient-cloud,
+    .tx-outcome__cloud {
+      position: absolute;
+      inset: -60%;
+      width: 220%;
+      height: 220%;
+      background:
+        radial-gradient(ellipse 60% 48% at 22% 32%, rgba(221,201,181,0.72) 0%, transparent 58%),
+        radial-gradient(ellipse 52% 62% at 72% 58%, rgba(240,228,218,0.55) 0%, transparent 52%),
+        radial-gradient(ellipse 56% 44% at 50% 80%, rgba(209,183,162,0.45) 0%, transparent 52%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Mouse-tracking terracotta blush */
+    .tx-outcome::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 90% 90% at var(--mx, 50%) var(--my, 50%),
+        rgba(192,96,68,0.07) 0%,
+        rgba(192,96,68,0.03) 45%,
+        transparent 75%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Keep all card content above gradient overlays */
+    .tx-outcome > *:not(.tx-outcome__cloud) {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes cloudDrift1 {
+      0%   { transform: translate(0,     0)    scale(1);    }
+      28%  { transform: translate(9%,   -7%)   scale(1.04); }
+      55%  { transform: translate(13%,   5%)   scale(0.96); }
+      78%  { transform: translate(5%,   10%)   scale(1.02); }
+      100% { transform: translate(0,     0)    scale(1);    }
+    }
+    @keyframes cloudDrift2 {
+      0%   { transform: translate(0,     0)    scale(1);    }
+      32%  { transform: translate(-10%,  7%)   scale(1.05); }
+      62%  { transform: translate(-5%,  -9%)   scale(0.95); }
+      82%  { transform: translate(-12%,  3%)   scale(1.03); }
+      100% { transform: translate(0,     0)    scale(1);    }
+    }
+    .tx-outcome__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .tx-outcome strong {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 2.5vw, 34px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+    .tx-outcome:hover strong { color: var(--terracotta); }
+    .tx-outcome__icon {
+      width: 46px;
+      height: 62px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,36,38,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: rgba(55,36,38,0.55);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .tx-outcome:hover .tx-outcome__icon {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+    .tx-outcome__spacer { flex: 1; min-height: 24px; }
+    .tx-why__bridge {
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(55,36,38,0.38);
+      margin-bottom: 16px;
+    }
+    .tx-outcome span {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--charcoal-light);
     }
 
-    /* ==========================================================================
-       7. CONDITIONS — cards matching SymptomsSection style
-       ========================================================================== */
-    .tx-conditions { border-top: 1px solid rgba(55, 36, 38, 0.08); }
-    .tx-conditions__header {
+    .tx-conditions {
+      padding: clamp(62px, 8vw, 108px) 0;
+      background: var(--cream);
+    }
+    .tx-conditions__layout {
       display: grid;
       grid-template-columns: 5fr 7fr;
-      gap: clamp(40px, 5vw, 80px);
-      align-items: end;
-      margin-bottom: clamp(40px, 5vw, 64px);
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .tx-conditions__img {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--cream-dark);
+      position: relative;
+    }
+    .tx-conditions__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tx-conditions__img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--sand) 100%);
+      color: rgba(55,36,38,0.2);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .tx-conditions__right {
+      display: flex;
+      flex-direction: column;
+    }
+    .tx-conditions__header {
+      margin-bottom: clamp(28px, 4vw, 40px);
+      display: grid;
+      gap: 16px;
+      max-width: 440px;
     }
     .tx-conditions__header-text {
       font-size: 16px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--charcoal);
+      line-height: 1.82;
+      color: var(--charcoal-light);
+      max-width: 52ch;
     }
     .tx-conditions__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(16px, 2vw, 24px);
       list-style: none;
+      columns: 2;
+      column-gap: 32px;
     }
-    /* Each condition as a card — matches SymptomsSection exactly */
     .tx-condition-card {
-      background: var(--cream-dark);
-      border-radius: 24px; /* rounded-3xl */
-      padding: clamp(24px, 2.5vw, 32px);
       display: flex;
       align-items: baseline;
-      gap: 12px;
-      transition: background 0.3s ease;
+      gap: 10px;
+      padding: 5px 0;
+      break-inside: avoid;
     }
-    .tx-condition-card:hover { background: rgba(216, 195, 176, 0.5); }
     .tx-condition-card::before {
       content: '';
       width: 5px;
@@ -1012,82 +1476,29 @@
       margin-top: 2px;
     }
     .tx-condition-card span {
-      font-family: var(--font-heading);
-      font-size: clamp(16px, 1.5vw, 20px);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.2;
-    }
-    @media (max-width: 900px) { .tx-conditions__grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .tx-conditions__grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .tx-conditions__header { grid-template-columns: 1fr; } }
-
-    /* ==========================================================================
-       8. LOCAL CONTEXT
-       ========================================================================== */
-    .tx-local { border-top: 1px solid rgba(55, 36, 38, 0.07); }
-    .tx-local__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 6vw, 96px);
-      align-items: start;
-    }
-    .tx-local__text p { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--charcoal); margin-top: 16px; }
-    .tx-local__text p + p { margin-top: 16px; }
-    .tx-season-list { list-style: none; border-top: 1px solid rgba(55,36,38,0.12); margin-top: 8px; }
-    .tx-season {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(55,36,38,0.08);
-      gap: 12px;
-    }
-    .tx-season__name {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--charcoal);
-      flex: 1;
-    }
-    .tx-season__period { font-size: 12px; color: var(--charcoal-light); white-space: nowrap; }
-    .tx-season__badge {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-    .tx-season__badge--high { background: rgba(192, 96, 68, 0.12); color: var(--terracotta); }
-    .tx-season__badge--mod  { background: var(--sage-light); color: var(--sage); }
-    @media (max-width: 768px) { .tx-local__grid { grid-template-columns: 1fr; } }
-
-    /* ==========================================================================
-       9. FAQ — matching FAQ.tsx pattern exactly
-       ========================================================================== */
-    .tx-faq { background: var(--cream); border-top: 1px solid rgba(55, 36, 38, 0.08); }
-    .tx-faq__header {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: clamp(40px, 5vw, 80px);
-      margin-bottom: clamp(36px, 4vw, 56px);
-    }
-    .tx-faq__header-text {
       font-size: 16px;
       font-weight: 300;
-      line-height: 1.8;
-      color: var(--charcoal);
-      padding-top: 6px;
+      line-height: 1.75;
+      color: var(--charcoal-light);
     }
-    .tx-faq__list { list-style: none; }
-    /* Each item matches FAQ.tsx: bg-cream-dark rounded-2xl */
+
+    .tx-faq {
+      background: var(--cream);
+      padding: clamp(72px, 9vw, 144px) 0 clamp(62px, 8vw, 108px);
+    }
+    .tx-faq__header {
+      text-align: center;
+      margin-bottom: 96px;
+    }
+    .tx-faq__header h2 {
+      font-size: clamp(52px, 6.5vw, 80px);
+      line-height: 1.0;
+    }
+    .tx-faq__list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
     .tx-faq__item {
       background: var(--cream-dark);
-      border-radius: 16px; /* rounded-2xl */
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 14px;
     }
     .tx-faq__q {
       display: flex;
@@ -1099,12 +1510,12 @@
       border: none;
       cursor: pointer;
       text-align: left;
-      padding: 24px 28px;
+      padding: 28px 32px;
       font-family: var(--font-heading);
-      font-size: clamp(18px, 1.8vw, 22px);
+      font-size: 20px;
       font-weight: 600;
-      color: var(--charcoal);
       line-height: 1.2;
+      color: var(--charcoal);
       transition: color 0.2s;
     }
     .tx-faq__q:hover { color: var(--terracotta); }
@@ -1123,84 +1534,39 @@
       transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-faq__answer-inner {
-      padding: 0 28px 24px;
-      font-size: 15px;
+      padding: 0 32px 28px;
+      font-size: 16px;
       font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.65;
       color: var(--charcoal);
     }
     .tx-faq__item.is-open .tx-faq__answer { max-height: 600px; }
-    @media (max-width: 768px) { .tx-faq__header { grid-template-columns: 1fr; gap: 14px; } }
 
-    /* ==========================================================================
-       10. RELATED EDUCATION — matches Education.tsx card style
-       ========================================================================== */
-    .tx-related { border-top: 1px solid rgba(55, 36, 38, 0.07); }
-    .tx-related__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.5vw, 16px); }
-    .tx-related__item {
-      display: block;
-      background: var(--cream);
-      border-radius: 16px; /* rounded-2xl */
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .tx-related__item:hover { background: rgba(216, 195, 176, 0.4); }
-    .tx-related__body { padding: clamp(20px, 2.5vw, 32px); }
-    .tx-related__cat {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 10px;
-    }
-    .tx-related__title {
-      font-family: var(--font-heading);
-      font-size: clamp(18px, 1.8vw, 22px);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.15;
-      margin-bottom: 16px;
-      transition: color 0.2s;
-    }
-    .tx-related__item:hover .tx-related__title { color: var(--terracotta); }
-    .tx-related__link-text {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--charcoal);
-      transition: color 0.2s, gap 0.2s;
-    }
-    .tx-related__item:hover .tx-related__link-text { color: var(--terracotta); gap: 10px; }
-    @media (max-width: 768px) {
-      .tx-related__grid { grid-template-columns: 1fr; }
-    }
 
-    /* ==========================================================================
-       11. FINAL CTA — matches FinalCTA.tsx exactly
-       ========================================================================== */
+
     .tx-final-cta {
       background: var(--cream);
-      border-top: 1px solid rgba(55, 36, 38, 0.07);
-      padding-top: var(--section-py);
-      padding-bottom: var(--section-py);
-      text-align: center;
+      padding: clamp(96px, 12vw, 144px) 0;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
-    .tx-final-cta__inner { max-width: 900px; margin: 0 auto; }
+    .tx-final-cta__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: var(--pad-x);
+      padding-right: var(--pad-x);
+    }
     .tx-final-cta__headline {
       font-family: var(--font-heading);
-      font-size: clamp(42px, 7vw, 100px);
+      font-size: clamp(48px, 5.5vw, 72px);
       font-weight: 600;
       color: var(--charcoal);
       line-height: 1.05;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
     .tx-final-cta__body {
-      font-size: clamp(16px, 1.4vw, 19px);
+      font-size: 20px;
       font-weight: 300;
       color: var(--charcoal);
       line-height: 1.8;
@@ -1210,12 +1576,127 @@
       margin-right: auto;
     }
     .tx-final-cta .btn-group { justify-content: center; }
-    .tx-final-cta__note {
-      margin-top: 24px;
-      font-size: 13px;
-      color: var(--charcoal-light);
+    .tx-final-cta .btn-dark {
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 16px;
+      font-size: 18px;
+      padding: 20px 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
-    .tx-final-cta__note a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 3px; }
+    .tx-final-cta .btn-dark:hover { background: var(--accent); transform: translateY(-2px); }
+    .tx-final-cta .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid rgba(55,36,38,0.3);
+      border-radius: 16px;
+      font-size: 18px;
+      padding: 20px 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tx-final-cta .btn-outline:hover { background: rgba(55,36,38,0.05); }
+
+    /* ── Jump Nav ── */
+    .tx-jump-nav {
+      position: fixed;
+      top: 78px;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background: white;
+      border-bottom: 1px solid rgba(216,195,176,0.7);
+      box-shadow: 0 1px 4px rgba(55,36,38,0.06);
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .tx-jump-nav.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .tx-jump-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      gap: 4px;
+      padding: 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tx-jump-nav__inner::-webkit-scrollbar { display: none; }
+    .tx-jump-nav__link {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 16px;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: rgba(55,36,38,0.4);
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tx-jump-nav__link:hover { color: rgba(55,36,38,0.7); border-bottom-color: rgba(216,195,176,0.8); }
+    .tx-jump-nav__link.is-active { color: var(--charcoal); border-bottom-color: var(--terracotta); }
+    @media (max-width: 768px) {
+      .tx-jump-nav__inner { justify-content: flex-start; padding: 0 16px; }
+      .tx-jump-nav__link { padding: 0 14px; font-size: 10px; }
+    }
+
+    @media (max-width: 1040px) {
+      .tx-facts .container { grid-template-columns: 1fr; }
+      .tx-facts__media,
+      .tx-facts__content { grid-column: auto; }
+      .tx-gallery__grid { grid-template-columns: 1fr 1fr; }
+      .tx-gallery__card--feature { grid-column: span 2; }
+      .tx-step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .tx-facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tx-related__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 780px) {
+      .tx-hero__grid,
+      .tx-intro__grid,
+      .tx-process__header,
+      .tx-why__layout,
+      .tx-faq__header {
+        grid-template-columns: 1fr;
+      }
+      .tx-conditions__layout { grid-template-columns: 1fr; }
+      .tx-conditions__img { display: none; }
+      .tx-process__header { flex-direction: column; align-items: flex-start; }
+      .tx-step-grid { grid-template-columns: 1fr 1fr; }
+      .tx-intro__cards,
+      .tx-facts__grid,
+      .tx-related__grid,
+      .tx-gallery__grid {
+        grid-template-columns: 1fr;
+      }
+      .tx-facts__header { grid-template-columns: 1fr; }
+      .tx-facts__grid { margin-top: 12px; }
+      .tx-gallery__card--feature { grid-column: span 1; }
+      .tx-hero__media { min-height: 320px; }
+      .tx-condition-card span { font-size: 16px; }
+      .tx-faq__q { font-size: clamp(22px, 6vw, 30px); }
+      .tx-timeline { padding-left: 0; }
+      .tx-timeline__phases { grid-template-columns: 1fr; }
+      .tx-timeline__phase {
+        padding: clamp(20px, 4vw, 28px) 0;
+        border-left: none;
+        border-top: 1px solid rgba(55,36,38,0.1);
+      }
+      .tx-timeline__phase:first-child { padding-top: 0; border-top: none; }
+    }
 
     /* ==========================================================================
        FOOTER — matches Footer.tsx exactly (simplified)
@@ -1414,527 +1895,459 @@
     </div>
   </div>
 
-
-
-  <!-- ===========================================================================
-       1. HERO — full-bleed split masthead
-       TEMPLATE: Update eyebrow, headline, subhead per treatment
-       =========================================================================== -->
-  <section class="tx-hero" aria-labelledby="hero-heading">
-
-    <!-- Left: text panel -->
-    <div class="tx-hero__text">
-      <div class="tx-hero__text-inner anim-fade-up">
-        <!-- TEMPLATE: Change eyebrow label per treatment -->
-        <span class="eyebrow">Immunotherapy · Allergy Shots</span>
-
-        <!-- TEMPLATE: Update headline per treatment -->
-        <h1 class="tx-hero__headline" id="hero-heading">
-          Relief That Lasts<br>
-          Beyond <em>Allergy Season</em>.
-        </h1>
-
-        <p class="tx-hero__subhead">
-          Allergy shots do more than quiet symptoms for a day. Immunotherapy gradually retrains your immune system so reactions become milder over time, giving many patients durable relief through every season in Central Texas.
-        </p>
-
-        <div class="btn-group">
-          <a href="#book" class="btn btn-primary">Request Consultation</a>
-          <a href="tel:2547533646" class="btn btn-ghost">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2 1h3l1.5 3.5L5 6c.9 1.9 2.1 3.1 4 4l1.5-1.5L14 10v3c-6.6.5-12.5-5.4-12-12z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            (254) 753-3646
-          </a>
-        </div>
-
-        <div class="tx-hero__trust">
-          <span>Serving Waco since 1978</span>
-          <span class="tx-hero__trust-sep" aria-hidden="true"></span>
-          <span>Board-Certified Allergists</span>
-          <span class="tx-hero__trust-sep" aria-hidden="true"></span>
-          <span>All Ages Welcome</span>
-        </div>
-      </div>
+  <nav class="tx-jump-nav" id="tx-jump-nav" aria-label="Page sections">
+    <div class="tx-jump-nav__inner">
+      <a class="tx-jump-nav__link" href="#how-it-works"   data-jn="how-it-works">How It Works</a>
+      <a class="tx-jump-nav__link" href="#the-science"    data-jn="the-science">The Science</a>
+      <a class="tx-jump-nav__link" href="#treatment-journey" data-jn="treatment-journey">Treatment Journey</a>
+      <a class="tx-jump-nav__link" href="#long-view"      data-jn="long-view">Long-View Care</a>
+      <a class="tx-jump-nav__link" href="#who-it-helps"   data-jn="who-it-helps">Who It Helps</a>
+      <a class="tx-jump-nav__link" href="#faq"            data-jn="faq">FAQ</a>
+      <a class="tx-jump-nav__link" href="#book"           data-jn="book">Book Now</a>
     </div>
+  </nav>
 
-    <div class="tx-hero__media">
-      <video
-        src="/videos/clinic_front.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        class="media-placeholder media-placeholder--hero"
-        style="width:100%;height:100%;object-fit:cover;border-radius:0;"
-        aria-label="Exterior of Allergy and Asthma Care of Waco"
-      ></video>
-    </div>
+  <main class="tx-page">
 
-  </section>
-
-
-  <!-- ===========================================================================
-       2. TREATMENT INTRO
-       TEMPLATE: Update pull quote + body per treatment
-       =========================================================================== -->
-  <section class="tx-intro section" aria-labelledby="intro-heading">
-    <div class="container">
-      <div class="anim-fade-up">
-        <span class="eyebrow">What Is Immunotherapy</span>
-      </div>
-      <div class="tx-intro__grid">
-        <p class="tx-intro__quote anim-fade-up delay-1">
-          "We are not just controlling flare-ups. We are changing the way your immune system behaves."
-        </p>
-        <div class="tx-intro__body anim-fade-up delay-2">
-          <p class="t-body">Immunotherapy uses small, controlled doses of your specific allergens to build tolerance gradually. Instead of reacting intensely each season, your immune system becomes less reactive over time.</p>
-          <p class="t-body">That is why allergy shots are often called the closest thing to a long-term allergy solution. For many patients, symptom burden drops substantially, medication use decreases, and daily life becomes less disrupted.</p>
-          <p class="t-body">At Allergy &amp; Asthma Care of Waco, treatment is customized to your exact trigger profile and monitored carefully from build-up through maintenance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       3. QUICK FACTS
-       TEMPLATE: Update 3–4 facts per treatment
-       =========================================================================== -->
-  <section class="tx-facts section" aria-labelledby="facts-heading">
-    <div class="container">
-      <div class="anim-fade-up" style="margin-bottom: clamp(32px,4vw,56px);">
-        <span class="eyebrow">At a Glance</span>
-        <h2 class="t-headline" id="facts-heading">What This Treatment Changes</h2>
-      </div>
-      <!-- TEMPLATE: Update facts per treatment -->
-      <div class="tx-facts__grid">
-        <div class="tx-fact anim-card-down">
-          <p class="tx-fact__number">3–5</p>
-          <p class="tx-fact__title">Years of Treatment</p>
-          <p class="tx-fact__body">A full course typically runs 3 to 5 years, with the most significant results after the first year of maintenance.</p>
-        </div>
-        <div class="tx-fact anim-card-down delay-1">
-          <p class="tx-fact__number">85%</p>
-          <p class="tx-fact__title">Report Significant Relief</p>
-          <p class="tx-fact__body">Most patients experience major symptom reduction, often enough to meaningfully reduce daily allergy medication needs.</p>
-        </div>
-        <div class="tx-fact anim-card-down delay-2">
-          <p class="tx-fact__number">1:1</p>
-          <p class="tx-fact__title">Personalized Formula</p>
-          <p class="tx-fact__body">Your serum is compounded from your exact test profile. No two patients receive identical treatment formulas.</p>
-        </div>
-        <div class="tx-fact anim-card-down delay-3">
-          <p class="tx-fact__number">✓</p>
-          <p class="tx-fact__title">Often Covered</p>
-          <p class="tx-fact__body">Many insurance plans cover allergy shots. Our team will verify your benefits and walk you through costs before you begin.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       4. DOCTOR VIDEO
-       TEMPLATE: Update doctor name + credentials per practice
-       =========================================================================== -->
-  <section class="section" aria-labelledby="video-heading">
-    <div class="container">
-      <div class="tx-video__grid">
-        <!-- Video placeholder -->
-        <div class="anim-fade-up">
-          <video
-            src="/videos/aacow_fowler.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            class="media-placeholder media-placeholder--video"
-            style="object-fit:cover;"
-            aria-label="Dr. Fowler discussing immunotherapy"
-          ></video>
-          <p class="tx-video__caption">How we explain allergy shots to new patients</p>
-        </div>
-        <!-- Text -->
-        <div class="anim-fade-up delay-1">
-          <span class="eyebrow">From the Doctor</span>
-          <!-- TEMPLATE: Update heading per treatment -->
-          <h2 class="t-sub-headline" id="video-heading" style="margin-bottom:20px;">
-            We take the time<br>to explain everything.
-          </h2>
-          <!-- TEMPLATE: Update paragraph per treatment -->
-          <p class="t-body">Immunotherapy is a real commitment, and we want you to feel completely informed before you start. In this short video, Dr. Fowler walks through what treatment involves, what the shots feel like, and when most patients begin to notice a difference.</p>
-          <p class="t-body" style="margin-top:14px;">Still have questions? Bring them to your consultation — we're always happy to go through everything in person.</p>
-          <!-- TEMPLATE: Update doctor name + credentials per practice -->
-          <div class="tx-video__doctor">
-            <p class="tx-video__doctor-name">Dustin Lee Fowler, DO</p>
-            <p class="tx-video__doctor-title">Board-Certified Allergist &amp; Immunologist · Allergy &amp; Asthma Care of Waco</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       5. HOW IT WORKS
-       TEMPLATE: Update steps per treatment
-       =========================================================================== -->
-  <section class="tx-process section" aria-labelledby="process-heading">
-    <div class="container">
-      <div class="tx-process__header">
-        <div class="anim-fade-up">
-          <span class="eyebrow">The Process</span>
-          <!-- TEMPLATE: Update headline per treatment -->
-          <h2 class="t-headline" id="process-heading" style="margin-top:10px;">
-            How Immunotherapy Works
-          </h2>
-        </div>
-        <!-- TEMPLATE: Update intro per treatment -->
-        <p class="tx-process__intro anim-fade-up delay-1">
-          Immunotherapy is intentionally gradual — your body needs time to adapt. Here's what the journey looks like from your first appointment through long-term maintenance.
-        </p>
-      </div>
-
-      <!-- TEMPLATE: Update steps per treatment -->
-      <div role="list">
-        <div class="tx-step anim-fade-up" role="listitem">
-          <p class="tx-step__num" aria-hidden="true">01</p>
-          <div>
-            <h3 class="tx-step__title">Comprehensive Allergy Testing</h3>
-            <p class="tx-step__body">We begin with a skin prick test to identify exactly what triggers your immune system — trees, grasses, weeds, mold, pet dander, dust mites, and more. This forms the foundation of your personalized treatment plan.</p>
-          </div>
-        </div>
-        <div class="tx-step anim-fade-up delay-1" role="listitem">
-          <p class="tx-step__num" aria-hidden="true">02</p>
-          <div>
-            <h3 class="tx-step__title">Your Custom Serum</h3>
-            <p class="tx-step__body">Based on your results, we compound a serum tailored specifically to your sensitivities. Your formula is adjusted over time as your tolerance builds — no two patients receive the same treatment.</p>
-          </div>
-        </div>
-        <div class="tx-step anim-fade-up delay-2" role="listitem">
-          <p class="tx-step__num" aria-hidden="true">03</p>
-          <div>
-            <h3 class="tx-step__title">The Build-Up Phase</h3>
-            <p class="tx-step__body">You'll receive injections once or twice a week, with the dose gradually increasing. Most patients move through build-up over 6 to 12 months. After each shot, you'll wait 20–30 minutes at our office — a standard precaution we take with every patient.</p>
-          </div>
-        </div>
-        <div class="tx-step anim-fade-up delay-3" role="listitem">
-          <p class="tx-step__num" aria-hidden="true">04</p>
-          <div>
-            <h3 class="tx-step__title">Reaching Maintenance</h3>
-            <p class="tx-step__body">Once you've reached your target dose, visits drop to once or twice a month. This is when most patients start noticing meaningful improvement in their day-to-day symptoms.</p>
-          </div>
-        </div>
-        <div class="tx-step anim-fade-up delay-4" role="listitem">
-          <p class="tx-step__num" aria-hidden="true">05</p>
-          <div>
-            <h3 class="tx-step__title">Long-Term Results</h3>
-            <p class="tx-step__body">After 3 to 5 years, many patients experience lasting relief — even after treatment ends. For some, that means no more daily medication. For others, symptoms that were once debilitating become easy to manage.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       6. WHY THIS MATTERS
-       TEMPLATE: Update pull quote + comparison per treatment
-       =========================================================================== -->
-  <section class="tx-why section" aria-labelledby="why-heading">
-    <div class="container">
-      <div class="tx-why__grid">
-        <!-- TEMPLATE: Update pull quote per treatment -->
-        <p class="tx-why__pull anim-fade-up">
-          Medications manage flare-ups.<br>Immunotherapy retrains the reaction.
-        </p>
-        <div class="anim-fade-up delay-1">
-          <span class="eyebrow">Why It Matters</span>
-          <!-- TEMPLATE: Update body per treatment -->
-          <p class="t-body">There's nothing wrong with antihistamines or nasal sprays — they work, and they're often appropriate. But they need to be taken every day, which means the day you stop, your symptoms return. They don't change anything about how your immune system responds to allergens.</p>
-          <p class="t-body" style="margin-top:16px;">Immunotherapy is different. By gradually building tolerance over time, many patients reach a point where they no longer need daily medication — or where their symptoms are mild enough that occasional treatment handles the rest.</p>
-          <p class="t-body" style="margin-top:16px;">It's a longer commitment. But the outcome is fundamentally different from anything a pill or spray can offer.</p>
-          <!-- Comparison -->
-          <div class="tx-compare-grid">
-            <div class="tx-compare tx-compare--a">
-              <p class="tx-compare__label">Short-Term Control</p>
-              <p class="tx-compare__title">Antihistamines &amp; Sprays</p>
-              <p class="tx-compare__body">Helpful for symptom control while actively used, but they do not change the underlying immune response to triggers.</p>
-            </div>
-            <div class="tx-compare tx-compare--b">
-              <p class="tx-compare__label">Long-Term Change</p>
-              <p class="tx-compare__title">Allergy Shots</p>
-              <p class="tx-compare__body">Gradually desensitize your immune system so reactions become milder, with benefits that can continue well beyond treatment completion.</p>
+    <section class="tx-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="tx-hero__grid">
+          <div class="tx-hero__panel anim-fade-up">
+            <span class="eyebrow">Immunotherapy · Allergy Shots</span>
+            <h1 class="tx-hero__headline" id="hero-heading">
+              Build a <em>Calmer</em><br>
+              Immune System
+            </h1>
+            <p class="tx-hero__subhead">
+              This is not symptom patchwork. Allergy shots retrain your immune system so pollen, dust, and dander stop running your days. A personalized plan built for long-term relief in Waco.
+            </p>
+            <div class="btn-group">
+              <a href="#book" class="btn btn-primary">Request Consultation</a>
+              <a href="tel:2547533646" class="btn btn-ghost">(254) 753-3646</a>
             </div>
           </div>
+
+          <figure class="tx-hero__media anim-card-down" aria-label="Allergy care in clinic">
+            <video src="/videos/aacow_interior.mp4" autoplay muted loop playsinline></video>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- ===========================================================================
-       7. CONDITIONS / SYMPTOMS
-       TEMPLATE: Update list per treatment
-       =========================================================================== -->
-  <section class="tx-conditions section" aria-labelledby="conditions-heading">
-    <div class="container">
-      <div class="tx-conditions__header anim-fade-up">
-        <div>
-          <span class="eyebrow">Who It Helps</span>
-          <!-- TEMPLATE: Update heading per treatment -->
-          <h2 class="t-headline" id="conditions-heading" style="margin-top:10px;">
-            Conditions It Can Help
-          </h2>
+    <section class="tx-intro" id="how-it-works" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="tx-intro__grid">
+          <div class="anim-fade-up">
+            <span class="eyebrow">Why This Path</span>
+            <h2 class="tx-intro__display" id="intro-heading">
+              Most allergy care controls a reaction. This changes the pattern.
+            </h2>
+            <p class="tx-intro__lede">
+              Immunotherapy introduces tiny doses of your triggers on a planned schedule, allowing your immune system to adapt instead of overreact. It is a long-game strategy for people who are tired of living around symptoms.
+            </p>
+          </div>
+          <div class="anim-fade-up delay-1">
+            <ul class="tx-intro__cards" aria-label="Immunotherapy pillars">
+              <li class="tx-intro__card anim-card-down">
+                <div class="tx-intro__card-top">
+                  <strong>Precision</strong>
+                  <div class="tx-intro__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+                  </div>
+                </div>
+                <div class="tx-intro__card-spacer"></div>
+                <p>Your vial is blended from your exact test profile, not a generic formula.</p>
+              </li>
+              <li class="tx-intro__card anim-card-down delay-1">
+                <div class="tx-intro__card-top">
+                  <strong>Consistency</strong>
+                  <div class="tx-intro__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>
+                  </div>
+                </div>
+                <div class="tx-intro__card-spacer"></div>
+                <p>A predictable cadence of visits makes progress measurable month to month.</p>
+              </li>
+              <li class="tx-intro__card anim-card-down delay-2">
+                <div class="tx-intro__card-top">
+                  <strong>Safety</strong>
+                  <div class="tx-intro__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  </div>
+                </div>
+                <div class="tx-intro__card-spacer"></div>
+                <p>Every dose is supervised with routine observation after each injection.</p>
+              </li>
+              <li class="tx-intro__card anim-card-down delay-3">
+                <div class="tx-intro__card-top">
+                  <strong>Durability</strong>
+                  <div class="tx-intro__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                </div>
+                <div class="tx-intro__card-spacer"></div>
+                <p>Benefits often continue long after treatment has finished.</p>
+              </li>
+            </ul>
+          </div>
         </div>
-        <!-- TEMPLATE: Update intro text per treatment -->
-        <p class="tx-conditions__header-text">Allergy shots are effective for a broad range of allergic conditions. If any of the following sound familiar, immunotherapy may be worth discussing at your appointment.</p>
+      </div>
+    </section>
+
+    <section class="tx-facts" id="the-science" aria-labelledby="facts-heading">
+      <div class="container">
+        <figure class="tx-facts__media anim-card-down" aria-label="Immunotherapy visit in clinic">
+          <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection visit" />
+        </figure>
+        <div class="tx-facts__content">
+          <div class="tx-facts__header anim-fade-up">
+            <div>
+              <span class="eyebrow">A Clear Path Forward</span>
+              <h2 class="t-headline" id="facts-heading">What Patients Typically See</h2>
+              <p class="tx-facts__intro">A clear path, not guesswork. Here's what most patients experience.</p>
+            </div>
+          </div>
+          <div class="tx-facts__grid">
+
+            <article class="tx-fact anim-card-down">
+              <div class="tx-fact__top">
+                <p class="tx-fact__number">6–12</p>
+                <svg class="tx-fact__illust" width="56" height="34" viewBox="0 0 56 34" fill="none" aria-hidden="true">
+                  <rect class="fi-bar fi-bar-1" x="0" y="28" width="22" height="3" rx="1.5"/>
+                  <rect class="fi-bar fi-bar-2" x="0" y="21" width="32" height="3" rx="1.5"/>
+                  <rect class="fi-bar fi-bar-3" x="0" y="14" width="42" height="3" rx="1.5"/>
+                  <rect class="fi-bar fi-bar-4" x="0" y="7"  width="52" height="3" rx="1.5"/>
+                </svg>
+              </div>
+              <p class="tx-fact__title">Months to Build Tolerance</p>
+              <p class="tx-fact__body">Most patients notice real change within 6 to 12 months. The buildup is gradual by design — your immune system needs steady time to adapt, not a shortcut.</p>
+            </article>
+
+            <article class="tx-fact anim-card-down">
+              <div class="tx-fact__top">
+                <p class="tx-fact__number">85%</p>
+                <svg class="tx-fact__illust" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                  <circle class="fi-ring fi-ring-1" cx="20" cy="20" r="17" stroke-width="1.5"/>
+                  <circle class="fi-ring fi-ring-2" cx="20" cy="20" r="17" stroke-width="1.5"/>
+                  <circle class="fi-ring fi-ring-3" cx="20" cy="20" r="17" stroke-width="1.5"/>
+                  <circle cx="20" cy="20" r="4" fill="var(--charcoal)" opacity="0.4"/>
+                </svg>
+              </div>
+              <p class="tx-fact__title">Notice Meaningful Relief</p>
+              <p class="tx-fact__body">Roughly 85% of patients report significant symptom reduction during maintenance. Not eliminated overnight — built steadily through consistent treatment.</p>
+            </article>
+
+            <article class="tx-fact anim-card-down">
+              <div class="tx-fact__top">
+                <p class="tx-fact__number">3–5</p>
+                <svg class="tx-fact__illust" width="56" height="16" viewBox="0 0 56 16" fill="none" aria-hidden="true">
+                  <line class="fi-path" x1="4" y1="8" x2="48" y2="8" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="44" stroke-dashoffset="44"/>
+                  <circle class="fi-traveler" cx="4" cy="8" r="3.5"/>
+                </svg>
+              </div>
+              <p class="tx-fact__title">Years to Full Benefit</p>
+              <p class="tx-fact__body">The full course runs 3 to 5 years. That's what it takes to build lasting tolerance — the kind that holds long after your last injection.</p>
+            </article>
+
+            <article class="tx-fact anim-card-down">
+              <div class="tx-fact__top">
+                <p class="tx-fact__number">1:1</p>
+                <svg class="tx-fact__illust" width="52" height="28" viewBox="0 0 52 28" fill="none" aria-hidden="true">
+                  <rect class="fi-shape-a" x="2"  y="4" width="20" height="20" rx="5"/>
+                  <rect class="fi-shape-b" x="30" y="4" width="20" height="20" rx="5"/>
+                  <line x1="24" y1="14" x2="28" y2="14" stroke="var(--charcoal)" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="tx-fact__title">Formula Built for You</p>
+              <p class="tx-fact__body">Your vial is compounded from your exact test results — not a general mix. Every ingredient is chosen for your specific sensitivities and adjusted as you progress.</p>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tx-process" id="treatment-journey" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="tx-process__header">
+          <div class="anim-fade-up">
+            <span class="eyebrow">Treatment Journey</span>
+            <h2 class="t-headline" id="process-heading">Five Stages to Lasting Relief</h2>
+            <p class="tx-process__intro anim-fade-up delay-1">
+              The process is steady by design: test, personalize, build tolerance, maintain, then evaluate long-term outcomes. Every stage has clear milestones and check-ins.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+      <div class="tx-step-grid" role="list" aria-label="Immunotherapy timeline">
+
+        <article class="tx-step anim-card-ltr" role="listitem">
+          <div class="tx-step__img">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&h=1100&fit=crop&auto=format&q=80" alt="Allergy testing" loading="lazy" />
+          </div>
+          <div class="tx-step__overlay">
+            <div class="tx-step__text-box">
+              <p class="tx-step__num">Stage 1</p>
+              <h3 class="tx-step__title">Identify Your Triggers</h3>
+              <p class="tx-step__body">Comprehensive skin testing pinpoints your exact airborne and environmental sensitivities.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tx-step anim-card-ltr" role="listitem">
+          <div class="tx-step__img">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=700&h=1100&fit=crop&auto=format&q=80" alt="Custom vial preparation" loading="lazy" />
+          </div>
+          <div class="tx-step__overlay">
+            <div class="tx-step__text-box">
+              <p class="tx-step__num">Stage 2</p>
+              <h3 class="tx-step__title">Your Custom Formula</h3>
+              <p class="tx-step__body">A personalized vial is compounded from your unique sensitivity profile — no generic solutions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tx-step anim-card-ltr" role="listitem">
+          <div class="tx-step__img">
+            <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection" loading="lazy" />
+          </div>
+          <div class="tx-step__overlay">
+            <div class="tx-step__text-box tx-step__text-box--accent">
+              <p class="tx-step__num">Stage 3</p>
+              <h3 class="tx-step__title">Grow Your Tolerance</h3>
+              <p class="tx-step__body">Weekly injections gradually increase your dose as your immune system adapts.</p>
+              <span class="tx-step__detail-link">↓ Injection timeline</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tx-step anim-card-ltr" role="listitem">
+          <div class="tx-step__img">
+            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=700&h=1100&fit=crop&auto=format&q=80" alt="Follow-up visit" loading="lazy" />
+          </div>
+          <div class="tx-step__overlay">
+            <div class="tx-step__text-box tx-step__text-box--accent">
+              <p class="tx-step__num">Stage 4</p>
+              <h3 class="tx-step__title">Hold the Progress</h3>
+              <p class="tx-step__body">Visits space out to monthly as your symptom burden steadily drops in daily life.</p>
+              <span class="tx-step__detail-link">↓ Injection timeline</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tx-step anim-card-ltr" role="listitem">
+          <div class="tx-step__img">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&h=1100&fit=crop&auto=format&q=80" alt="Patient enjoying outdoors" loading="lazy" />
+          </div>
+          <div class="tx-step__overlay">
+            <div class="tx-step__text-box">
+              <p class="tx-step__num">Stage 5</p>
+              <h3 class="tx-step__title">Life Without Limits</h3>
+              <p class="tx-step__body">Most patients maintain lasting benefits long after completing treatment with far less medication.</p>
+            </div>
+          </div>
+        </article>
+
       </div>
 
-      <!-- TEMPLATE: Update condition cards per treatment -->
-      <ul class="tx-conditions__grid" aria-label="Conditions immunotherapy can treat">
-        <li class="tx-condition-card anim-card-down"><span>Seasonal hay fever &amp; congestion</span></li>
-        <li class="tx-condition-card anim-card-down delay-1"><span>Chronic sneezing &amp; runny nose</span></li>
-        <li class="tx-condition-card anim-card-down delay-2"><span>Itchy, watery eyes</span></li>
-        <li class="tx-condition-card anim-card-down delay-1"><span>Sinus pressure &amp; headaches</span></li>
-        <li class="tx-condition-card anim-card-down delay-2"><span>Allergic asthma</span></li>
-        <li class="tx-condition-card anim-card-down delay-3"><span>Dust mite sensitivity</span></li>
-        <li class="tx-condition-card anim-card-down delay-2"><span>Pet dander reactions</span></li>
-        <li class="tx-condition-card anim-card-down delay-3"><span>Mold allergy symptoms</span></li>
-        <li class="tx-condition-card anim-card-down delay-4"><span>Insect venom allergy</span></li>
-        <li class="tx-condition-card anim-card-down delay-3"><span>Year-round indoor allergies</span></li>
-        <li class="tx-condition-card anim-card-down delay-4"><span>Cedar fever (Mountain Cedar)</span></li>
-        <li class="tx-condition-card anim-card-down delay-5"><span>Oak, elm, and grass pollen</span></li>
-      </ul>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       8. WACO LOCAL CONTEXT
-       TEMPLATE: Update region, allergens, seasons per clinic location
-       =========================================================================== -->
-  <section class="tx-local section" aria-labelledby="local-heading">
-    <div class="container">
-      <div class="tx-local__grid">
-        <div class="anim-fade-up">
-          <!-- TEMPLATE: Update region label per clinic -->
-          <span class="eyebrow">Central Texas · Waco</span>
-          <!-- TEMPLATE: Update heading + body per region -->
-          <h2 class="t-sub-headline" id="local-heading" style="margin-top:10px; margin-bottom:0;">
-            Why Waco Makes Allergies Harder
-          </h2>
-          <p>Central Texas has one of the longest and most intense allergy seasons in the country. Between Mountain Cedar in winter, oak and elm in spring, grass through early summer, and ragweed in fall — there's rarely a clean window.</p>
-          <p>For many Waco residents, that means symptoms year-round. Immunotherapy is formulated around your specific local triggers — including the ones that only matter in Central Texas — making it one of the most practical long-term options for people who live and work here.</p>
+      <!-- Timeline: zooms into stages 3 & 4 -->
+      <div class="tx-timeline">
+        <div class="tx-timeline__header">
+          <h3 class="tx-timeline__title">Timeline for Normal Allergy Injections</h3>
+          <p class="tx-timeline__intro">Stages 3 and 4 span the majority of your treatment. Here's what the visit schedule actually looks like over time.</p>
         </div>
-        <!-- TEMPLATE: Update season table per region -->
-        <ul class="tx-season-list anim-fade-up delay-1" aria-label="Waco allergy season calendar">
-          <li class="tx-season">
-            <span class="tx-season__name">Mountain Cedar</span>
-            <span class="tx-season__period">Dec – Mar</span>
-            <span class="tx-season__badge tx-season__badge--high">High</span>
+        <div class="tx-timeline__phases">
+          <div class="tx-timeline__phase">
+            <div class="tx-timeline__ticks tx-timeline__ticks--tight" data-ticks="12" aria-hidden="true"></div>
+            <p class="tx-timeline__phase-label">Early Build Phase</p>
+            <p class="tx-timeline__phase-duration">First 6 weeks</p>
+            <p class="tx-timeline__phase-freq">2× per week</p>
+            <p class="tx-timeline__phase-visits">~12 visits</p>
+          </div>
+          <div class="tx-timeline__phase">
+            <div class="tx-timeline__ticks" data-ticks="45" aria-hidden="true"></div>
+            <p class="tx-timeline__phase-label">Build to Maintenance</p>
+            <p class="tx-timeline__phase-duration">First year</p>
+            <p class="tx-timeline__phase-freq">1× per week</p>
+            <p class="tx-timeline__phase-visits">~40–50 visits</p>
+          </div>
+          <div class="tx-timeline__phase">
+            <div class="tx-timeline__ticks tx-timeline__ticks--loose" data-ticks="20" aria-hidden="true"></div>
+            <p class="tx-timeline__phase-label">Maintenance Phase</p>
+            <p class="tx-timeline__phase-duration">Years 2–5</p>
+            <p class="tx-timeline__phase-freq">Every 2–4 weeks</p>
+            <p class="tx-timeline__phase-visits">~15–24 visits per year</p>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+    <section class="tx-why" id="long-view" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="tx-why__layout anim-fade-up">
+          <div>
+            <ul class="tx-outcomes" aria-label="Expected outcomes">
+              <li class="tx-outcome anim-card-rtl">
+                <div class="tx-outcome__top">
+                  <strong>Fewer Bad Days</strong>
+                  <div class="tx-outcome__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M8 12h8"/></svg>
+                  </div>
+                </div>
+                <div class="tx-outcome__spacer"></div>
+                <span>Reactions that used to derail a week in cedar season become manageable — often without reaching for medication.</span>
+              </li>
+              <li class="tx-outcome anim-card-rtl">
+                <div class="tx-outcome__top">
+                  <strong>Less Medication</strong>
+                  <div class="tx-outcome__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                  </div>
+                </div>
+                <div class="tx-outcome__spacer"></div>
+                <span>Most patients reduce or stop daily antihistamines and rescue inhalers as tolerance builds over time.</span>
+              </li>
+              <li class="tx-outcome anim-card-rtl">
+                <div class="tx-outcome__top">
+                  <strong>Consistent Energy</strong>
+                  <div class="tx-outcome__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  </div>
+                </div>
+                <div class="tx-outcome__spacer"></div>
+                <span>Sleep improves. Concentration returns. Exercise that felt impossible during heavy pollen months becomes routine again.</span>
+              </li>
+              <li class="tx-outcome anim-card-rtl">
+                <div class="tx-outcome__top">
+                  <strong>Long-Term Control</strong>
+                  <div class="tx-outcome__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  </div>
+                </div>
+                <div class="tx-outcome__spacer"></div>
+                <span>A clear, long-term plan with your Waco allergist — not seasonal guesswork — with benefits that persist well after treatment ends.</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <span class="eyebrow">What patients notice over time</span>
+            <h2 class="tx-why__pull" id="why-heading">Pills can quiet a day. Shots can reshape a season.</h2>
+            <p class="tx-why__body">Antihistamines manage the symptom. Immunotherapy changes the reaction. For patients dealing with persistent allergies, shots gradually retrain your immune system — so the cedar season that used to knock you out stops being an event you dread.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tx-conditions" id="who-it-helps" aria-labelledby="conditions-heading">
+      <div class="container">
+        <div class="tx-conditions__layout">
+          <div class="tx-conditions__img anim-fade-up">
+            <div class="tx-conditions__img-placeholder">Image</div>
+          </div>
+          <div class="tx-conditions__right anim-fade-up delay-1">
+            <div class="tx-conditions__header">
+              <span class="eyebrow">Who This Helps Most</span>
+              <h2 class="t-headline" id="conditions-heading">Strong Fit For These Patterns</h2>
+              <p class="tx-conditions__header-text">Immunotherapy is often recommended when symptoms are recurrent, severe, or medication-heavy despite your best routine. These are common patterns we evaluate in consultation.</p>
+            </div>
+            <ul class="tx-conditions__grid" aria-label="Candidate patterns">
+              <li class="tx-condition-card"><span>Multi-season pollen reactions</span></li>
+              <li class="tx-condition-card"><span>Dust mite driven morning symptoms</span></li>
+              <li class="tx-condition-card"><span>Pet dander sensitivity at home</span></li>
+              <li class="tx-condition-card"><span>Recurring sinus pressure and headaches</span></li>
+              <li class="tx-condition-card"><span>Allergy-triggered asthma flares</span></li>
+              <li class="tx-condition-card"><span>School/work disruption from allergies</span></li>
+              <li class="tx-condition-card"><span>Medication fatigue throughout year</span></li>
+              <li class="tx-condition-card"><span>Cedar fever and spring tree pollen</span></li>
+              <li class="tx-condition-card"><span>Persistent mold or indoor triggers</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tx-faq" id="faq" aria-labelledby="faq-heading">
+      <div style="max-width:900px;margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x);">
+        <div class="tx-faq__header anim-fade-up">
+          <span class="eyebrow">Common Questions</span>
+          <h2 class="t-headline" id="faq-heading">Frequently Asked Questions</h2>
+        </div>
+        <ul class="tx-faq__list">
+          <li class="tx-faq__item">
+            <button class="tx-faq__q" aria-expanded="false">
+              How long does immunotherapy take?
+              <span class="tx-faq__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="tx-faq__answer"><div class="tx-faq__answer-inner">A full course typically runs 3 to 5 years. You'll start with a build-up phase — injections once or twice a week for 6 to 12 months — before moving to a monthly maintenance schedule. Most patients begin noticing improvement within the first year.</div></div>
           </li>
-          <li class="tx-season">
-            <span class="tx-season__name">Oak &amp; Elm</span>
-            <span class="tx-season__period">Mar – May</span>
-            <span class="tx-season__badge tx-season__badge--high">High</span>
+          <li class="tx-faq__item">
+            <button class="tx-faq__q" aria-expanded="false">
+              How often are shots at the beginning?
+              <span class="tx-faq__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="tx-faq__answer"><div class="tx-faq__answer-inner">Most patients start with weekly or twice-weekly appointments during build-up. As your dose increases and your body adjusts, we space visits out. The exact cadence is set at your first consultation.</div></div>
           </li>
-          <li class="tx-season">
-            <span class="tx-season__name">Grass Pollen</span>
-            <span class="tx-season__period">May – Jul</span>
-            <span class="tx-season__badge tx-season__badge--high">High</span>
+          <li class="tx-faq__item">
+            <button class="tx-faq__q" aria-expanded="false">
+              Is immunotherapy covered by insurance?
+              <span class="tx-faq__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="tx-faq__answer"><div class="tx-faq__answer-inner">Coverage is common for allergy immunotherapy — including most PPOs and many HMOs. Our front desk verifies your benefits before treatment starts and walks you through expected costs. We never want insurance to be a surprise.</div></div>
           </li>
-          <li class="tx-season">
-            <span class="tx-season__name">Ragweed</span>
-            <span class="tx-season__period">Aug – Nov</span>
-            <span class="tx-season__badge tx-season__badge--high">High</span>
+          <li class="tx-faq__item">
+            <button class="tx-faq__q" aria-expanded="false">
+              When should I expect to notice a difference?
+              <span class="tx-faq__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="tx-faq__answer"><div class="tx-faq__answer-inner">Some patients notice improvement during their first allergy season after starting. For most, clear symptom relief comes after reaching the maintenance phase — typically within the first year. Benefits continue building over several years of treatment.</div></div>
           </li>
-          <li class="tx-season">
-            <span class="tx-season__name">Mold Spores</span>
-            <span class="tx-season__period">Year-round</span>
-            <span class="tx-season__badge tx-season__badge--mod">Moderate</span>
+          <li class="tx-faq__item">
+            <button class="tx-faq__q" aria-expanded="false">
+              Can children receive immunotherapy?
+              <span class="tx-faq__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="10" y1="3" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+            <div class="tx-faq__answer"><div class="tx-faq__answer-inner">Yes. Most children aged 5 and older are candidates when symptoms are persistent. Starting earlier can lower the risk of developing new allergies or asthma over time. We see children regularly and tailor every plan to their comfort and schedule.</div></div>
           </li>
         </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- ===========================================================================
-       9. FAQ — matches FAQ.tsx pattern
-       TEMPLATE: Update questions per treatment
-       =========================================================================== -->
-  <section class="tx-faq section" aria-labelledby="faq-heading">
-    <div class="container--narrow">
-      <div class="tx-faq__header anim-fade-up">
-        <div>
-          <span class="eyebrow">Common Questions</span>
-          <h2 class="t-headline" id="faq-heading" style="margin-top:10px;">Questions We Hear Often</h2>
-        </div>
-        <p class="tx-faq__header-text">Starting a new treatment can feel uncertain. Here are straightforward answers to the questions we hear most often — no jargon, no overselling.</p>
-      </div>
-
-      <!-- TEMPLATE: Update FAQ items per treatment -->
-      <ul class="tx-faq__list">
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            How long does immunotherapy take?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">A full course typically runs 3 to 5 years. You'll start with a build-up phase — injections once or twice a week for 6 to 12 months — before moving to a monthly maintenance schedule. Most patients begin noticing improvement within the first year.</div>
-          </div>
-        </li>
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            Does it hurt?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">The shots are given with a very small needle — similar to a flu shot. Most patients describe a mild pinch. You may notice minor redness or swelling at the injection site, which is normal and fades within an hour. We ask all patients to wait 20–30 minutes after each shot as a standard precaution.</div>
-          </div>
-        </li>
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            Is immunotherapy covered by insurance?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">Many insurance plans — including most PPOs — cover allergy immunotherapy. Our staff will verify your coverage before you begin and give you a clear picture of expected costs. We never want insurance to be a surprise.</div>
-          </div>
-        </li>
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            When will I start noticing results?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">Some patients notice improvement during the first allergy season after starting. For most, meaningful symptom reduction becomes clear after reaching the maintenance phase — typically within the first year. The full benefit often continues to build over several years of treatment.</div>
-          </div>
-        </li>
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            Is immunotherapy right for my child?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">Yes — allergy shots are appropriate for most children aged 5 and older. Starting earlier can be beneficial, as it may reduce the risk of developing new allergies or asthma over time. We see children regularly and tailor treatment to their needs and comfort.</div>
-          </div>
-        </li>
-
-        <li class="tx-faq__item">
-          <button class="tx-faq__q" aria-expanded="false">
-            Can I get shots if I'm pregnant or on other medications?
-            <span class="tx-faq__icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-          </button>
-          <div class="tx-faq__answer">
-            <div class="tx-faq__answer-inner">If you're already on a maintenance dose when you become pregnant, you can generally continue. We typically don't start new patients during pregnancy. Most medications don't interfere with immunotherapy, but bring a complete list to your consultation and we'll review it together.</div>
-          </div>
-        </li>
-
-      </ul>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       10. RELATED EDUCATION
-       TEMPLATE: Update links per treatment
-       =========================================================================== -->
-  <section class="tx-related section--sm" aria-labelledby="related-heading">
-    <div class="container">
-      <div class="anim-fade-up" style="margin-bottom: clamp(24px,3vw,40px);">
-        <span class="eyebrow">Learn More</span>
-      </div>
-      <nav class="tx-related__grid" aria-label="Related resources">
-        <a href="#" class="tx-related__item anim-card-down">
-          <video src="/videos/waco_skyline.mp4" autoplay muted loop playsinline style="aspect-ratio:16/9; border-radius:16px 16px 0 0; width:100%; object-fit:cover;"></video>
-          <div class="tx-related__body">
-            <p class="tx-related__cat">Allergy Seasons</p>
-            <p class="tx-related__title">How Waco's Allergy Calendar Impacts Shot Timing</p>
-            <span class="tx-related__link-text">
-              Read
-              <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6.5 1l3.5 3.5L6.5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="#" class="tx-related__item anim-card-down delay-1">
-          <video src="/videos/clinic_front.mp4" autoplay muted loop playsinline style="aspect-ratio:16/9; border-radius:16px 16px 0 0; width:100%; object-fit:cover;"></video>
-          <div class="tx-related__body">
-            <p class="tx-related__cat">Patient Guide</p>
-            <p class="tx-related__title">First Visit Checklist: Testing, Timing, and Next Steps</p>
-            <span class="tx-related__link-text">
-              Read
-              <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6.5 1l3.5 3.5L6.5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="#" class="tx-related__item anim-card-down delay-2">
-          <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy treatment" style="aspect-ratio:16/9; border-radius:16px 16px 0 0; width:100%; object-fit:cover;" />
-          <div class="tx-related__body">
-            <p class="tx-related__cat">Our Treatments</p>
-            <p class="tx-related__title">Compare Immunotherapy With Other Allergy Treatment Paths</p>
-            <span class="tx-related__link-text">
-              Explore
-              <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6.5 1l3.5 3.5L6.5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </span>
-          </div>
-        </a>
-      </nav>
-    </div>
-  </section>
-
-
-  <!-- ===========================================================================
-       11. FINAL CTA — matches FinalCTA.tsx
-       TEMPLATE: Update headline per treatment
-       =========================================================================== -->
-  <section class="tx-final-cta" id="book" aria-labelledby="cta-heading">
-    <div class="container">
+    <section class="tx-final-cta" id="book" aria-labelledby="cta-heading">
       <div class="tx-final-cta__inner anim-fade-up">
-        <span class="eyebrow" style="justify-content:center; display:block; text-align:center;">Ready for Relief?</span>
-        <!-- TEMPLATE: Update headline per treatment -->
+        <span class="eyebrow" style="display:block;text-align:center;">Ready for Relief?</span>
         <h2 class="tx-final-cta__headline" id="cta-heading">
-          Ready to Feel Better
-          Through Every Season?
+          Take the First Step Toward Breathing Easier.
         </h2>
         <p class="tx-final-cta__body">
-          Your consultation is a conversation, not a commitment. We will review your symptoms, discuss your options, and recommend the path that makes the most sense for your goals.
+          Schedule your consultation today and discover a personalized path to lasting relief.
         </p>
         <div class="btn-group">
           <a href="#" class="btn btn-dark">
             Request Appointment
-            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="tel:2547533646" class="btn btn-outline">
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 1h3l1.5 3.5L5 6c.9 1.9 2.1 3.1 4 4l1.5-1.5L14 10v3c-6.6.5-12.5-5.4-12-12z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.3 1.2h3.4l1.7 4L6 6.8c1 2.2 2.4 3.6 4.6 4.6l1.6-1.4 4 1.7V15C9.4 15.5 1.7 7.8 2.3 1.2z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             (254) 753-3646
           </a>
         </div>
-        <p class="tx-final-cta__note">
-          Questions first? <a href="mailto:info@allergywaco.com">Email our team</a> or call during office hours.
-        </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
 
   <!-- ===========================================================================
@@ -2006,6 +2419,34 @@
        Approximates Framer Motion whileInView card-lay-down spring
        =========================================================================== -->
   <script>
+    // ── Jump Nav ──────────────────────────────────────────────────────────────
+    (function () {
+      var nav = document.getElementById('tx-jump-nav');
+      var links = nav.querySelectorAll('[data-jn]');
+      var sectionIds = ['how-it-works','the-science','treatment-journey','long-view','who-it-helps','faq','book'];
+
+      // Show/hide on scroll
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('is-visible', window.scrollY > 220);
+      }, { passive: true });
+
+      // Active section tracking
+      var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      var observer = new IntersectionObserver(function (entries) {
+        var hit = entries.filter(function (e) { return e.isIntersecting; })
+                         .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+        if (!hit.length) return;
+        var activeId = hit[0].target.id;
+        links.forEach(function (l) {
+          l.classList.toggle('is-active', l.dataset.jn === activeId);
+        });
+        // Scroll active link into view on mobile
+        var activeLink = nav.querySelector('[data-jn="' + activeId + '"]');
+        if (activeLink) activeLink.scrollIntoView({ inline: 'nearest', behavior: 'smooth', block: 'nearest' });
+      }, { threshold: 0.15, rootMargin: '-110px 0px -40% 0px' });
+      sections.forEach(function (s) { observer.observe(s); });
+    }());
+
     (function () {
       // Mobile nav open/close
       var overlay = document.getElementById('nav-overlay');
@@ -2043,19 +2484,244 @@
         if (e.key === 'Escape') { overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
       });
 
-      // Trigger animations on scroll
-      var observer = new IntersectionObserver(function (entries) {
+      // ── Scroll animations ──────────────────────────────────────────────────
+      // Matches Framer Motion: type:'spring', stiffness:80, damping:18
+      // with opacity override: duration:0.2, ease:'easeOut'
+      // viewport: once:true, margin:'0px 0px 200px 0px'
+
+      var SPRING_EASING  = 'cubic-bezier(0.16, 1, 0.3, 1)'; // best CSS approx of stiffness:80/damping:18
+      var SPRING_DURATION = 800;  // ms
+      var OPACITY_DURATION = 200; // ms — Framer Motion opacity override
+      var STAGGER = 200; // ms per card — idx * 0.2s
+
+      function playCardDown(el, delay) {
+        // Transform: perspective(900px) rotateX(-22deg → 0deg), 800ms spring curve
+        el.animate(
+          [
+            { transform: 'perspective(900px) rotateX(-22deg)', transformOrigin: 'bottom center' },
+            { transform: 'perspective(900px) rotateX(0deg)',   transformOrigin: 'bottom center' }
+          ],
+          { duration: SPRING_DURATION, delay: delay, fill: 'both', easing: SPRING_EASING }
+        );
+        // Opacity: 0 → 1, fast 200ms ease-out (separate concurrent animation)
+        el.animate(
+          [{ opacity: 0 }, { opacity: 1 }],
+          { duration: OPACITY_DURATION, delay: delay, fill: 'both', easing: 'ease-out' }
+        );
+      }
+
+      // Fade-up elements — CSS transition, same as before
+      var fadeObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+            fadeObserver.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -100px 0px', threshold: 0.05 });
-
-      document.querySelectorAll('.anim-fade-up, .anim-card-down').forEach(function (el) {
-        observer.observe(el);
+      }, { rootMargin: '0px 0px 200px 0px', threshold: 0.05 });
+      document.querySelectorAll('.anim-fade-up').forEach(function (el) {
+        fadeObserver.observe(el);
       });
+
+      var IO_OPTS = { rootMargin: '0px 0px 200px 0px', threshold: 0.05 };
+      var handledCards = new Set();
+
+      // Right-to-left variant — cards emerge from the right (Long-View Care outcomes)
+      function playCardRtl(el, delay) {
+        el.animate(
+          [
+            { transform: 'perspective(900px) rotateY(18deg) translateX(20px)',  transformOrigin: 'right center' },
+            { transform: 'perspective(900px) rotateY(0deg)  translateX(0px)',   transformOrigin: 'right center' }
+          ],
+          { duration: SPRING_DURATION, delay: delay, fill: 'both', easing: SPRING_EASING }
+        );
+        el.animate(
+          [{ opacity: 0 }, { opacity: 1 }],
+          { duration: OPACITY_DURATION, delay: delay, fill: 'both', easing: 'ease-out' }
+        );
+      }
+
+      // Left-to-right panel variant for Treatment Journey
+      function playCardLtr(el, delay) {
+        el.animate(
+          [
+            { transform: 'perspective(1200px) rotateY(-18deg) translateX(-16px)', transformOrigin: 'left center' },
+            { transform: 'perspective(1200px) rotateY(0deg)   translateX(0px)',   transformOrigin: 'left center' }
+          ],
+          { duration: SPRING_DURATION, delay: delay, fill: 'both', easing: SPRING_EASING }
+        );
+        el.animate(
+          [{ opacity: 0 }, { opacity: 1 }],
+          { duration: OPACITY_DURATION, delay: delay, fill: 'both', easing: 'ease-out' }
+        );
+      }
+
+      // Treatment Journey panels — ltr sweep
+      document.querySelectorAll('.tx-step-grid').forEach(function (container) {
+        var panels = Array.from(container.querySelectorAll('.anim-card-ltr'));
+        if (!panels.length) return;
+        panels.forEach(function (p) { handledCards.add(p); });
+        var obs = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          panels.forEach(function (panel, i) { playCardLtr(panel, i * STAGGER); });
+          obs.disconnect();
+        }, IO_OPTS);
+        obs.observe(container);
+      });
+
+      // Long-View Care outcome cards — emerge from right
+      document.querySelectorAll('.tx-outcomes').forEach(function (container) {
+        var cards = Array.from(container.querySelectorAll('.anim-card-rtl'));
+        if (!cards.length) return;
+        cards.forEach(function (c) { handledCards.add(c); });
+        var obs = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          cards.forEach(function (card, i) { playCardRtl(card, i * STAGGER); });
+          obs.disconnect();
+        }, IO_OPTS);
+        obs.observe(container);
+      });
+
+      // Named card grids — rotateX flip, left-to-right stagger
+      ['.tx-intro__cards', '.tx-facts__grid'].forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (container) {
+          var cards = Array.from(container.querySelectorAll('.anim-card-down'));
+          if (!cards.length) return;
+          cards.forEach(function (c) { handledCards.add(c); });
+          var obs = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            cards.forEach(function (card, i) { playCardDown(card, i * STAGGER); });
+            obs.disconnect();
+          }, IO_OPTS);
+          obs.observe(container);
+        });
+      });
+
+      // Remaining standalone anim-card-down elements
+      var soloObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            playCardDown(entry.target, 0);
+            soloObserver.unobserve(entry.target);
+          }
+        });
+      }, IO_OPTS);
+      document.querySelectorAll('.anim-card-down').forEach(function (el) {
+        if (!handledCards.has(el)) soloObserver.observe(el);
+      });
+
+      // Generate timeline tick marks — start hidden for scroll animation
+      document.querySelectorAll('.tx-timeline__ticks[data-ticks]').forEach(function(el) {
+        var n = parseInt(el.dataset.ticks, 10);
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < n; i++) {
+          var t = document.createElement('span');
+          t.className = 'tx-timeline__tick';
+          t.style.cssText = 'opacity:0;transform:scaleY(0);transform-origin:bottom center;';
+          frag.appendChild(t);
+        }
+        el.appendChild(frag);
+      });
+
+      // Timeline: trigger when Stage 3 enters view, then drop + tick cascade
+      (function() {
+        var timelineEl = document.querySelector('.tx-timeline');
+        if (!timelineEl) return;
+
+        // Keep hidden until triggered
+        timelineEl.style.cssText += 'opacity:0;transform:translateY(-40px);';
+
+        var fired = false;
+        function runTimelineAnim() {
+          if (fired) return;
+          fired = true;
+
+          // Drop in with fade — feels like it falls from Stage 3/4
+          timelineEl.animate(
+            [{ opacity: 0, transform: 'translateY(-40px)' },
+             { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 700, fill: 'both', easing: SPRING_EASING }
+          );
+
+          // Ticks cascade left-to-right after section starts appearing
+          var TICK_START = 260;
+          var TICK_STAGGER = 32;
+          timelineEl.querySelectorAll('.tx-timeline__ticks').forEach(function(container) {
+            var ticks = Array.from(container.querySelectorAll('.tx-timeline__tick'));
+            ticks.forEach(function(tick, i) {
+              tick.animate(
+                [{ opacity: 0,    transform: 'scaleY(0)', transformOrigin: 'bottom center' },
+                 { opacity: 0.45, transform: 'scaleY(1)', transformOrigin: 'bottom center' }],
+                { duration: 220, delay: TICK_START + i * TICK_STAGGER, fill: 'both', easing: 'ease-out' }
+              );
+            });
+          });
+        }
+
+        // Watch Stage 3 — fire when it's well into view, then hold 450ms
+        var stage3 = document.querySelectorAll('.tx-step')[2];
+        var triggerEl = stage3 || timelineEl;
+        var triggerObs = new IntersectionObserver(function(entries) {
+          if (!entries[0].isIntersecting) return;
+          triggerObs.disconnect();
+          setTimeout(runTimelineAnim, 450);
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.4 });
+
+        triggerObs.observe(triggerEl);
+
+        // Fallback: fire immediately if timeline itself enters view
+        // (catches fast scrollers who skip past Stage 3)
+        var fallbackObs = new IntersectionObserver(function(entries) {
+          if (!entries[0].isIntersecting) return;
+          fallbackObs.disconnect();
+          runTimelineAnim();
+        }, { threshold: 0.05 });
+        fallbackObs.observe(timelineEl);
+      }());
+
+      // Equalize treatment journey text box heights
+      function equalizeStepBoxes() {
+        var boxes = document.querySelectorAll('.tx-step__text-box');
+        boxes.forEach(function (b) { b.style.minHeight = ''; });
+        var max = 0;
+        boxes.forEach(function (b) { max = Math.max(max, b.offsetHeight); });
+        boxes.forEach(function (b) { b.style.minHeight = max + 'px'; });
+      }
+      equalizeStepBoxes();
+      window.addEventListener('resize', equalizeStepBoxes);
+
+      // Beige card gradients — cloud drift + mouse tracking
+      (function() {
+        var allDurations = [13, 11, 15, 10, 12, 14, 9, 16];
+        var allDelays    = ['0s','2.5s','5s','1.5s','3.5s','1s','4s','2s'];
+
+        function applyCardGradient(card, i, cloudClass) {
+          var cloud = document.createElement('div');
+          cloud.className = cloudClass || 'card-gradient-cloud';
+          cloud.style.animation =
+            (i % 2 === 0 ? 'cloudDrift1' : 'cloudDrift2') +
+            ' ' + allDurations[i % 8] + 's ease-in-out ' + allDelays[i % 8] + ' infinite';
+          card.appendChild(cloud);
+
+          card.addEventListener('mousemove', function(e) {
+            var r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100).toFixed(1) + '%');
+          });
+          card.addEventListener('mouseleave', function() {
+            card.style.setProperty('--mx', '50%');
+            card.style.setProperty('--my', '50%');
+          });
+        }
+
+        document.querySelectorAll('.tx-outcome').forEach(function(card, i) {
+          applyCardGradient(card, i, 'tx-outcome__cloud');
+        });
+
+        document.querySelectorAll('.tx-intro__card').forEach(function(card, i) {
+          applyCardGradient(card, i + 4);
+        });
+      }());
 
       // FAQ accordion — matches FAQ.tsx pattern
       document.querySelectorAll('.tx-faq__item').forEach(function (item) {

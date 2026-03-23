@@ -123,7 +123,7 @@ export default function ClinicInfoBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-0 right-0 mt-3 bg-white rounded-2xl shadow-xl border border-sand/60 z-40"
+            className="absolute left-0 right-0 mt-3 bg-white rounded-2xl border border-sand/60 z-40"
           >
             <div className="px-6 py-5">
               <div className="flex items-center justify-between mb-4">
