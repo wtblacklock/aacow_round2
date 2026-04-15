@@ -39,7 +39,7 @@ export default function FAQ() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-24"
         >
-          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">Common Questions</span>
+          <span className="text-xs font-medium tracking-widest uppercase text-forest mb-4 block">Common Questions</span>
           <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal leading-[1.0]">
             Frequently Asked Questions
           </h2>
@@ -55,10 +55,10 @@ export default function FAQ() {
               <CardGradientOverlay index={idx} />
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none group/btn hover:text-terracotta transition-colors"
+                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none group/btn hover:text-forest transition-colors"
               >
-                <span className="text-[20px] font-heading font-semibold leading-tight text-charcoal group-hover/btn:text-terracotta transition-colors pr-8">{faq.question}</span>
-                <span className={`shrink-0 transition-all duration-300 ${openIndex === idx ? 'text-terracotta rotate-45' : 'text-charcoal'}`}>
+                <span className="text-[20px] font-heading font-semibold leading-tight text-charcoal group-hover/btn:text-forest transition-colors pr-8">{faq.question}</span>
+                <span className={`shrink-0 transition-all duration-300 ${openIndex === idx ? 'text-forest rotate-45' : 'text-charcoal'}`}>
                   <Plus className="w-5 h-5" />
                 </span>
               </button>

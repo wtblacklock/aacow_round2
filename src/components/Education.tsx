@@ -39,7 +39,7 @@ export default function Education() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
-            <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">Patient Resources</span>
+            <span className="text-xs font-medium tracking-widest uppercase text-forest mb-4 block">Patient Resources</span>
             <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal mb-6 leading-[1.0]">
               Empowering You With Knowledge
             </h2>
@@ -73,7 +73,7 @@ export default function Education() {
                 alt={article.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase text-terracotta">
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase text-forest">
                 {article.category}
               </div>
             </div>
@@ -83,13 +83,13 @@ export default function Education() {
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
               </div>
-              <h3 className="text-[24px] lg:text-[28px] font-heading font-semibold text-charcoal mb-4 group-hover:text-terracotta transition-colors leading-snug">
+              <h3 className="text-[24px] lg:text-[28px] font-heading font-semibold text-charcoal mb-4 group-hover:text-forest transition-colors leading-snug">
                 {article.title}
               </h3>
               <p className="text-[15px] text-charcoal font-light leading-relaxed mb-8 flex-grow">
                 {article.excerpt}
               </p>
-              <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-terracotta transition-colors mt-auto">
+              <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-forest transition-colors mt-auto">
                 Read Article <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>

@@ -25,7 +25,7 @@ export default function TreatmentsSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
-            <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">Our Services</span>
+            <span className="text-xs font-medium tracking-widest uppercase text-forest mb-4 block">Our Services</span>
             <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal mb-6 leading-[1.0]">
               Comprehensive Care for Lasting Relief
             </h2>
@@ -64,11 +64,11 @@ export default function TreatmentsSection() {
                 <CardGradientOverlay index={idx} />
                 {/* Top: title + oval icon */}
                 <div className="flex justify-between items-start gap-6">
-                  <h3 className="text-[28px] lg:text-[34px] font-heading font-semibold text-charcoal group-hover:text-terracotta transition-colors duration-300 leading-[1.1]">
+                  <h3 className="text-[28px] lg:text-[34px] font-heading font-semibold text-charcoal group-hover:text-forest transition-colors duration-300 leading-[1.1]">
                     {treatment.title}
                   </h3>
-                  <div className="w-14 h-[80px] rounded-full border border-charcoal/65 group-hover:border-terracotta flex items-center justify-center shrink-0 transition-colors duration-300">
-                    <Icon className="w-8 h-8 text-charcoal/65 group-hover:text-terracotta transition-colors duration-300" strokeWidth={1.25} />
+                  <div className="w-14 h-[80px] rounded-full border border-charcoal/65 group-hover:border-forest flex items-center justify-center shrink-0 transition-colors duration-300">
+                    <Icon className="w-8 h-8 text-charcoal/65 group-hover:text-forest transition-colors duration-300" strokeWidth={1.25} />
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ export default function TreatmentsSection() {
                   <p className="text-[16px] text-charcoal font-light leading-relaxed mb-7">
                     {treatment.desc}
                   </p>
-                  <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-terracotta transition-colors">
+                  <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-forest transition-colors">
                     Explore <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

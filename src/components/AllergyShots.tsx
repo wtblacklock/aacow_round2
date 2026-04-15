@@ -24,7 +24,7 @@ export default function AllergyShots() {
 
           {/* Left — text content */}
           <div className="flex flex-col justify-center lg:pr-4">
-            <span className="text-terracotta text-[11px] font-medium tracking-widest uppercase mb-6 block">
+            <span className="text-forest text-[11px] font-medium tracking-widest uppercase mb-6 block">
               Featured Treatment
             </span>
 
@@ -40,7 +40,7 @@ export default function AllergyShots() {
             <div className="space-y-4 mb-12">
               {benefits.map((benefit, idx) => (
                 <div key={idx} className="flex items-start gap-3.5">
-                  <CheckCircle2 className="w-5 h-5 text-terracotta shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-forest shrink-0 mt-0.5" />
                   <span className="text-[16px] text-charcoal font-light leading-snug">{benefit}</span>
                 </div>
               ))}
@@ -48,7 +48,7 @@ export default function AllergyShots() {
 
             <a
               href="#"
-              className="group inline-flex items-center justify-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white px-7 py-4 rounded-xl text-[14px] font-semibold transition-all hover:-translate-y-0.5 self-start"
+              className="group inline-flex items-center justify-center gap-2 bg-forest hover:bg-forest-hover text-white px-7 py-4 rounded-xl text-[14px] font-semibold transition-all hover:-translate-y-0.5 self-start"
             >
               Learn About Immunotherapy
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

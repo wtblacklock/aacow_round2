@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/images/icons/favicon.svg" type="image/svg+xml" />
+  <title>Blog · Allergy &amp; Asthma Care of Waco</title>
+  <meta name="description" content="Expert insights on allergies, asthma, and Central Texas living from the team at Allergy &amp; Asthma Care of Waco." />
+  <link rel="canonical" href="https://allergywaco.com/blog" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://allergywaco.com/blog" />
+  <meta property="og:title" content="Blog · Allergy &amp; Asthma Care of Waco" />
+  <meta property="og:description" content="Expert insights on allergies, asthma, and Central Texas living from the team at Allergy &amp; Asthma Care of Waco." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS — mirror src/index.css exactly
+       ========================================================================== */
+    :root {
+      --cream:            #fbf2e9;
+      --cream-dark:       #efe1d4;
+      --charcoal:         #372426;
+      --charcoal-light:   #6b4849;
+      --accent:           #2c1810;
+      --accent-light:     #ede6df;
+      --sand:             #d8c3b0;
+      --terracotta:       #c06044;
+      --terracotta-hover: #a84e34;
+      --forest:           #1e4d38;
+      --forest-hover:     #163829;
+      --sage:             #2a6257;
+      --sage-light:       #e6efed;
+      --white:            #ffffff;
+
+      --font-heading: 'Barlow Condensed', ui-sans-serif, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-sans:    'Inter', ui-sans-serif, system-ui, sans-serif;
+
+      --max-w:         1920px;
+      --pad-x:         clamp(20px, 5vw, 90px);
+      --section-py:    clamp(80px, 10vw, 144px);
+    }
+
+    /* ==========================================================================
+       RESET + BASE
+       ========================================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: clip;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ==========================================================================
+       LAYOUT
+       ========================================================================== */
+    .container {
+      max-width: var(--max-w);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--pad-x);
+      padding-right: var(--pad-x);
+    }
+    .section { padding-top: var(--section-py); padding-bottom: var(--section-py); }
+
+    /* Eyebrow label */
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY
+       ========================================================================== */
+    .t-hero {
+      font-family: var(--font-heading);
+      font-size: clamp(52px, 9vw, 110px);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--charcoal);
+    }
+    .t-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--charcoal);
+    }
+    .t-sub-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+    .t-display {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--charcoal);
+    }
+    .t-body-lg {
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--charcoal);
+    }
+
+    /* ==========================================================================
+       BUTTONS
+       ========================================================================== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terracotta);
+      color: white;
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: clamp(14px, 1.1vw, 16px);
+      font-weight: 600;
+      padding: 16px 36px;
+      border: none;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid rgba(55, 36, 38, 0.3);
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: clamp(14px, 1.1vw, 16px);
+      font-weight: 500;
+      padding: 16px 36px;
+      transition: border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: rgba(55,36,38,0.04); border-color: rgba(55,36,38,0.5); }
+
+    /* ==========================================================================
+       NAVIGATION — mirrors Navigation.tsx exactly
+       ========================================================================== */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 242, 233, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .site-nav__inner {
+      padding-left: 25px;
+      padding-right: 25px;
+      display: flex;
+      align-items: center;
+      height: 78px;
+    }
+    .site-nav__logo { flex: 1; display: flex; align-items: center; }
+    .site-nav__logo img { height: 40px; width: auto; cursor: pointer; }
+
+    .site-nav__center { display: none; align-items: center; gap: 24px; }
+    @media (min-width: 1024px) { .site-nav__center { display: flex; } }
+
+    .site-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-heading);
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--charcoal);
+      transition: color 0.2s;
+      white-space: nowrap;
+      padding: 8px 0;
+      background: none;
+      border: none;
+    }
+    .site-nav__link:hover { color: var(--terracotta); }
+    .site-nav__link--active { color: var(--terracotta); }
+
+    .nav-chevron { width: 12px; height: 12px; opacity: 0.5; transition: opacity 0.2s; }
+    .site-nav__dropdown:hover .nav-chevron { opacity: 1; }
+
+    .site-nav__dropdown { position: relative; }
+    .site-nav__dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-top: 12px;
+      opacity: 0;
+      translate: 0 8px;
+      pointer-events: none;
+      transition: opacity 0.2s, translate 0.2s;
+    }
+    .site-nav__dropdown:hover .site-nav__dropdown-menu { opacity: 1; translate: 0 0; pointer-events: auto; }
+    .site-nav__dropdown-panel {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(55,36,38,0.14);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 320px;
+    }
+    .site-nav__dropdown-panel--sm { width: 280px; }
+    .site-nav__dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--charcoal);
+      padding: 14px 20px;
+      transition: color 0.15s, background 0.15s;
+      border-bottom: 1px solid rgba(55,36,38,0.06);
+    }
+    .site-nav__dropdown-item:last-child { border-bottom: none; }
+    .site-nav__dropdown-item:hover { color: var(--terracotta); background: rgba(192,96,68,0.05); }
+    .site-nav__dropdown-item:hover .dd-arrow { color: var(--terracotta); transform: translateX(2px); }
+    .dd-arrow { width: 14px; height: 14px; flex-shrink: 0; margin-left: 12px; color: rgba(55,36,38,0.25); transition: color 0.15s, transform 0.15s; }
+
+    .site-nav__right { flex: 1; display: none; align-items: center; justify-content: flex-end; gap: 16px; }
+    @media (min-width: 1024px) { .site-nav__right { display: flex; } }
+
+    .site-nav__call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      border: 1px solid rgba(55,36,38,0.2);
+      border-radius: 12px;
+      padding: 8px 16px;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .site-nav__call:hover { color: var(--accent); border-color: var(--accent); }
+
+    .site-nav__book {
+      background: var(--terracotta);
+      color: white;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .site-nav__book:hover { background: var(--terracotta-hover); }
+
+    .site-nav__mobile-right { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+    @media (min-width: 1024px) { .site-nav__mobile-right { display: none; } }
+
+    .site-nav__mobile-book { background: var(--terracotta); color: white; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+    .site-nav__hamburger { background: none; border: none; color: var(--charcoal); padding: 4px; cursor: pointer; }
+
+    .site-nav__overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .site-nav__overlay.is-open { opacity: 1; pointer-events: auto; }
+    .site-nav__overlay-top {
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(212,196,179,0.4);
+    }
+    .site-nav__overlay-close {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(55,36,38,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--charcoal);
+      border: none; cursor: pointer;
+    }
+    .site-nav__overlay-links { flex: 1; overflow-y: auto; padding: 0 25px; }
+    .site-nav__overlay-item { border-bottom: 1px solid rgba(55,36,38,0.1); }
+    .site-nav__overlay-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      line-height: 1;
+    }
+    .site-nav__overlay-link:hover, .site-nav__overlay-link--cta { color: var(--terracotta); }
+    .overlay-chevron { width: 24px; height: 24px; color: rgba(55,36,38,0.4); transition: transform 0.3s; flex-shrink: 0; }
+    .site-nav__overlay-item.is-open .overlay-chevron { transform: rotate(180deg); }
+    .site-nav__overlay-sub {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .site-nav__overlay-item.is-open .site-nav__overlay-sub { max-height: 600px; }
+    .site-nav__overlay-sub-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--charcoal);
+      border-top: 1px solid rgba(55,36,38,0.06);
+      transition: color 0.15s;
+    }
+    .site-nav__overlay-sub-item:hover { color: var(--terracotta); }
+    .sub-arrow { width: 16px; height: 16px; flex-shrink: 0; color: rgba(55,36,38,0.25); transition: color 0.15s, transform 0.15s; }
+    .site-nav__overlay-sub-item:hover .sub-arrow { color: var(--terracotta); transform: translateX(2px); }
+    .site-nav__overlay-bottom {
+      padding: 20px 25px 40px;
+      flex-shrink: 0;
+    }
+    .site-nav__overlay-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(55,36,38,0.6);
+    }
+
+    /* ==========================================================================
+       FOOTER — mirrors Footer.tsx
+       ========================================================================== */
+    .site-footer { background: var(--charcoal); color: rgba(251,242,233,0.8); padding: clamp(48px, 6vw, 96px) 0; }
+    .site-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(40px, 4vw, 64px);
+      margin-bottom: clamp(40px, 5vw, 64px);
+    }
+    @media (max-width: 900px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .site-footer__grid { grid-template-columns: 1fr; } }
+    .site-footer__logo { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--cream); margin-bottom: 16px; }
+    .site-footer__about { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(251,242,233,0.55); }
+    .site-footer__col-title { font-family: var(--font-heading); font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 20px; }
+    .site-footer__links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .site-footer__links a { font-size: 13px; font-weight: 300; color: rgba(251,242,233,0.65); transition: color 0.2s; }
+    .site-footer__links a:hover { color: var(--cream); }
+    .site-footer__contact { display: flex; flex-direction: column; gap: 12px; }
+    .site-footer__contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 300; color: rgba(251,242,233,0.65); }
+    .site-footer__contact-item a { color: rgba(251,242,233,0.65); transition: color 0.2s; }
+    .site-footer__contact-item a:hover { color: var(--cream); }
+    .site-footer__contact-icon { flex-shrink: 0; margin-top: 2px; opacity: 0.5; }
+    .site-footer__bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; font-weight: 300; color: rgba(251,242,233,0.35); }
+    .site-footer__bottom a { color: rgba(251,242,233,0.4); transition: color 0.2s; }
+    .site-footer__bottom a:hover { color: rgba(251,242,233,0.7); }
+    @media (max-width: 560px) { .site-footer__bottom { flex-direction: column; align-items: flex-start; } }
+
+    /* ==========================================================================
+       SCROLL ANIMATIONS
+       ========================================================================== */
+    .anim-fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+    .anim-fade-in {
+      opacity: 0;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-fade-in.is-visible { opacity: 1; }
+
+    .anim-delay-1 { transition-delay: 0.10s; }
+    .anim-delay-2 { transition-delay: 0.20s; }
+    .anim-delay-3 { transition-delay: 0.30s; }
+    .anim-delay-4 { transition-delay: 0.40s; }
+    .anim-delay-5 { transition-delay: 0.50s; }
+
+    /* ==========================================================================
+       BLOG PAGE — PAGE HEADER
+       ========================================================================== */
+    .blog-header {
+      background: var(--cream);
+      padding: clamp(64px, 9vw, 120px) var(--pad-x) clamp(48px, 6vw, 80px);
+    }
+    .blog-header__inner { max-width: 900px; }
+    .blog-header__h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+    .blog-header__intro {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      color: var(--charcoal);
+      opacity: 0.7;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: clamp(32px, 4vw, 48px);
+    }
+
+    /* Tag filter pills */
+    .blog-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .blog-filter-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .blog-filter-pill--active {
+      background: var(--terracotta);
+      color: var(--white);
+    }
+    .blog-filter-pill--inactive {
+      background: rgba(55,36,38,0.07);
+      color: var(--charcoal);
+    }
+    .blog-filter-pill--inactive:hover {
+      background: rgba(55,36,38,0.12);
+    }
+
+    /* ==========================================================================
+       BLOG PAGE — FEATURED POST
+       ========================================================================== */
+    .blog-featured {
+      background: var(--cream);
+      padding: 0 var(--pad-x) clamp(48px, 6vw, 80px);
+    }
+    .blog-featured__card {
+      background: transparent;
+      border-radius: 24px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 35fr 65fr;
+      min-height: clamp(340px, 44vw, 560px);
+    }
+    @media (max-width: 860px) {
+      .blog-featured__card {
+        grid-template-columns: 1fr;
+      }
+    }
+    .blog-featured__copy {
+      padding: clamp(36px, 5vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      order: 1;
+    }
+    @media (max-width: 860px) { .blog-featured__copy { order: 2; } }
+
+    .blog-featured__image {
+      position: relative;
+      overflow: hidden;
+      order: 2;
+    }
+    @media (max-width: 860px) {
+      .blog-featured__image {
+        order: 1;
+        aspect-ratio: 16/9;
+      }
+    }
+    .blog-featured__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-featured__card:hover .blog-featured__image img {
+      transform: scale(1.03);
+    }
+
+    .blog-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: var(--terracotta);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .blog-featured__title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+    .blog-featured__excerpt {
+      font-size: clamp(14px, 1.2vw, 16px);
+      font-weight: 300;
+      color: var(--charcoal);
+      opacity: 0.75;
+      line-height: 1.7;
+    }
+    .blog-featured__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 16px;
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--charcoal);
+      opacity: 0.55;
+    }
+    .blog-featured__meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+    .blog-featured__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terracotta);
+      color: white;
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      transition: background 0.2s, transform 0.2s;
+      width: fit-content;
+      cursor: pointer;
+    }
+    .blog-featured__cta:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+
+    /* ==========================================================================
+       BLOG PAGE — POST GRID
+       ========================================================================== */
+    .blog-grid-section {
+      background: var(--cream);
+      padding: clamp(48px, 6vw, 80px) var(--pad-x) clamp(80px, 10vw, 140px);
+    }
+    .blog-grid-section__label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.45;
+      margin-bottom: 32px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: clamp(16px, 2vw, 28px);
+      row-gap: clamp(48px, 5vw, 72px);
+    }
+    @media (max-width: 960px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .blog-card__image-wrap {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 20px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .blog-card__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-card:hover .blog-card__image-wrap img {
+      transform: scale(1.05);
+    }
+    /* Tag pill overlaid on image — matches Education.tsx */
+    .blog-card__tag-overlay {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    .blog-card__body {
+      padding: clamp(16px, 1.8vw, 24px) 4px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .blog-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.45;
+    }
+    .blog-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--charcoal);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-card__excerpt {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--charcoal);
+      opacity: 0.65;
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+    .blog-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+
+      margin-top: auto;
+    }
+    .blog-card__read-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--terracotta);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s, opacity 0.2s;
+    }
+    .blog-card:hover .blog-card__read-link { gap: 7px; }
+
+    /* ==========================================================================
+       BLOG CTA STRIP
+       ========================================================================== */
+    .blog-cta-strip {
+      background: var(--cream-dark);
+      padding: clamp(48px, 6vw, 96px) var(--pad-x);
+      text-align: center;
+    }
+    .blog-cta-strip__inner { max-width: 680px; margin: 0 auto; }
+    .blog-cta-strip__headline {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 5vw, 62px);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .blog-cta-strip__sub {
+      font-size: clamp(14px, 1.2vw, 17px);
+      font-weight: 300;
+      color: var(--charcoal);
+      opacity: 0.65;
+      line-height: 1.7;
+      margin-bottom: clamp(28px, 3.5vw, 44px);
+    }
+    .blog-cta-strip__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Interior green overrides ── */
+    .eyebrow { color: var(--forest); }
+    .blog-filter-pill--active { background: var(--forest); color: white; }
+    .blog-filter-pill--inactive:hover { background: rgba(30,77,56,0.08); color: var(--forest); }
+    .blog-tag-pill { background: var(--forest); }
+    .blog-card__tag-overlay { color: var(--forest); }
+    .blog-card__read-link { color: var(--forest); }
+    .blog-featured__cta { background: var(--forest); }
+    .blog-featured__cta:hover { background: var(--forest-hover); }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================================================================
+       NAVIGATION
+       =========================================================================== -->
+  <header class="site-nav">
+    <div class="site-nav__inner">
+
+      <div class="site-nav__logo">
+        <a href="/"><img src="/images/icons/aacow_logo.svg" alt="Allergy &amp; Asthma Care of Waco" /></a>
+      </div>
+
+      <nav class="site-nav__center" aria-label="Main navigation">
+
+        <div class="site-nav__dropdown">
+          <button class="site-nav__link" aria-haspopup="true">
+            Treatments
+            <svg class="nav-chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="site-nav__dropdown-menu">
+            <div class="site-nav__dropdown-panel">
+              <a href="/treatment-immunotherapy.html" class="site-nav__dropdown-item"><span>Immunotherapy (Allergy Shots)</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Asthma Care</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Allergy Testing</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Medication &amp; Infusions</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Food Allergy Care</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Virtual Allergy Care</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Diagnosis &amp; Care Planning</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/#pollen" class="site-nav__link">Allergy Seasons</a>
+
+        <div class="site-nav__dropdown">
+          <button class="site-nav__link site-nav__link--active" aria-haspopup="true">
+            Resources
+            <svg class="nav-chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="site-nav__dropdown-menu">
+            <div class="site-nav__dropdown-panel site-nav__dropdown-panel--sm">
+              <a href="/blog.html" class="site-nav__dropdown-item" style="color:var(--terracotta)"><span>Blog</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+              <a href="#" class="site-nav__dropdown-item"><span>Allergy Education / FAQs</span><svg class="dd-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="site-nav__link">New Patients</a>
+        <a href="/about.html" class="site-nav__link">About</a>
+        <a href="#" class="site-nav__link">Patient Portal</a>
+      </nav>
+
+      <div class="site-nav__right">
+        <a href="tel:2547533646" class="site-nav__call">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 1h3l1.5 3.5L5 6c.9 1.9 2.1 3.1 4 4l1.5-1.5L14 10v3c-6.6.5-12.5-5.4-12-12z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+          Call Us
+        </a>
+        <a href="#book" class="site-nav__book">Request Appointment</a>
+      </div>
+
+      <div class="site-nav__mobile-right">
+        <a href="#book" class="site-nav__mobile-book">Book</a>
+        <button class="site-nav__hamburger" id="nav-open" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="site-nav__overlay" id="nav-overlay" role="dialog" aria-modal="true">
+    <div class="site-nav__overlay-top">
+      <a href="/"><img src="/images/icons/aacow_logo.svg" alt="Allergy &amp; Asthma Care of Waco" style="height:40px;width:auto;" /></a>
+      <button class="site-nav__overlay-close" id="nav-close" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+          <line x1="3" y1="3" x2="15" y2="15"/><line x1="15" y1="3" x2="3" y2="15"/>
+        </svg>
+      </button>
+    </div>
+    <div class="site-nav__overlay-links">
+
+      <div class="site-nav__overlay-item" id="mob-treatments">
+        <button class="site-nav__overlay-link" onclick="toggleMobSub('mob-treatments')">
+          Treatments
+          <svg class="overlay-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="site-nav__overlay-sub" id="mob-treatments-sub">
+          <a href="/treatment-immunotherapy.html" class="site-nav__overlay-sub-item"><span>Immunotherapy (Allergy Shots)</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Asthma Care</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Allergy Testing</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Medication &amp; Infusions</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Food Allergy Care</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Virtual Allergy Care</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Diagnosis &amp; Care Planning</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="site-nav__overlay-item"><a href="/#pollen" class="site-nav__overlay-link">Allergy Seasons</a></div>
+
+      <div class="site-nav__overlay-item" id="mob-resources">
+        <button class="site-nav__overlay-link site-nav__overlay-link--cta" onclick="toggleMobSub('mob-resources')">
+          Resources
+          <svg class="overlay-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="site-nav__overlay-sub" id="mob-resources-sub">
+          <a href="/blog.html" class="site-nav__overlay-sub-item" style="color:var(--terracotta)"><span>Blog</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#" class="site-nav__overlay-sub-item"><span>Allergy Education / FAQs</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">New Patients</a></div>
+      <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link">About</a></div>
+      <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
+      <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
+    </div>
+    <div class="site-nav__overlay-bottom">
+      <a href="tel:2547533646" class="site-nav__overlay-phone">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.3 1.2h3.4l1.7 4L6 6.8c1 2.2 2.4 3.6 4.6 4.6l1.6-1.4 4 1.7V15C9.4 15.5 1.7 7.8 2.3 1.2z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        (254) 753-3646
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ===========================================================================
+         PAGE HEADER
+         =========================================================================== -->
+    <section class="blog-header">
+      <div class="blog-header__inner anim-fade-up">
+        <span class="eyebrow">From Our Clinic</span>
+        <h1 class="blog-header__h1">Fresh Thinking on<br>Allergies &amp; Asthma</h1>
+        <p class="blog-header__intro">Expert guidance from board-certified allergists — written for real people living in Central Texas.</p>
+      </div>
+    </section>
+
+    <!-- ===========================================================================
+         FEATURED POST
+         =========================================================================== -->
+    <section class="blog-featured" aria-labelledby="featured-post-heading">
+      <div class="blog-featured__card anim-fade-up">
+        <div class="blog-featured__copy">
+          <span class="blog-tag-pill">Food Allergies</span>
+          <h2 class="blog-featured__title" id="featured-post-heading">
+            What Windy Weather Means for Pollen Food Syndrome in Waco and Central Texas
+          </h2>
+          <p class="blog-featured__excerpt">
+            Learn how Waco's gusty weather and surprising food triggers can affect your allergies
+          </p>
+          <div class="blog-featured__meta">
+            <span>Dr. Dustin Fowler &amp; Dr. Pramila Daftary</span>
+            <span class="blog-featured__meta-dot" aria-hidden="true"></span>
+            <span>March 15, 2025</span>
+            <span class="blog-featured__meta-dot" aria-hidden="true"></span>
+            <span>5 min read</span>
+          </div>
+          <a href="/blog-windy-weather-pollen-food-syndrome.html" class="blog-featured__cta">
+            Read Article
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="blog-featured__image">
+          <img
+            src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/67d9f3c08570ed1bea2092a5_AllergyWaco%20Email%20Header%20-%20Mar%202026.png"
+            alt="Windy weather and pollen food syndrome in Central Texas"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-grid-section" aria-label="Filter blog posts" style="padding-top:0; padding-bottom:24px;">
+      <div class="blog-filters" role="list" aria-label="Filter posts by topic">
+        <button type="button" class="blog-filter-pill blog-filter-pill--active" role="listitem" data-filter="all">All</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="food allergies">Food Allergies</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="seasonal">Seasonal</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="skin">Skin</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="kids &amp; family">Kids &amp; Family</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="pet allergies">Pet Allergies</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="indoor allergies">Indoor Allergies</button>
+        <button type="button" class="blog-filter-pill blog-filter-pill--inactive" role="listitem" data-filter="rhinitis">Rhinitis</button>
+      </div>
+    </section>
+
+    <!-- ===========================================================================
+         POST GRID (posts 2–16)
+         =========================================================================== -->
+    <section class="blog-grid-section" aria-label="All blog posts">
+      <div class="blog-grid-section__label">More Articles</div>
+      <div class="blog-grid">
+
+        <!-- Post 2 -->
+        <article class="blog-card anim-fade-up anim-delay-1">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6789423dd49f5953958766d7_AllergyWaco%20Email%20Header%20-%20Jan%202026.png"
+              alt="Negative Allergy Tests But Still Sneezing?"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Rhinitis</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Negative Allergy Tests But Still Sneezing?</h2>
+            <p class="blog-card__excerpt">Dr. Fowler explains 5 surprising types of non-allergic rhinitis affecting Waco residents</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card anim-fade-up anim-delay-2">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/670dd914646a4b44587560ae_Screenshot%202024-10-14%20at%207.51.03%20PM.png"
+              alt="Sneezes & Pumpkins: Tackling October Allergies"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Seasonal</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 min read</div>
+            <h2 class="blog-card__title">Sneezes &amp; Pumpkins: Tackling October Allergies</h2>
+            <p class="blog-card__excerpt">Autumn allergies guidance with seasonal tips for Central Texas families</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card anim-fade-up anim-delay-3">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/66ad372fe0c07c30d6cdcab7_Screenshot%202024-08-02%20at%209.43.18%E2%80%AFAM.png"
+              alt="Preparing for Summer Camp: Your Essential Checklist for Kids with Allergies"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Kids &amp; Family</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Preparing for Summer Camp: Your Essential Checklist for Kids with Allergies</h2>
+            <p class="blog-card__excerpt">Everything parents need to know before sending an allergy-prone child to summer camp</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card anim-fade-up anim-delay-1">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/66a941bfce92bf0b0ff75ec8_Pool_Splash.png"
+              alt="Splash Without the Scratch: Tips for Eczema-Friendly Pool Days"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Skin</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 min read</div>
+            <h2 class="blog-card__title">Splash Without the Scratch: Tips for Eczema-Friendly Pool Days</h2>
+            <p class="blog-card__excerpt">Learn how to prevent skin irritation and maximize your summer swims!</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card anim-fade-up anim-delay-2">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6668a6e8756b7b6f65d8a1be_Woman_sneezing_pets.png"
+              alt="Don't Mess with a Texan's Best Friend: Dealing with Pet Allergies"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Pet Allergies</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Don't Mess with a Texan's Best Friend: Dealing with Pet Allergies</h2>
+            <p class="blog-card__excerpt">Learn about symptoms, triggers, and effective pet dander allergy treatment options.</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="blog-card anim-fade-up anim-delay-3">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6658a0aec69ba5902030dd0b_AllergyWaco-Woman_Grass-2-2.png"
+              alt="From BBQs to Rodeos: Tips to Combat Texas Grass Allergies"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Seasonal</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 min read</div>
+            <h2 class="blog-card__title">From BBQs to Rodeos: Tips to Combat Texas Grass Allergies</h2>
+            <p class="blog-card__excerpt">Discover expert tips to tackle Texas grass allergies and enjoy the outdoors!</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 8 -->
+        <article class="blog-card anim-fade-up anim-delay-1">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/65fbace5c48e3bcdc6662ae3_Screenshot%202024-03-20%20at%208.42.49%E2%80%AFPM.png"
+              alt="Oak Pollen Alert: 4 Practical Tips for a Sneeze-Free Allergy Season"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Seasonal</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Oak Pollen Alert: 4 Practical Tips for a Sneeze-Free Allergy Season</h2>
+            <p class="blog-card__excerpt">Spring pollen management guidance with statistics on prevalence</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 9 -->
+        <article class="blog-card anim-fade-up anim-delay-2">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/631616911824073bf7b3699f_small_Eating_Food_in_Grassy_Field.png"
+              alt="The Difference Between Food Allergies and Food Intolerances"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Food Allergies</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 min read</div>
+            <h2 class="blog-card__title">The Difference Between Food Allergies and Food Intolerances</h2>
+            <p class="blog-card__excerpt">A clear guide to understanding the difference between an immune reaction and a digestive one</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 10 -->
+        <article class="blog-card anim-fade-up anim-delay-3">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/63161689dfa81f27e3269899_small_girl_sitting_no_allergies.png"
+              alt="Environmental Allergies in Children"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Kids &amp; Family</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Environmental Allergies in Children</h2>
+            <p class="blog-card__excerpt">Seasonal allergic effects on school-age children during outdoor activities</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 11 -->
+        <article class="blog-card anim-fade-up anim-delay-1">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/632a021ac3cae4f891035a27_pexels-karolina-grabowska-4046564.jpg"
+              alt="6 Skin Allergy Conditions and Their Treatments"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Skin</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 min read</div>
+            <h2 class="blog-card__title">6 Skin Allergy Conditions and Their Treatments</h2>
+            <p class="blog-card__excerpt">An overview of dermatological allergic reactions and how we treat them</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 12 -->
+        <article class="blog-card anim-fade-up anim-delay-2">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6377cb23ba0f53ecec719336_GettyImages-1352460782.jpg"
+              alt="Food Allergy Key Concepts"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Food Allergies</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Food Allergy Key Concepts</h2>
+            <p class="blog-card__excerpt">Food allergy prevalence is increasing — up to 8% of kids in the US. Here's what you need to know.</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 13 -->
+        <article class="blog-card anim-fade-up anim-delay-3">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6377c9ee879e13bf68f2fa1b_GettyImages-1349606988.jpg"
+              alt="Teal Pumpkin Project (FARE)"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Kids &amp; Family</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 min read</div>
+            <h2 class="blog-card__title">Teal Pumpkin Project (FARE)</h2>
+            <p class="blog-card__excerpt">Dr. Gharfeh on Halloween allergy awareness and inclusive trick-or-treating</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 14 -->
+        <article class="blog-card anim-fade-up anim-delay-1">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6377cbc0b7f3da7d4398fdf7_GettyImages-1138233840.jpg"
+              alt="Indoor Allergens"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Indoor Allergies</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Indoor Allergens</h2>
+            <p class="blog-card__excerpt">Most clinically relevant indoor allergens are cat, dog, and dust mites. Here's how to manage them.</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 15 -->
+        <article class="blog-card anim-fade-up anim-delay-2">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6377cc9380887f927428b740_GettyImages-1266812460.jpg"
+              alt="Skin Care: Part Two"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Skin</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 min read</div>
+            <h2 class="blog-card__title">Skin Care: Part Two</h2>
+            <p class="blog-card__excerpt">Follow-up guidance on managing sensitive skin triggers and treatments</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 16 -->
+        <article class="blog-card anim-fade-up anim-delay-3">
+          <div class="blog-card__image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6377cc65283a8db5afb9d184_GettyImages-854074920.jpg"
+              alt="Skin Care: Part One"
+              loading="lazy"
+            />
+                      <span class="blog-card__tag-overlay">Skin</span>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 min read</div>
+            <h2 class="blog-card__title">Skin Care: Part One</h2>
+            <p class="blog-card__excerpt">Almost all our patients have some degree of sensitive skin — especially those with asthma and allergies.</p>
+            <div class="blog-card__footer">
+              <a href="#" class="blog-card__read-link">
+                Read
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===========================================================================
+         CTA STRIP
+         =========================================================================== -->
+    <section class="blog-cta-strip" id="book" aria-labelledby="blog-cta-heading">
+      <div class="blog-cta-strip__inner anim-fade-up">
+        <span class="eyebrow">Ready to Feel Better?</span>
+        <h2 class="blog-cta-strip__headline" id="blog-cta-heading">
+          Get Expert Care from Waco's Trusted Allergists
+        </h2>
+        <p class="blog-cta-strip__sub">
+          Board-certified specialists serving Central Texas for over 45 years. Schedule your appointment today.
+        </p>
+        <div class="blog-cta-strip__buttons">
+          <a href="#" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="2" width="14" height="13" rx="2"/><path d="M1 6h14M5 1v2M11 1v2"/></svg>
+            Request Appointment
+          </a>
+          <a href="tel:2547533646" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 1h3l1.5 3.5L5 6c.9 1.9 2.1 3.1 4 4l1.5-1.5L14 10v3c-6.6.5-12.5-5.4-12-12z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+            (254) 753-3646
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===========================================================================
+       FOOTER — matches Footer.tsx
+       =========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+
+        <div>
+          <p class="site-footer__logo">ALLERGY &amp; ASTHMA CARE OF WACO</p>
+          <p class="site-footer__about">Providing specialized, compassionate care for allergies and asthma in Central Texas since 1978.</p>
+        </div>
+
+        <div>
+          <p class="site-footer__col-title">Quick Links</p>
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About Our Practice</a></li>
+            <li><a href="#">New Patients</a></li>
+            <li><a href="#">Patient Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="site-footer__col-title">Treatments</p>
+          <ul class="site-footer__links">
+            <li><a href="/treatment-immunotherapy.html">Immunotherapy (Shots)</a></li>
+            <li><a href="#">Asthma Care</a></li>
+            <li><a href="#">Allergy Testing</a></li>
+            <li><a href="#">Food Allergy Care</a></li>
+            <li><a href="#">Virtual Care</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="site-footer__col-title">Contact Us</p>
+          <div class="site-footer__contact">
+            <div class="site-footer__contact-item">
+              <svg class="site-footer__contact-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.2 1 2 3.2 2 6c0 3.8 5 8 5 8s5-4.2 5-8c0-2.8-2.2-5-5-5zm0 6.5A1.5 1.5 0 1 1 7 4a1.5 1.5 0 0 1 0 3.5z" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+              <span>221 Jewell Drive<br>Waco, TX 76712</span>
+            </div>
+            <div class="site-footer__contact-item">
+              <svg class="site-footer__contact-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 1h3l1.5 3.5L5 6c.9 1.9 2.1 3.1 4 4l1.5-1.5L14 10v3c-6.6.5-12.5-5.4-12-12z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+              <a href="tel:2547533646">(254) 753-3646</a>
+            </div>
+            <div class="site-footer__contact-item">
+              <svg class="site-footer__contact-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M1 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <a href="mailto:info@allergywaco.com">info@allergywaco.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Allergy &amp; Asthma Care of Waco. All rights reserved.</p>
+        <div style="display:flex; gap:20px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================================================================
+       SCRIPTS
+       =========================================================================== -->
+  <script>
+    // ── Mobile Nav ────────────────────────────────────────────────────────────
+    (function () {
+      var overlay = document.getElementById('nav-overlay');
+      var openBtn = document.getElementById('nav-open');
+      var closeBtn = document.getElementById('nav-close');
+
+      openBtn.addEventListener('click', function () {
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+      closeBtn.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeMenu();
+      });
+      function closeMenu() {
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    })();
+
+    function toggleMobSub(id) {
+      var item = document.getElementById(id);
+      item.classList.toggle('is-open');
+    }
+
+    // ── Scroll Animations ─────────────────────────────────────────────────────
+    (function () {
+      var els = document.querySelectorAll('.anim-fade-up, .anim-fade-in');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // ── Blog Tag Filters ─────────────────────────────────────────────────────
+    (function () {
+      var pills = Array.prototype.slice.call(document.querySelectorAll('.blog-filter-pill'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.blog-grid .blog-card'));
+      var featuredSection = document.querySelector('.blog-featured');
+      var featuredTagEl = document.querySelector('.blog-featured .blog-tag-pill');
+
+      if (!pills.length || !cards.length) return;
+
+      function normalize(text) {
+        return (text || '').trim().toLowerCase();
+      }
+
+      cards.forEach(function (card) {
+        var tag = card.querySelector('.blog-card__tag-overlay');
+        card.dataset.filterTag = normalize(tag ? tag.textContent : '');
+      });
+
+      var featuredTag = normalize(featuredTagEl ? featuredTagEl.textContent : '');
+
+      function setActivePill(activePill) {
+        pills.forEach(function (pill) {
+          var isActive = pill === activePill;
+          pill.classList.toggle('blog-filter-pill--active', isActive);
+          pill.classList.toggle('blog-filter-pill--inactive', !isActive);
+        });
+      }
+
+      function applyFilter(tag) {
+        var filterTag = normalize(tag);
+        var showAll = filterTag === 'all';
+
+        cards.forEach(function (card) {
+          var matches = showAll || card.dataset.filterTag === filterTag;
+          card.style.display = matches ? '' : 'none';
+        });
+
+        if (featuredSection) {
+          var showFeatured = showAll || featuredTag === filterTag;
+          featuredSection.style.display = showFeatured ? '' : 'none';
+        }
+      }
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          var selectedTag = pill.dataset.filter || pill.textContent;
+          setActivePill(pill);
+          applyFilter(selectedTag);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

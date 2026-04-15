@@ -55,7 +55,7 @@ export default function ClinicInfoBar() {
         <button
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
-          className="flex items-center gap-1.5 text-[13px] text-charcoal font-medium hover:text-terracotta transition-colors whitespace-nowrap"
+          className="cursor-pointer flex items-center gap-1.5 text-[13px] font-semibold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap border border-charcoal/15 hover:border-terracotta/40 rounded-xl px-3 py-1.5 bg-cream-dark/60 hover:bg-terracotta/5"
         >
           <Clock className="w-3 h-3 shrink-0 text-terracotta" />
           {todayStatus}{todayHours && ` · ${todayHours}`}
@@ -97,9 +97,9 @@ export default function ClinicInfoBar() {
         <button
           onClick={() => setOpen(v => !v)}
           aria-expanded={open}
-          className="w-full flex items-center justify-between border-t border-charcoal/10 py-2.5 mt-2 text-left"
+          className="cursor-pointer w-full flex items-center justify-between border border-charcoal/15 hover:border-terracotta/40 bg-cream-dark/60 hover:bg-terracotta/5 rounded-xl px-3 py-2.5 mt-2 text-left transition-colors"
         >
-          <span className="flex items-center gap-2 text-[13px] text-charcoal font-medium">
+          <span className="flex items-center gap-2 text-[13px] text-charcoal font-semibold">
             <Clock className="w-3.5 h-3.5 text-terracotta shrink-0" />
             {todayStatus}{todayHours && ` · ${todayHours}`}
           </span>

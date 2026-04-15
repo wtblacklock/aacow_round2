@@ -33,7 +33,7 @@ export default function Testimonials() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20"
         >
-          <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-4 block">Patient Stories</span>
+          <span className="text-xs font-medium tracking-widest uppercase text-forest mb-4 block">Patient Stories</span>
           <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal leading-[1.0]">
             Real Relief, Real Lives
           </h2>

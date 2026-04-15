@@ -124,6 +124,8 @@
       --sand:           #d8c3b0;
       --terracotta:     #c06044;
       --terracotta-hover: #a84e34;
+      --forest:         #1e4d38;
+      --forest-hover:   #163829;
       --sage:           #2a6257;
       --sage-light:     #e6efed;
       --white:          #ffffff;
@@ -1912,6 +1914,27 @@
       .site-footer__grid { grid-template-columns: 1fr; }
       .site-footer__bottom { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── Interior green overrides ── */
+    .eyebrow { color: var(--forest); }
+    .tx-intro__display em { color: var(--forest); }
+    .tx-fact__number { color: var(--forest); }
+    .tx-condition-card::before { background: var(--forest); }
+    .tx-step__num { color: var(--forest); }
+    .tx-step__detail-link { color: var(--forest); }
+    .tx-timeline__title { color: var(--forest); }
+    .tx-timeline__phase-label { color: var(--forest); }
+    .tx-timeline__tick { background: var(--forest); }
+    .tx-jump-nav__link.is-active { border-bottom-color: var(--terracotta); }
+    .tx-intro__card:hover strong { color: var(--forest); }
+    .tx-intro__card:hover .tx-intro__icon { border-color: var(--forest); color: var(--forest); }
+    .tx-outcome:hover strong { color: var(--forest); }
+    .tx-outcome:hover .tx-outcome__icon { border-color: var(--forest); color: var(--forest); }
+    .tx-faq__q:hover { color: var(--forest); }
+    .tx-faq__item.is-open .tx-faq__icon { color: var(--forest); }
+    .btn-forest { background: var(--forest); }
+    .btn-forest:hover { background: var(--forest-hover); }
+    .tx-step__text-box--accent.is-accented { background: var(--forest); box-shadow: 0 18px 38px rgba(30,77,56,0.22); }
   </style>
 </head>
 <body>
@@ -1966,7 +1989,7 @@
         </div>
 
         <a href="#" class="site-nav__link">New Patients</a>
-        <a href="/#about" class="site-nav__link">About</a>
+        <a href="/about.html" class="site-nav__link">About</a>
         <a href="#" class="site-nav__link">Patient Portal</a>
       </nav>
 
@@ -2037,7 +2060,7 @@
       </div>
 
       <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">New Patients</a></div>
-      <div class="site-nav__overlay-item"><a href="/#about" class="site-nav__overlay-link">About</a></div>
+      <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link">About</a></div>
       <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
       <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
     </div>
@@ -2076,7 +2099,7 @@
               This is not symptom patchwork. Allergy shots retrain your immune system so pollen, dust, and dander stop running your days. A personalized plan built for long-term relief in Waco.
             </p>
             <div class="btn-group">
-              <a href="#book" class="btn btn-primary">Request Consultation</a>
+              <a href="#book" class="btn btn-primary btn-forest">Request Consultation</a>
               <a href="tel:2547533646" class="btn btn-ghost">(254) 753-3646</a>
             </div>
           </div>

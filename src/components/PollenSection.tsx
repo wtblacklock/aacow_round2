@@ -1,28 +1,37 @@
 import { motion } from 'motion/react';
 import { CalendarDays, CircleHelp, Leaf, Wind, Droplets, Sprout, ArrowRight } from 'lucide-react';
 
-type Level = 'High' | 'Moderate' | 'Low';
+type Level = 'None' | 'Low' | 'Medium' | 'High' | 'Very High' | 'Rained Out';
 
 const levelStyle: Record<Level, { label: string }> = {
-  High:     { label: 'text-terracotta' },
-  Moderate: { label: 'text-[#c08830]'  },
-  Low:      { label: 'text-sage'       },
+  'None':       { label: 'text-sage'        },
+  'Low':        { label: 'text-sage'        },
+  'Medium':     { label: 'text-[#c08830]'   },
+  'High':       { label: 'text-terracotta'  },
+  'Very High':  { label: 'text-[#a83220]'   },
+  'Rained Out': { label: 'text-charcoal/50' },
 };
 
 const TRACK_GRADIENT =
   'linear-gradient(to right, rgba(107,142,90,0.55) 0% 24%, rgba(192,136,48,0.55) 26% 54%, rgba(192,96,68,0.55) 56% 79%, rgba(180,55,40,0.50) 81% 100%)';
 
 const levelPosition: Record<Level, number> = {
-  Low:      14,
-  Moderate: 40,
-  High:     70,
+  'None':       5,
+  'Low':        14,
+  'Medium':     40,
+  'High':       70,
+  'Very High':  88,
+  'Rained Out': 50,
 };
 
 // Hex fills for the SVG lens shape
 const dotFill: Record<Level, string> = {
-  High:     '#c06044',
-  Moderate: '#c08830',
-  Low:      '#7a9e6e',
+  'None':       '#7a9e6e',
+  'Low':        '#7a9e6e',
+  'Medium':     '#c08830',
+  'High':       '#c06044',
+  'Very High':  '#a83220',
+  'Rained Out': '#888',
 };
 
 export default function PollenSection() {
@@ -58,7 +67,7 @@ export default function PollenSection() {
     },
     {
       name: 'Grass',
-      level: 'Moderate',
+      level: 'Medium',
       count: '185',
       icon: Wind,
       iconClass: '-rotate-90',
@@ -85,13 +94,13 @@ export default function PollenSection() {
           className="text-center max-w-3xl mx-auto mb-10 lg:mb-14"
         >
           <span className="inline-flex items-center justify-center gap-1.5 mb-4">
-            <span className="text-xs font-medium tracking-widest uppercase text-terracotta">
+            <span className="text-xs font-medium tracking-widest uppercase text-forest">
               Pollen Count
             </span>
             <span className="group relative inline-flex items-center">
               <button
                 type="button"
-                className="inline-flex items-center justify-center text-terracotta/60 transition-colors hover:text-terracotta"
+                className="inline-flex items-center justify-center text-forest/60 transition-colors hover:text-forest"
                 aria-label="What is pollen count?"
               >
                 <CircleHelp className="h-3 w-3" />
@@ -124,7 +133,7 @@ export default function PollenSection() {
             className="group hidden lg:block absolute left-7 top-7 z-20 rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal transition-all"
           >
             <div className="flex items-center gap-2.5">
-              <CalendarDays className="h-4 w-4 shrink-0 text-terracotta" />
+              <CalendarDays className="h-4 w-4 shrink-0 text-forest" />
               <div>
                 <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">As of</p>
                 <p className="text-sm font-medium leading-tight">{currentDate}</p>
@@ -132,10 +141,10 @@ export default function PollenSection() {
             </div>
             {/* Season guide link — revealed naturally as part of the badge */}
             <div className="flex items-center justify-between gap-3 mt-2 pt-2 border-t border-charcoal/10">
-              <span className="text-[10px] text-charcoal/50 group-hover:text-terracotta transition-colors font-medium">
+              <span className="text-[10px] text-charcoal/50 group-hover:text-forest transition-colors font-medium">
                 Allergy Season Guide
               </span>
-              <ArrowRight className="w-3 h-3 text-charcoal/40 group-hover:text-terracotta group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3 h-3 text-charcoal/40 group-hover:text-forest group-hover:translate-x-0.5 transition-all" />
             </div>
           </a>
 
@@ -149,17 +158,17 @@ export default function PollenSection() {
                 className="group lg:hidden self-start rounded-xl bg-cream/95 backdrop-blur-sm px-3.5 py-2.5 text-charcoal transition-all"
               >
                 <div className="flex items-center gap-2.5">
-                  <CalendarDays className="h-4 w-4 shrink-0 text-terracotta" />
+                  <CalendarDays className="h-4 w-4 shrink-0 text-forest" />
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">As of</p>
                     <p className="text-sm font-medium leading-tight">{currentDate}</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between gap-3 mt-2 pt-2 border-t border-charcoal/10">
-                  <span className="text-[10px] text-charcoal/50 group-hover:text-terracotta transition-colors font-medium">
+                  <span className="text-[10px] text-charcoal/50 group-hover:text-forest transition-colors font-medium">
                     Allergy Season Guide
                   </span>
-                  <ArrowRight className="w-3 h-3 text-charcoal/40 group-hover:text-terracotta group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-3 h-3 text-charcoal/40 group-hover:text-forest group-hover:translate-x-0.5 transition-all" />
                 </div>
               </a>
 
@@ -170,8 +179,7 @@ export default function PollenSection() {
                   const pos = levelPosition[item.level];
 
                   return (
-                    <motion.a
-                      href="#education"
+                    <motion.div
                       key={item.name}
                       initial={{ opacity: 0, rotateX: -22 }}
                       whileInView={{ opacity: 1, rotateX: 0 }}
@@ -184,11 +192,11 @@ export default function PollenSection() {
                         delay: index * 0.2,
                         opacity: { duration: 0.2, ease: 'easeOut', delay: index * 0.2 },
                       }}
-                      className="group bg-cream/95 backdrop-blur-sm rounded-2xl p-5 lg:p-6 flex flex-col gap-4 hover:bg-cream transition-all duration-300 cursor-pointer"
+                      className="bg-cream/95 backdrop-blur-sm rounded-2xl p-5 lg:p-6 flex flex-col gap-4"
                     >
                       {/* Title — visible immediately with the card */}
                       <div className="flex items-start justify-between gap-3">
-                        <h3 className="text-[30px] lg:text-[38px] font-heading font-semibold text-charcoal leading-none tracking-tight group-hover:text-terracotta transition-colors duration-300">
+                        <h3 className="text-[30px] lg:text-[38px] font-heading font-semibold text-charcoal leading-none tracking-tight">
                           {item.name}
                         </h3>
                         {/* Icon fades in after card settles */}
@@ -198,7 +206,7 @@ export default function PollenSection() {
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.2 + 0.3, duration: 0.35, ease: 'easeOut' }}
                         >
-                          <Icon className={`w-5 h-5 text-charcoal/35 shrink-0 mt-1 group-hover:text-terracotta/50 transition-colors duration-300 ${item.iconClass ?? ''}`} strokeWidth={1.5} />
+                          <Icon className={`w-5 h-5 text-charcoal/35 shrink-0 mt-1 ${item.iconClass ?? ''}`} strokeWidth={1.5} />
                         </motion.div>
                       </div>
 
@@ -213,10 +221,10 @@ export default function PollenSection() {
                         {/* Spectrum track + dot */}
                         <div className="relative pt-5 pb-3">
                           <span
-                            className="absolute top-0 text-[8px] font-semibold uppercase tracking-widest text-charcoal/40 -translate-x-1/2"
+                            className="absolute top-0 text-[8px] font-semibold uppercase tracking-widest text-charcoal/40 -translate-x-1/2 whitespace-nowrap"
                             style={{ left: `${pos}%` }}
                           >
-                            Today
+                            {item.level}
                           </span>
                           <div className="relative flex items-center h-8">
                             <div
@@ -246,7 +254,7 @@ export default function PollenSection() {
                         {/* Level + count */}
                         <div className="flex items-center justify-between">
                           <span className={`text-[11px] font-bold uppercase tracking-[0.14em] ${styles.label}`}>
-                            {item.level}
+                            Today
                           </span>
                           <span className="text-[11px] text-charcoal/40 font-mono tabular-nums">
                             {item.count} g/m³
@@ -255,18 +263,21 @@ export default function PollenSection() {
 
                         {/* Context line + local note */}
                         <div className="border-t border-charcoal/8 pt-3">
+                          <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-charcoal/40 mb-1">
+                            You may be experiencing
+                          </p>
                           <p className="text-[12px] text-charcoal font-light leading-snug">
                             {item.context}
                           </p>
                           {item.localNote && (
-                            <p className="text-[11px] text-terracotta/65 font-medium mt-1">
+                            <p className="text-[11px] text-forest/65 font-medium mt-1">
                               {item.localNote}
                             </p>
                           )}
                         </div>
                       </motion.div>
 
-                    </motion.a>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -293,13 +304,13 @@ export default function PollenSection() {
 
             {/* Label + season + link */}
             <div className="shrink-0">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-terracotta mb-1">PollenCast</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-forest mb-1">PollenCast</p>
               <p className="text-[13px] font-medium text-charcoal leading-snug whitespace-nowrap">
                 Spring 2026<br className="hidden lg:block" /><span className="lg:hidden"> · </span>Waco &amp; Central Texas
               </p>
               <a
                 href="#education"
-                className="group inline-flex items-center gap-1 mt-3 text-[11px] font-medium text-charcoal/45 hover:text-terracotta transition-colors"
+                className="group inline-flex items-center gap-1 mt-3 text-[11px] font-medium text-charcoal/45 hover:text-forest transition-colors"
               >
                 Allergy Season Guide
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />

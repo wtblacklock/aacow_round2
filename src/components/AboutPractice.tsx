@@ -21,7 +21,7 @@ export default function AboutPractice() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <span className="text-xs font-medium tracking-widest uppercase text-terracotta mb-6 block">Our Legacy</span>
+            <span className="text-xs font-medium tracking-widest uppercase text-forest mb-6 block">Our Legacy</span>
             <h2 className="text-[52px] lg:text-[80px] font-heading font-semibold text-charcoal mb-8 leading-[1.0]">
               Rooted in Waco Since 1978.
             </h2>

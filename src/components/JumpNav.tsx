@@ -68,7 +68,7 @@ export default function JumpNav() {
             data-id={id}
             className={`px-4 h-full flex items-center text-[10.5px] font-semibold uppercase tracking-[0.10em] whitespace-nowrap transition-all border-b-2 ${
               active === id
-                ? 'text-charcoal border-terracotta'
+                ? 'text-charcoal border-forest'
                 : 'text-charcoal/40 border-transparent hover:text-charcoal/70 hover:border-sand'
             }`}
           >
@@ -87,7 +87,7 @@ export default function JumpNav() {
               data-id={id}
               className={`px-3.5 h-full flex items-center text-[10px] font-semibold uppercase tracking-[0.10em] whitespace-nowrap transition-all border-b-2 ${
                 active === id
-                  ? 'text-charcoal border-terracotta'
+                  ? 'text-charcoal border-forest'
                   : 'text-charcoal/40 border-transparent hover:text-charcoal/70'
               }`}
             >
