@@ -6,9 +6,9 @@ type Level = 'None' | 'Low' | 'Medium' | 'High' | 'Very High' | 'Rained Out';
 const levelStyle: Record<Level, { label: string }> = {
   'None':       { label: 'text-sage'        },
   'Low':        { label: 'text-sage'        },
-  'Medium':     { label: 'text-[#c08830]'   },
+  'Medium':     { label: 'text-amber'        },
   'High':       { label: 'text-terracotta'  },
-  'Very High':  { label: 'text-[#a83220]'   },
+  'Very High':  { label: 'text-danger'       },
   'Rained Out': { label: 'text-charcoal/50' },
 };
 
@@ -35,12 +35,6 @@ const dotFill: Record<Level, string> = {
 };
 
 export default function PollenSection() {
-  const currentDate = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date());
-
   const pollenData: {
     name: string;
     level: Level;
@@ -123,8 +117,9 @@ export default function PollenSection() {
             muted
             loop
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
-          style={{ objectPosition: '25% center' }}
+            style={{ objectPosition: '25% center' }}
           />
 
           {/* Date badge — desktop only, absolute top-left */}
@@ -135,8 +130,8 @@ export default function PollenSection() {
             <div className="flex items-center gap-2.5">
               <CalendarDays className="h-4 w-4 shrink-0 text-forest" />
               <div>
-                <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">As of</p>
-                <p className="text-sm font-medium leading-tight">{currentDate}</p>
+                <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">Season</p>
+                <p className="text-sm font-medium leading-tight">Spring 2026</p>
               </div>
             </div>
             {/* Season guide link — revealed naturally as part of the badge */}
@@ -160,8 +155,8 @@ export default function PollenSection() {
                 <div className="flex items-center gap-2.5">
                   <CalendarDays className="h-4 w-4 shrink-0 text-forest" />
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">As of</p>
-                    <p className="text-sm font-medium leading-tight">{currentDate}</p>
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-charcoal/60">Season</p>
+                    <p className="text-sm font-medium leading-tight">Spring 2026</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between gap-3 mt-2 pt-2 border-t border-charcoal/10">
@@ -219,13 +214,7 @@ export default function PollenSection() {
                         className="flex flex-col gap-4"
                       >
                         {/* Spectrum track + dot */}
-                        <div className="relative pt-5 pb-3">
-                          <span
-                            className="absolute top-0 text-[8px] font-semibold uppercase tracking-widest text-charcoal/40 -translate-x-1/2 whitespace-nowrap"
-                            style={{ left: `${pos}%` }}
-                          >
-                            {item.level}
-                          </span>
+                        <div className="relative pt-2 pb-3">
                           <div className="relative flex items-center h-8">
                             <div
                               className="absolute inset-x-0 h-[3px] rounded-full"
@@ -263,7 +252,7 @@ export default function PollenSection() {
 
                         {/* Context line + local note */}
                         <div className="border-t border-charcoal/8 pt-3">
-                          <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-charcoal/40 mb-1">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-charcoal/40 mb-1">
                             You may be experiencing
                           </p>
                           <p className="text-[12px] text-charcoal font-light leading-snug">

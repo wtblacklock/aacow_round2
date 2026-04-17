@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Wind, Droplets, Eye, Activity, Heart, Apple } from 'lucide-react';
-import CardGradientOverlay, { cardMouseHandlers } from './CardGradientOverlay';
+import { Wind, Droplets, Eye, Activity, Heart, Apple } from 'lucide-react';
+import { cardMouseHandlers } from './CardGradientOverlay';
 
 const symptoms = [
   { title: "Chronic Cough", desc: "Persistent coughing that won't go away, especially at night or after exercise.", icon: Wind },
@@ -44,9 +44,8 @@ export default function SymptomsSection() {
                 viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: idx * 0.2, opacity: { duration: 0.2, ease: 'easeOut', delay: idx * 0.2 } }}
-                className="group relative overflow-hidden bg-cream-dark rounded-3xl p-8 lg:p-10 flex flex-col min-h-[360px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
+                className="group relative overflow-hidden bg-transparent border border-charcoal/15 rounded-3xl p-8 lg:p-10 flex flex-col min-h-[360px] hover:border-charcoal/30 hover:bg-cream-dark/50 transition-all duration-300"
               >
-                <CardGradientOverlay index={idx} />
                 {/* Top: title + oval icon */}
                 <div className="flex justify-between items-start gap-4">
                   <h3 className="text-[30px] lg:text-[34px] font-heading font-semibold text-charcoal group-hover:text-forest transition-colors duration-300 leading-[1.1]">
@@ -62,12 +61,9 @@ export default function SymptomsSection() {
 
                 {/* Bottom: desc + explore */}
                 <div>
-                  <p className="text-[15px] text-charcoal font-light leading-relaxed mb-6">
+                  <p className="text-[15px] text-charcoal font-light leading-relaxed">
                     {symptom.desc}
                   </p>
-                  <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-forest transition-colors">
-                    Explore <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
                 </div>
               </motion.div>
             );

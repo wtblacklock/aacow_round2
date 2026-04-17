@@ -37,7 +37,7 @@ export default function Hero() {
 
           {/* H1 — top left, unaffected by scroll fade */}
           <div className="absolute top-[22px] left-[22px] lg:top-[32px] lg:left-[32px] z-10 max-w-2xl">
-            <h1 className="text-[46px] lg:text-[82px] font-bold text-charcoal leading-[1.0]">
+            <h1 className="font-bold text-charcoal leading-[1.0]" style={{ fontSize: 'clamp(46px, 6.5vw, 82px)' }}>
               <span className="block font-heading tracking-tight">Waco's Allergy Clinic</span>
             </h1>
           </div>
@@ -66,7 +66,8 @@ export default function Hero() {
 
             <img
               src="/images/icons/texas_aacow.svg"
-              alt="Allergy & Asthma Care of Waco — Texas"
+              alt=""
+              role="presentation"
               className="shrink-0"
               style={{ height: 'clamp(57px, 9.75vw, 168px)', width: 'auto', filter: 'brightness(0)' }}
             />

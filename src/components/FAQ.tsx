@@ -54,8 +54,11 @@ export default function FAQ() {
             >
               <CardGradientOverlay index={idx} />
               <button
+                id={`faq-btn-${idx}`}
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none group/btn hover:text-forest transition-colors"
+                aria-expanded={openIndex === idx}
+                aria-controls={`faq-panel-${idx}`}
+                className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 focus-visible:ring-offset-2 rounded group/btn hover:text-forest transition-colors"
               >
                 <span className="text-[20px] font-heading font-semibold leading-tight text-charcoal group-hover/btn:text-forest transition-colors pr-8">{faq.question}</span>
                 <span className={`shrink-0 transition-all duration-300 ${openIndex === idx ? 'text-forest rotate-45' : 'text-charcoal'}`}>
@@ -63,6 +66,9 @@ export default function FAQ() {
                 </span>
               </button>
               <div
+                id={`faq-panel-${idx}`}
+                role="region"
+                aria-labelledby={`faq-btn-${idx}`}
                 className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
                   openIndex === idx ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                 }`}

@@ -49,7 +49,9 @@ export default function Navigation() {
 
             {/* Logo */}
             <div className="flex-1 flex items-center">
-              <img src="/images/icons/aacow_logo.svg" alt="Allergy & Asthma Care of Waco" className="h-10 w-auto cursor-pointer" />
+              <a href="/" aria-label="Allergy & Asthma Care of Waco – Home">
+                <img src="/images/icons/aacow_logo.svg" alt="Allergy & Asthma Care of Waco" className="h-10 w-auto" />
+              </a>
             </div>
 
             {/* Desktop nav */}
@@ -149,7 +151,9 @@ export default function Navigation() {
           >
             {/* Top bar */}
             <div className="px-[25px] flex items-center justify-between h-[78px] shrink-0 border-b border-sand/40">
-              <img src="/images/icons/aacow_logo.svg" alt="Allergy & Asthma Care of Waco" className="h-10 w-auto" />
+              <a href="/" aria-label="Allergy & Asthma Care of Waco – Home">
+                <img src="/images/icons/aacow_logo.svg" alt="Allergy & Asthma Care of Waco" className="h-10 w-auto" />
+              </a>
               <button
                 onClick={closeAll}
                 className="w-10 h-10 rounded-full bg-charcoal/8 flex items-center justify-center text-charcoal"
