@@ -642,9 +642,6 @@
       transition: opacity 0.2s ease,
                   transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .anim-card-down--soft {
-      transform: perspective(900px) rotateX(-12deg);
-    }
     .anim-fade-up.is-visible,
     .anim-card-down.is-visible {
       opacity: 1;
@@ -757,7 +754,6 @@
       line-height: 0.98;
       letter-spacing: -0.01em;
       max-width: 14ch;
-      margin-bottom: 16px;
     }
     .tx-intro__display em {
       font-family: var(--font-display);
@@ -770,7 +766,7 @@
       line-height: 1.8;
       color: var(--charcoal-light);
       max-width: 54ch;
-      margin-top: 0;
+      margin-top: 24px;
       margin-bottom: 20px;
     }
     .tx-intro__cards {
@@ -787,74 +783,8 @@
       display: flex;
       flex-direction: column;
       transition: background 0.3s;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
     }
     .tx-intro__card:hover { background: rgba(216, 195, 176, 0.4); }
-    .tx-intro__card--precision::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('/images/treatments/vial.png');
-      background-repeat: no-repeat;
-      background-position: center calc(64% - 45px);
-      background-size: 63% auto;
-      opacity: 0.78;
-      mix-blend-mode: multiply;
-      filter: brightness(0.7) contrast(1.28);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .tx-intro__card--consistency::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('/images/treatments/calendar.png');
-      background-repeat: no-repeat;
-      background-position: center calc(64% - 45px);
-      background-size: 53% auto;
-      opacity: 0.78;
-      mix-blend-mode: multiply;
-      filter: brightness(0.7) contrast(1.28);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .tx-intro__card--safety::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('/images/treatments/safety.png');
-      background-repeat: no-repeat;
-      background-position: center calc(64% - 45px);
-      background-size: 63% auto;
-      opacity: 0.78;
-      mix-blend-mode: multiply;
-      filter: brightness(0.7) contrast(1.28);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .tx-intro__card--durability::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('/images/treatments/durability.png');
-      background-repeat: no-repeat;
-      background-position: center calc(64% - 45px);
-      background-size: 71% auto;
-      opacity: 0.78;
-      mix-blend-mode: multiply;
-      filter: brightness(0.7) contrast(1.28);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .tx-intro__card--precision > *,
-    .tx-intro__card--consistency > *,
-    .tx-intro__card--safety > *,
-    .tx-intro__card--durability > * {
-      position: relative;
-      z-index: 1;
-    }
     .tx-intro__card-top {
       display: flex;
       justify-content: space-between;
@@ -967,12 +897,6 @@
       align-items: start;
       margin-bottom: 0;
     }
-    .tx-facts__header .t-headline {
-      margin: 10px 0 0;
-    }
-    .tx-facts__header .t-body {
-      margin-top: 12px;
-    }
     .tx-facts__header > div {
       padding-left: 20px;
     }
@@ -1003,9 +927,6 @@
       font-size: 13px;
       line-height: 1.7;
       color: var(--charcoal-light);
-    }
-    .tx-facts__intro {
-      margin: 6px 0 0;
     }
 
     .tx-process {
@@ -1060,10 +981,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(26px, 4vw, 58px);
-      align-items: start;
+      align-items: stretch;
     }
-    .tx-why__lead { order: 2; }
-    .tx-outcomes { order: 1; }
     .tx-why__lead {
       border-radius: 24px;
       padding: clamp(24px, 3vw, 34px) clamp(24px, 3vw, 34px) clamp(24px, 3vw, 34px) 0;
@@ -1083,21 +1002,9 @@
       line-height: 1.82;
       color: var(--charcoal-light);
     }
-    @media (min-width: 1041px) {
-      .tx-why__grid {
-        gap: clamp(40px, 6vw, 96px);
-        align-items: center;
-      }
-      .tx-why__lead {
-        justify-content: center;
-        align-items: stretch;
-        text-align: left;
-      }
-    }
     .tx-outcomes {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
     .tx-outcome {
@@ -1209,28 +1116,18 @@
       transform: rotate(45deg);
     }
     .tx-faq__answer {
-      display: grid;
-      grid-template-rows: 0fr;
       overflow: hidden;
-      opacity: 0;
-      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tx-faq__answer-inner {
-      overflow: hidden;
-      min-height: 0;
-      padding: 0 32px 0;
+      padding: 0 32px 28px;
       font-size: 16px;
       font-weight: 300;
       line-height: 1.85;
       color: var(--charcoal);
-      transition: padding-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .tx-faq__item.is-open .tx-faq__answer {
-      grid-template-rows: 1fr;
-      opacity: 1;
-    }
-    .tx-faq__item.is-open .tx-faq__answer-inner { padding-bottom: 28px; }
+    .tx-faq__item.is-open .tx-faq__answer { max-height: 600px; }
 
 
 
@@ -1298,10 +1195,6 @@
       .tx-gallery__card--feature { grid-column: span 2; }
       .tx-step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .tx-facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .tx-why__grid { grid-template-columns: 1fr; }
-      .tx-why__lead,
-      .tx-outcomes { order: initial; }
-      .tx-outcomes { grid-template-columns: 1fr; }
       .tx-conditions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tx-related__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -1426,7 +1319,7 @@
           </div>
         </div>
 
-        <a href="/#pollen" class="site-nav__link">Allergy Seasons</a>
+        <a href="/allergy-seasons.html" class="site-nav__link">Allergy Seasons</a>
 
         <!-- Resources dropdown -->
         <div class="site-nav__dropdown">
@@ -1499,7 +1392,7 @@
       </div>
 
       <!-- Direct links -->
-      <div class="site-nav__overlay-item"><a href="/#pollen" class="site-nav__overlay-link">Allergy Seasons</a></div>
+      <div class="site-nav__overlay-item"><a href="/allergy-seasons.html" class="site-nav__overlay-link">Allergy Seasons</a></div>
 
       <!-- Resources — expandable -->
       <div class="site-nav__overlay-item" id="mob-resources">
@@ -1567,7 +1460,7 @@
           </div>
           <div class="anim-fade-up delay-1">
             <ul class="tx-intro__cards" aria-label="Immunotherapy pillars">
-              <li class="tx-intro__card tx-intro__card--precision anim-card-down">
+              <li class="tx-intro__card anim-card-down">
                 <div class="tx-intro__card-top">
                   <strong>Precision</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1577,7 +1470,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>Your vial is blended from your exact test profile, not a generic formula.</p>
               </li>
-              <li class="tx-intro__card tx-intro__card--consistency anim-card-down delay-1">
+              <li class="tx-intro__card anim-card-down delay-1">
                 <div class="tx-intro__card-top">
                   <strong>Consistency</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1587,7 +1480,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>A predictable cadence of visits makes progress measurable month to month.</p>
               </li>
-              <li class="tx-intro__card tx-intro__card--safety anim-card-down delay-2">
+              <li class="tx-intro__card anim-card-down delay-2">
                 <div class="tx-intro__card-top">
                   <strong>Safety</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1597,7 +1490,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>Every dose is supervised with routine observation after each injection.</p>
               </li>
-              <li class="tx-intro__card tx-intro__card--durability anim-card-down delay-3">
+              <li class="tx-intro__card anim-card-down delay-3">
                 <div class="tx-intro__card-top">
                   <strong>Durability</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1615,7 +1508,7 @@
 
     <section class="tx-facts" aria-labelledby="facts-heading">
       <div class="container">
-        <figure class="tx-facts__media anim-card-down anim-card-down--soft" aria-label="Immunotherapy visit in clinic">
+        <figure class="tx-facts__media anim-card-down" aria-label="Immunotherapy visit in clinic">
           <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection visit" />
         </figure>
         <div class="tx-facts__content">
