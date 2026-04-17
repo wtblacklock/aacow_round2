@@ -59,7 +59,7 @@ export default function TreatmentsSection() {
                 viewport={{ once: true, margin: '0px 0px 200px 0px' }}
                 style={{ transformOrigin: 'bottom center', transformPerspective: 900 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay, opacity: { duration: 0.2, ease: 'easeOut', delay } }}
-                className="group relative overflow-hidden bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[330px] lg:min-h-[390px] cursor-pointer hover:bg-sand/40 transition-colors duration-300"
+                className={`group relative overflow-hidden bg-cream-dark rounded-3xl p-10 lg:p-14 flex flex-col min-h-[330px] lg:min-h-[390px] ${treatment.href ? 'cursor-pointer' : ''} hover:bg-sand/40 transition-colors duration-300`}
               >
                 <CardGradientOverlay index={idx} />
                 {/* Top: title + oval icon */}
@@ -77,12 +77,14 @@ export default function TreatmentsSection() {
 
                 {/* Bottom: desc + explore */}
                 <div>
-                  <p className="text-[16px] text-charcoal font-light leading-relaxed mb-7">
+                  <p className={`text-[16px] text-charcoal font-light leading-relaxed ${treatment.href ? 'mb-7' : ''}`}>
                     {treatment.desc}
                   </p>
-                  <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-forest transition-colors">
-                    Explore <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  {treatment.href && (
+                    <div className="flex items-center text-[14px] font-medium text-charcoal group-hover:text-forest transition-colors">
+                      Explore <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  )}
                 </div>
               </Tag>
             );

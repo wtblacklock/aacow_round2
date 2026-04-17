@@ -63,13 +63,14 @@ export default function AllergyShots() {
               <img
                 src="/images/treatments/aacow_shot.png"
                 alt="Doctor administering immunotherapy treatment"
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-charcoal/10 to-transparent" />
             </div>
 
             {/* Stat badge — own card, hanging off the bottom-left corner */}
-            <div className="absolute bottom-6 -left-10 w-52 bg-cream-dark rounded-2xl px-5 py-4 z-10">
+            <div className="absolute bottom-6 left-4 md:-left-10 w-52 bg-cream-dark rounded-2xl px-5 py-4 z-10">
               <div className="text-[40px] font-heading font-semibold text-charcoal leading-none mb-1">85%</div>
               <p className="text-[12px] text-charcoal/70 font-light leading-snug">
                 of patients report significant symptom reduction after completing immunotherapy

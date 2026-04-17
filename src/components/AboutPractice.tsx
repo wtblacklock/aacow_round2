@@ -1,13 +1,7 @@
 import { motion } from 'motion/react';
-import { MapPin, Award, Users, Clock } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 export default function AboutPractice() {
-  const stats = [
-    { icon: Award, label: "Board-Certified", value: "Allergists" },
-    { icon: Users, label: "Families Helped", value: "10,000+" },
-    { icon: Clock, label: "Years in Waco", value: "45+" },
-    { icon: MapPin, label: "Convenient", value: "Location" },
-  ];
 
   return (
     <section id="about" className="py-28 lg:py-36 bg-cream relative overflow-hidden">
@@ -34,6 +28,7 @@ export default function AboutPractice() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover scale-[1.05]"
               />
             </div>
@@ -47,14 +42,15 @@ export default function AboutPractice() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 mt-12">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col gap-2">
-                  <div className="w-12 h-12 rounded-full bg-accent-light flex items-center justify-center text-accent mb-2">
-                    <stat.icon className="w-6 h-6" />
-                  </div>
-                  <div className="text-2xl font-heading text-charcoal">{stat.value}</div>
-                  <div className="text-sm text-charcoal font-medium uppercase tracking-wider">{stat.label}</div>
+            <div className="grid grid-cols-3 gap-6 mt-12 pt-10 border-t border-charcoal/10">
+              {[
+                { value: '45+', label: 'Years in Waco' },
+                { value: '10,000+', label: 'Families helped' },
+                { value: '1978', label: 'Founded' },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <div className="text-[36px] lg:text-[44px] font-heading font-semibold text-charcoal leading-none mb-2">{value}</div>
+                  <div className="text-[13px] text-charcoal/55 font-medium uppercase tracking-wider">{label}</div>
                 </div>
               ))}
             </div>
@@ -75,6 +71,7 @@ export default function AboutPractice() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover scale-[1.05]"
               />
             </div>

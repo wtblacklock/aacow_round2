@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { Play } from 'lucide-react';
 
 export default function DoctorReassurance() {
   return (
@@ -29,21 +28,17 @@ export default function DoctorReassurance() {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-md"
           >
-            <div className="aspect-[9/16] rounded-2xl overflow-hidden relative group cursor-pointer">
+            <div className="aspect-[9/16] rounded-2xl overflow-hidden relative group">
               <video
                 src="/videos/aacow_fowler.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover scale-[1.05] transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/25 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white/85 backdrop-blur-sm rounded-full flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
-                  <Play className="w-7 h-7 ml-1" fill="currentColor" />
-                </div>
-              </div>
             </div>
 
             {/* Doctor name card */}
