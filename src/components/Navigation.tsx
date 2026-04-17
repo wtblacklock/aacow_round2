@@ -20,7 +20,7 @@ const resources = [
 // Mobile top-level — "Treatments" and "Resources" expand inline
 const mobileTopLinks = [
   { label: 'Treatments',     submenu: treatments },
-  { label: 'Allergy Seasons', href: '#pollen' },
+  { label: 'Allergy Seasons', href: '/allergy-seasons.html' },
   { label: 'Resources',      submenu: resources },
   { label: 'New Patients',   href: '#' },
   { label: 'About',          href: '/about.html' },
@@ -82,7 +82,7 @@ export default function Navigation() {
                 </div>
               </div>
 
-              <a href="#pollen" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">Allergy Seasons</a>
+              <a href="/allergy-seasons.html" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">Allergy Seasons</a>
 
               {/* Resources dropdown */}
               <div className="relative group">
