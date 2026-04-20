@@ -616,6 +616,84 @@
     }
 
     /* ==========================================================================
+       MOBILE MONTH EXPLORER  (≤899px replaces the desktop tab+viz paradigm)
+       ========================================================================== */
+    .as-mob-explorer { display: none; }
+
+    @media(max-width:899px) {
+      .as-explorer__panel { display: none; }
+      .as-mob-explorer    { display: block; }
+    }
+
+    .as-mob-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .as-mob-nav__arrow {
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid rgba(55,36,38,.15);
+      font-size: 24px; line-height: 1;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    .as-mob-nav__arrow:hover  { background: var(--cream-dark); border-color: rgba(55,36,38,.3); }
+    .as-mob-nav__center {
+      flex: 1;
+      text-align: center;
+      min-width: 0;
+    }
+    .as-mob-nav__month-name {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 9vw, 52px);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .as-mob-nav__tagline {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(55,36,38,.5);
+      margin-top: 5px;
+    }
+    .as-mob-nav__dots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .as-mob-nav__dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(55,36,38,.18);
+      cursor: pointer;
+      padding: 0;
+      transition: background .15s, transform .15s;
+    }
+    .as-mob-nav__dot.is-active {
+      background: var(--charcoal);
+      transform: scale(1.4);
+    }
+    .as-mob-allergens {
+      background: #fff;
+      border-radius: 20px;
+      padding: 22px 20px 20px;
+      border: 1.5px solid rgba(216,195,176,.4);
+      box-shadow: 0 2px 12px rgba(55,36,38,.04);
+      min-height: 100px;
+      transition: opacity .18s;
+    }
+    .as-mob-allergens.is-fading { opacity: 0; }
+
+    /* ==========================================================================
        SEASONS FLOW
        ========================================================================== */
     .as-seasons {
@@ -1046,6 +1124,21 @@
           </div>
         </aside>
       </div>
+
+      <!-- Mobile month explorer — shown ≤899px, desktop panel hidden -->
+      <div class="as-mob-explorer" id="as-mob-explorer">
+        <div class="as-mob-nav">
+          <button class="as-mob-nav__arrow" id="as-mob-prev" aria-label="Previous month">&#8249;</button>
+          <div class="as-mob-nav__center">
+            <div class="as-mob-nav__month-name" id="as-mob-month-name">January</div>
+            <div class="as-mob-nav__tagline" id="as-mob-tagline"></div>
+            <div class="as-mob-nav__dots" id="as-mob-dots"></div>
+          </div>
+          <button class="as-mob-nav__arrow" id="as-mob-next" aria-label="Next month">&#8250;</button>
+        </div>
+        <div class="as-mob-allergens" id="as-mob-allergens"></div>
+      </div>
+
     </div><!-- /container -->
   </section>
 
@@ -1710,6 +1803,58 @@
 
   // Auto-select current month on load
   selectMonth(nowMonth);
+
+  // ============================================================
+  // MOBILE MONTH EXPLORER
+  // ============================================================
+  (function() {
+    var mobMonthName = document.getElementById('as-mob-month-name');
+    var mobTagline   = document.getElementById('as-mob-tagline');
+    var mobAllergens = document.getElementById('as-mob-allergens');
+    var mobDots      = document.getElementById('as-mob-dots');
+    var mobPrev      = document.getElementById('as-mob-prev');
+    var mobNext      = document.getElementById('as-mob-next');
+    if (!mobMonthName) return;
+
+    var mobMonth = nowMonth;
+
+    // Build 12 dot indicators
+    MONTHS_FULL.forEach(function(_, i) {
+      var d = document.createElement('button');
+      d.className = 'as-mob-nav__dot';
+      d.setAttribute('aria-label', MONTHS_FULL[i]);
+      d.setAttribute('data-mi', String(i));
+      d.setAttribute('type', 'button');
+      mobDots.appendChild(d);
+      d.addEventListener('click', function() { mobSelect(i); });
+    });
+
+    function mobSelect(mi) {
+      mobMonth = mi;
+      mobMonthName.textContent = MONTHS_FULL[mi];
+      mobTagline.textContent   = monthTagline(mi);
+
+      // Fade allergen list out then in
+      mobAllergens.classList.add('is-fading');
+      setTimeout(function() {
+        mobAllergens.innerHTML = buildGroups(mi);
+        mobAllergens.classList.remove('is-fading');
+      }, 120);
+
+      // Update dot indicators
+      mobDots.querySelectorAll('.as-mob-nav__dot').forEach(function(d) {
+        d.classList.toggle('is-active', parseInt(d.getAttribute('data-mi')) === mi);
+      });
+
+      // Sync the desktop explorer too (keeps state consistent if window resizes)
+      selectMonth(mi);
+    }
+
+    mobPrev.addEventListener('click', function() { mobSelect((mobMonth + 11) % 12); });
+    mobNext.addEventListener('click', function() { mobSelect((mobMonth + 1)  % 12); });
+
+    mobSelect(nowMonth);
+  }());
 
   window.addEventListener('resize', function() {
     if (activeMonth !== null) positionFloatingTip(activeMonth);
