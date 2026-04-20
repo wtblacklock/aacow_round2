@@ -728,7 +728,7 @@
        YEAR-ROUND BANDS
        ========================================================================== */
     .as-bands { display: flex; flex-direction: column; gap: 20px; }
-    .as-band { background: rgba(255,255,255,.58); border-radius: 20px; padding: 28px 28px 22px; border: 1px solid rgba(216,195,176,.6); }
+    .as-band { background: #fff; border-radius: 20px; padding: 28px 28px 22px; border: 1.5px solid rgba(216,195,176,.4); box-shadow: 0 2px 12px rgba(55,36,38,.04); }
     .as-band__header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
     .as-band__dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
     .as-band__name { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--charcoal); }
@@ -1101,7 +1101,6 @@
             <div class="as-band">
               <div class="as-band__header">
                 <div class="as-band__name">Mold Spores</div>
-                <div class="as-band__sev">Moderate · Year-Round</div>
               </div>
               <div class="as-band__bars" id="mold-bars"></div>
               <div class="as-band__month-labels">
@@ -1114,7 +1113,6 @@
             <div class="as-band">
               <div class="as-band__header">
                 <div class="as-band__name">Dust Mites</div>
-                <div class="as-band__sev">Moderate · Year-Round</div>
               </div>
               <div class="as-band__bars" id="dust-bars"></div>
               <div class="as-band__month-labels">
@@ -1127,7 +1125,6 @@
             <div class="as-band">
               <div class="as-band__header">
                 <div class="as-band__name">Dog &amp; Cat Dander</div>
-                <div class="as-band__sev">Moderate · Constant</div>
               </div>
               <div class="as-band__bars" id="dander-bars"></div>
               <div class="as-band__month-labels">
@@ -1746,5 +1743,21 @@
 })();
 </script>
 
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:28px;right:28px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--charcoal);color:var(--cream);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;transform:translateY(8px);">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <script>
+  (function(){
+    var btn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function(){
+      var show = window.scrollY > 400;
+      btn.style.opacity = show ? '1' : '0';
+      btn.style.pointerEvents = show ? 'auto' : 'none';
+      btn.style.transform = show ? 'translateY(0)' : 'translateY(8px)';
+    }, {passive:true});
+  })();
+  </script>
 </body>
 </html>

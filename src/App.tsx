@@ -17,12 +17,14 @@ import AboutPractice from './components/AboutPractice';
 import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-cream font-sans text-charcoal selection:bg-terracotta selection:text-white">
       <Navigation />
       <JumpNav />
+      <ScrollToTop />
       <main>
         <Hero />
         <PollenSection />
