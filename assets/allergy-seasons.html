@@ -295,6 +295,20 @@
       flex-shrink: 0;
     }
 
+    @media(max-width:860px){
+      .as-hero__grid {
+        grid-template-columns: 1fr;
+      }
+      .as-hero__download {
+        justify-self: stretch;
+        width: 100%;
+        max-width: 480px;
+      }
+      .as-hero__download-link img {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
     /* ==========================================================================
        WHAT'S ACTIVE NOW
        ========================================================================== */

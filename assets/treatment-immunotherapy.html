@@ -797,6 +797,62 @@
       overflow: hidden;
     }
     .tx-intro__card:hover { background: rgba(216, 195, 176, 0.4); }
+    .tx-intro__card--precision::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/treatments/vial.png');
+      background-repeat: no-repeat;
+      background-position: center calc(64% - 45px);
+      background-size: 63% auto;
+      opacity: 0.78;
+      mix-blend-mode: multiply;
+      filter: brightness(0.7) contrast(1.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tx-intro__card--consistency::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/treatments/calendar.png');
+      background-repeat: no-repeat;
+      background-position: center calc(64% - 45px);
+      background-size: 53% auto;
+      opacity: 0.78;
+      mix-blend-mode: multiply;
+      filter: brightness(0.7) contrast(1.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tx-intro__card--safety::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/treatments/safety.png');
+      background-repeat: no-repeat;
+      background-position: center calc(64% - 45px);
+      background-size: 63% auto;
+      opacity: 0.78;
+      mix-blend-mode: multiply;
+      filter: brightness(0.7) contrast(1.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tx-intro__card--durability::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/treatments/durability.png');
+      background-repeat: no-repeat;
+      background-position: center calc(64% - 45px);
+      background-size: 79% auto;
+      opacity: 0.78;
+      mix-blend-mode: multiply;
+      filter: brightness(0.7) contrast(1.28);
+      pointer-events: none;
+      z-index: 0;
+    }
     .tx-intro__card::after {
       content: '';
       position: absolute;
@@ -1956,7 +2012,7 @@
           </div>
           <div class="anim-fade-up delay-1">
             <ul class="tx-intro__cards" aria-label="Immunotherapy pillars">
-              <li class="tx-intro__card anim-card-down">
+              <li class="tx-intro__card tx-intro__card--precision anim-card-down">
                 <div class="tx-intro__card-top">
                   <strong>Precision</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1966,7 +2022,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>Your vial is blended from your exact test profile, not a generic formula.</p>
               </li>
-              <li class="tx-intro__card anim-card-down delay-1">
+              <li class="tx-intro__card tx-intro__card--consistency anim-card-down delay-1">
                 <div class="tx-intro__card-top">
                   <strong>Consistency</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1976,7 +2032,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>A predictable cadence of visits makes progress measurable month to month.</p>
               </li>
-              <li class="tx-intro__card anim-card-down delay-2">
+              <li class="tx-intro__card tx-intro__card--safety anim-card-down delay-2">
                 <div class="tx-intro__card-top">
                   <strong>Safety</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
@@ -1986,7 +2042,7 @@
                 <div class="tx-intro__card-spacer"></div>
                 <p>Every dose is supervised with routine observation after each injection.</p>
               </li>
-              <li class="tx-intro__card anim-card-down delay-3">
+              <li class="tx-intro__card tx-intro__card--durability anim-card-down delay-3">
                 <div class="tx-intro__card-top">
                   <strong>Durability</strong>
                   <div class="tx-intro__icon" aria-hidden="true">
