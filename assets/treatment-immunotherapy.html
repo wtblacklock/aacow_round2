@@ -2177,7 +2177,7 @@
             <img src="/images/treatments/aacow_shot.png" alt="Immunotherapy injection" loading="lazy" />
           </div>
           <div class="tx-step__overlay">
-            <div class="tx-step__text-box tx-step__text-box--accent">
+            <div class="tx-step__text-box tx-step__text-box--accent" data-accent-stage="3">
               <p class="tx-step__num">Stage 3</p>
               <h3 class="tx-step__title">Grow Your Tolerance</h3>
               <p class="tx-step__body">Weekly injections gradually increase your dose as your immune system adapts.</p>
@@ -2191,7 +2191,7 @@
             <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=700&h=1100&fit=crop&auto=format&q=80" alt="Follow-up visit" loading="lazy" />
           </div>
           <div class="tx-step__overlay">
-            <div class="tx-step__text-box tx-step__text-box--accent">
+            <div class="tx-step__text-box tx-step__text-box--accent" data-accent-stage="4">
               <p class="tx-step__num">Stage 4</p>
               <h3 class="tx-step__title">Hold the Progress</h3>
               <p class="tx-step__body">Visits space out to monthly as your symptom burden steadily drops in daily life.</p>
@@ -2776,7 +2776,7 @@
         el.appendChild(frag);
       });
 
-      // Timeline: trigger when Stage 3 enters view, then drop + tick cascade
+      // Timeline: trigger when Stage 3 enters view, then accent stages 3&4, then drop + tick cascade
       (function() {
         var timelineEl = document.querySelector('.tx-timeline');
         if (!timelineEl) return;
@@ -2784,11 +2784,13 @@
         // Keep hidden until triggered
         timelineEl.style.cssText += 'opacity:0;transform:translateY(-40px);';
 
+        var PROCESS_SECTION_SETTLE = 90;
+        var processPanelsCompleteAt = 0;
+        var accentBoxes = Array.from(document.querySelectorAll('.tx-step__text-box--accent[data-accent-stage]'));
+        var accentPlayed = false;
         var fired = false;
-        function runTimelineAnim() {
-          if (fired) return;
-          fired = true;
 
+        function runTimelineAnim() {
           // Drop in with fade — feels like it falls from Stage 3/4
           timelineEl.animate(
             [{ opacity: 0, transform: 'translateY(-40px)' },
@@ -2811,13 +2813,41 @@
           });
         }
 
+        function runAccentAnim(done) {
+          if (!accentBoxes.length || accentPlayed) { done(); return; }
+          accentPlayed = true;
+          var ACCENT_STAGGER = 180, ACCENT_DURATION = 460;
+          accentBoxes.forEach(function(box, index) {
+            window.setTimeout(function() { box.classList.add('is-accented'); }, index * ACCENT_STAGGER);
+          });
+          window.setTimeout(done, ((accentBoxes.length - 1) * ACCENT_STAGGER) + ACCENT_DURATION);
+        }
+
+        function runAccentThenTimeline() {
+          if (fired) return; fired = true;
+          var waitForSection = Math.max(0, processPanelsCompleteAt - performance.now());
+          window.setTimeout(function() { runAccentAnim(runTimelineAnim); }, waitForSection);
+        }
+
+        // Update processPanelsCompleteAt when ltr panels animate
+        document.querySelectorAll('.tx-step-grid').forEach(function(container) {
+          var panels = Array.from(container.querySelectorAll('.anim-card-ltr'));
+          if (!panels.length) return;
+          var pObs = new IntersectionObserver(function(entries) {
+            if (!entries[0].isIntersecting) return;
+            pObs.disconnect();
+            processPanelsCompleteAt = performance.now() + ((panels.length - 1) * STAGGER) + SPRING_DURATION + PROCESS_SECTION_SETTLE;
+          }, IO_OPTS);
+          pObs.observe(container);
+        });
+
         // Watch Stage 3 — fire when it's well into view, then hold 450ms
         var stage3 = document.querySelectorAll('.tx-step')[2];
         var triggerEl = stage3 || timelineEl;
         var triggerObs = new IntersectionObserver(function(entries) {
           if (!entries[0].isIntersecting) return;
           triggerObs.disconnect();
-          setTimeout(runTimelineAnim, 450);
+          setTimeout(runAccentThenTimeline, 450);
         }, { rootMargin: '0px 0px -10% 0px', threshold: 0.4 });
 
         triggerObs.observe(triggerEl);
@@ -2827,7 +2857,7 @@
         var fallbackObs = new IntersectionObserver(function(entries) {
           if (!entries[0].isIntersecting) return;
           fallbackObs.disconnect();
-          runTimelineAnim();
+          runAccentThenTimeline();
         }, { threshold: 0.05 });
         fallbackObs.observe(timelineEl);
       }());
