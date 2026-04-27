@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/images/icons/favicon.svg" type="image/svg+xml" />
-  <title>About Us | Allergy &amp; Asthma Care of Waco</title>
-  <meta name="description" content="For over 45 years, Allergy &amp; Asthma Care of Waco has been the trusted choice for specialized allergy and asthma care in Waco, TX and Central Texas. Meet our board-certified allergists." />
-  <link rel="canonical" href="https://allergywaco.com/about" />
+  <title>New Patients | Allergy &amp; Asthma Care of Waco</title>
+  <meta name="description" content="Welcome to Allergy &amp; Asthma Care of Waco. Download new patient forms, review FAQs, and request your first appointment with our board-certified allergists in Waco, TX." />
+  <link rel="canonical" href="https://allergywaco.com/new-patients" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://allergywaco.com/about" />
-  <meta property="og:title" content="About Us | Allergy &amp; Asthma Care of Waco" />
-  <meta property="og:description" content="For over 45 years, Allergy &amp; Asthma Care of Waco has been the trusted choice for specialized allergy and asthma care in Waco, TX and Central Texas." />
+  <meta property="og:url" content="https://allergywaco.com/new-patients" />
+  <meta property="og:title" content="New Patients | Allergy &amp; Asthma Care of Waco" />
+  <meta property="og:description" content="Welcome to Allergy &amp; Asthma Care of Waco. Download new patient forms, review FAQs, and request your first appointment." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Fonts — match home page exactly -->
@@ -422,80 +422,101 @@
     }
 
     /* ==========================================================================
-       HERO — page-level hero with video background
+       HERO — two-column editorial header (mirrors tx-hero on treatment page)
        ========================================================================== */
-    /* Hero outer wrapper — matches home page px-[18px] lg:px-[25px] pt-6 */
-    .ab-hero-wrap {
-      padding: 24px 18px 0;
+    .np-hero {
+      padding: clamp(34px, 5vw, 66px) 0 clamp(70px, 8vw, 110px);
       background: var(--cream);
     }
-    @media (min-width: 1024px) { .ab-hero-wrap { padding: 24px 25px 0; } }
-
-    /* Rounded video box */
-    .ab-hero {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      min-height: clamp(400px, 62vh, 760px);
-      background: var(--charcoal);
+    .np-hero__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(26px, 4vw, 52px);
+      align-items: stretch;
     }
-    .ab-hero__video {
-      position: absolute;
-      inset: 0;
+    .np-hero__panel {
+      padding: clamp(28px, 4vw, 56px) 0;
+      display: grid;
+      align-content: center;
+      gap: 20px;
+    }
+    .np-hero__headline {
+      font-family: var(--font-heading);
+      font-size: clamp(52px, 8.2vw, 114px);
+      font-weight: 600;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+    .np-hero__headline em {
+      font-style: normal;
+      font-weight: 400;
+    }
+    .np-hero__subhead {
+      max-width: 54ch;
+      font-size: clamp(15px, 1.2vw, 18px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+    .np-hero__media {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: clamp(420px, 64vw, 720px);
+    }
+    .np-hero__media img,
+    .np-hero__media video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      scale: 1.05;
-      opacity: 0.6;
-    }
-    .ab-hero__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(55, 36, 38, 0.05) 0%,
-        rgba(55, 36, 38, 0.35) 55%,
-        rgba(55, 36, 38, 0.65) 100%
-      );
-    }
-    /* Text pinned to bottom-left, like home page H1 */
-    .ab-hero__content {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: clamp(20px, 3vw, 32px);
-      padding-bottom: clamp(28px, 4vw, 48px);
-    }
-    .ab-hero__eyebrow {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(251,242,233,0.6);
       display: block;
-      margin-bottom: 14px;
+      transform: scale(1.05);
     }
-    .ab-hero__headline {
-      font-family: var(--font-heading);
-      font-size: clamp(36px, 6vw, 84px);
-      font-weight: 700;
-      line-height: 1.0;
-      color: var(--cream);
-      max-width: 820px;
-      margin-bottom: 20px;
+    .np-hero__note {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(55, 36, 38, 0.78);
+      color: #fdf6ef;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
-    .ab-hero__subhead {
+    @media (max-width: 900px) {
+      .np-hero__grid { grid-template-columns: 1fr; gap: 28px; }
+      .np-hero__media { min-height: 320px; }
+      .np-hero__panel { padding: 16px 0; }
+    }
+
+    /* Btn group + ghost (mirrors tx page) */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--cream-dark);
+      color: var(--charcoal);
+      border-radius: 16px;
       font-family: var(--font-sans);
-      font-size: clamp(14px, 1.3vw, 17px);
-      font-weight: 300;
-      color: rgba(251,242,233,0.72);
-      line-height: 1.7;
-      max-width: 520px;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s;
     }
+    .btn-ghost:hover { background: rgba(216, 195, 176, 0.5); }
 
     /* ==========================================================================
        STATS STRIP
@@ -538,241 +559,334 @@
     }
 
     /* ==========================================================================
-       STORY SECTION (2-col: copy | video)
+       FORMS SECTION — downloadable patient forms
        ========================================================================== */
-    .ab-story { background: var(--cream); }
-    .ab-story__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 6vw, 96px);
-      align-items: center;
-    }
-    @media (max-width: 900px) { .ab-story__grid { grid-template-columns: 1fr; } }
-    .ab-story__copy { max-width: 580px; }
-    .ab-story__body {
-      font-size: clamp(16px, 1.3vw, 18px);
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--charcoal);
-    }
-    .ab-story__body + .ab-story__body { margin-top: 20px; }
-    .ab-story__pullquote {
-      margin: clamp(32px, 4vw, 48px) 0;
-      padding-left: 24px;
-      border-left: 3px solid var(--terracotta);
-    }
-    .ab-story__pullquote p {
-      font-family: var(--font-display);
-      font-size: clamp(20px, 2vw, 26px);
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.55;
-      color: var(--charcoal);
-    }
-    .ab-story__media { position: relative; }
-    .ab-story__video-wrap {
-      border-radius: 20px;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-    }
-    .ab-story__video-wrap video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      scale: 1.04;
-    }
-    .ab-story__location-card {
-      position: absolute;
-      bottom: 24px;
-      left: -32px;
-      width: 220px;
-      background: var(--cream-dark);
-      border-radius: 16px;
-      padding: 20px;
-      z-index: 10;
-    }
-    @media (max-width: 900px) { .ab-story__location-card { display: none; } }
-    .ab-story__location-card-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 6px;
-    }
-    .ab-story__location-card-addr {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--charcoal);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    .ab-story__location-card-link {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--terracotta);
-      transition: opacity 0.2s;
-    }
-    .ab-story__location-card-link:hover { opacity: 0.75; }
-
-    /* ==========================================================================
-       VALUES SECTION
-       ========================================================================== */
-    .ab-values { background: var(--cream); }
-    .ab-values__header { margin-bottom: clamp(48px, 6vw, 72px); max-width: 680px; }
-    .ab-values__eyebrow {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      display: block;
-      margin-bottom: 20px;
-    }
-    .ab-values__headline {
+    .np-forms { background: var(--cream); }
+    .np-forms__header { margin-bottom: clamp(48px, 6vw, 80px); max-width: 720px; }
+    .np-forms__headline {
       font-family: var(--font-heading);
       font-size: clamp(38px, 5.5vw, 72px);
       font-weight: 600;
       line-height: 1.0;
       color: var(--charcoal);
+      margin-bottom: 20px;
     }
-    .ab-values__grid {
+    .np-forms__sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.7;
+      max-width: 580px;
+    }
+    .np-forms__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(16px, 2vw, 28px);
     }
-    @media (max-width: 780px) { .ab-values__grid { grid-template-columns: 1fr; } }
-    .ab-values__card {
-      background: var(--cream);
-      border: 1px solid rgba(55,36,38,0.07);
+    @media (max-width: 980px) { .np-forms__grid { grid-template-columns: 1fr; } }
+    .np-forms__card {
+      background: var(--cream-dark);
       border-radius: 20px;
       padding: clamp(28px, 3vw, 44px);
       display: flex;
       flex-direction: column;
       gap: 20px;
-      transition: box-shadow 0.25s, transform 0.25s;
+      transition: transform 0.25s, box-shadow 0.25s;
+      min-height: 320px;
     }
-    .ab-values__card:hover { box-shadow: 0 12px 32px rgba(55,36,38,0.07); transform: translateY(-2px); }
-    .ab-values__card-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: rgba(30,77,56,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .np-forms__card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(55,36,38,0.08); }
+    .np-forms__card-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: rgba(30,77,56,0.10);
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .ab-values__card-icon svg { color: var(--forest); }
-    .ab-values__card-title {
+    .np-forms__card-icon svg { color: var(--forest); }
+    .np-forms__card-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+    .np-forms__card-title {
       font-family: var(--font-heading);
       font-size: clamp(22px, 2.2vw, 30px);
       font-weight: 600;
       color: var(--charcoal);
-      line-height: 1.1;
+      line-height: 1.15;
     }
-    .ab-values__card-body {
-      font-size: 15px;
+    .np-forms__card-body {
+      font-size: 14px;
       font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.7;
       color: var(--charcoal);
       opacity: 0.7;
+      flex: 1;
+    }
+    .np-forms__card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--forest);
+      transition: gap 0.2s, color 0.2s;
+      width: fit-content;
+    }
+    .np-forms__card-link:hover { gap: 12px; color: var(--forest-hover); }
+    .np-forms__card-link svg { transition: transform 0.2s; }
+    .np-forms__card-link:hover svg { transform: translateX(4px); }
+    .np-forms__heads-up {
+      margin-top: clamp(36px, 4vw, 52px);
+      padding: 20px 24px;
+      border-left: 3px solid var(--forest);
+      background: rgba(30,77,56,0.04);
+      border-radius: 0 12px 12px 0;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.85;
+      max-width: 720px;
     }
 
     /* ==========================================================================
-       TEAM SECTION
+       SERVICES CALLOUT — 3 service cards
        ========================================================================== */
-    .ab-team { background: var(--cream); }
-    .ab-team__header { margin-bottom: clamp(48px, 6vw, 80px); }
-    .ab-team__grid {
+    .np-services { background: var(--cream); }
+    .np-services__header { text-align: center; margin: 0 auto clamp(48px, 6vw, 80px); max-width: 680px; }
+    .np-services__headline {
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .np-services__sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.7;
+    }
+    .np-services__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(16px, 2vw, 28px);
     }
-    @media (max-width: 1000px) { .ab-team__grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .ab-team__grid { grid-template-columns: 1fr; } }
-    .ab-team__card {
+    @media (max-width: 880px) { .np-services__grid { grid-template-columns: 1fr; } }
+    .np-services__card {
       background: var(--cream-dark);
-      border-radius: 20px;
-      padding: clamp(24px, 2.5vw, 36px);
+      border-radius: 24px;
+      padding: clamp(36px, 4vw, 56px);
+      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
+      min-height: 360px;
+      position: relative;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .ab-team__card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(55,36,38,0.08); }
-    .ab-team__card-avatar {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--sand);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 28px;
-      font-weight: 700;
+    .np-services__card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(55,36,38,0.08); }
+    .np-services__card-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(55,36,38,0.18);
+      display: flex; align-items: center; justify-content: center;
       color: var(--charcoal);
-      flex-shrink: 0;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .np-services__card:hover .np-services__card-icon {
+      border-color: var(--forest);
+      color: var(--forest);
+    }
+    .np-services__card-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.05;
+      flex: 1;
+    }
+    .np-services__card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+    .np-services__card-link svg { transition: transform 0.2s; }
+    .np-services__card:hover .np-services__card-link { color: var(--forest); }
+    .np-services__card:hover .np-services__card-link svg { transform: translateX(4px); }
+
+    /* ==========================================================================
+       FAQ SECTION — accordion (mirrors tx-faq pattern)
+       ========================================================================== */
+    .np-faq { background: var(--cream); }
+    .np-faq__header { text-align: center; margin: 0 auto clamp(48px, 6vw, 72px); max-width: 720px; }
+    .np-faq__headline {
+      font-family: var(--font-heading);
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .np-faq__sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.7;
+    }
+    .np-faq__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .np-faq__item {
+      background: var(--cream-dark);
+      border-radius: 18px;
       overflow: hidden;
     }
-    .ab-team__card-avatar img {
+    .np-faq__q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 24px 30px;
+      font-family: var(--font-heading);
+      font-size: clamp(18px, 1.6vw, 22px);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--charcoal);
+      transition: color 0.2s;
     }
-    .ab-team__card-avatar img.pos-upper {
-      object-position: center 15%;
+    .np-faq__q:hover { color: var(--forest); }
+    .np-faq__icon {
+      flex-shrink: 0;
+      color: var(--charcoal);
+      transition: color 0.2s, transform 0.3s;
     }
-    .ab-team__card-name {
+    .np-faq__item.is-open .np-faq__icon {
+      color: var(--forest);
+      transform: rotate(45deg);
+    }
+    .np-faq__answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .np-faq__answer-inner {
+      padding: 0 30px 26px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+    .np-faq__item.is-open .np-faq__answer { max-height: 800px; }
+
+    /* ==========================================================================
+       HOURS SECTION — Regular & Injection schedule
+       ========================================================================== */
+    .np-hours { background: var(--cream); }
+    .np-hours__header { text-align: center; margin: 0 auto clamp(40px, 5vw, 64px); max-width: 680px; }
+    .np-hours__headline {
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .np-hours__sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal);
+      opacity: 0.7;
+    }
+    .np-hours__panel {
+      background: var(--cream-dark);
+      border-radius: 24px;
+      padding: clamp(28px, 4vw, 56px);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .np-hours__row {
+      display: grid;
+      grid-template-columns: 90px 1fr 1fr;
+      gap: clamp(12px, 2vw, 32px);
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(55,36,38,0.10);
+    }
+    .np-hours__row:last-child { border-bottom: none; }
+    .np-hours__row--head {
+      padding-bottom: 14px;
+      padding-top: 0;
+    }
+    .np-hours__col-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest);
+    }
+    .np-hours__day {
       font-family: var(--font-heading);
       font-size: clamp(20px, 2vw, 26px);
       font-weight: 600;
       color: var(--charcoal);
-      line-height: 1.1;
-      margin-bottom: 2px;
     }
-    .ab-team__card-title {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-    }
-    .ab-team__card-bio {
-      font-size: 14px;
+    .np-hours__time {
+      font-size: clamp(14px, 1.2vw, 17px);
       font-weight: 300;
-      line-height: 1.8;
       color: var(--charcoal);
-      opacity: 0.75;
-      flex: 1;
+      opacity: 0.85;
     }
-    .ab-team__card-cred {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .np-hours__time--closed {
+      font-style: italic;
+      opacity: 0.45;
     }
-    .ab-team__cred-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-light);
-      border-radius: 100px;
-      padding: 4px 12px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--charcoal);
-      width: fit-content;
+    @media (max-width: 600px) {
+      .np-hours__row { grid-template-columns: 60px 1fr 1fr; gap: 10px; padding: 14px 0; }
+      .np-hours__time { font-size: 13px; }
+      .np-hours__day { font-size: 18px; }
     }
 
     /* ==========================================================================
        FINAL CTA — forest anchor band
        ========================================================================== */
-    .ab-cta {
+    .np-cta {
       background: var(--forest);
       text-align: center;
     }
-    .ab-cta__inner { max-width: 780px; margin: 0 auto; }
-    .ab-cta .eyebrow { color: var(--cream); opacity: 0.7; }
-    .ab-cta__headline {
+    .np-cta__inner { max-width: 780px; margin: 0 auto; }
+    .np-cta .eyebrow { color: var(--cream); opacity: 0.7; }
+    .np-cta__headline {
       font-family: var(--font-heading);
       font-size: clamp(38px, 5.5vw, 72px);
       font-weight: 600;
@@ -780,7 +894,7 @@
       color: var(--cream);
       margin-bottom: 20px;
     }
-    .ab-cta__sub {
+    .np-cta__sub {
       font-size: clamp(15px, 1.3vw, 18px);
       font-weight: 300;
       color: var(--cream);
@@ -788,19 +902,19 @@
       line-height: 1.7;
       margin-bottom: clamp(36px, 4vw, 52px);
     }
-    .ab-cta__buttons { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .ab-cta .btn-primary { background: var(--cream); color: var(--forest); }
-    .ab-cta .btn-primary:hover { background: var(--cream-dark); }
-    .ab-cta .btn-outline {
+    .np-cta__buttons { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .np-cta .btn-primary { background: var(--cream); color: var(--forest); }
+    .np-cta .btn-primary:hover { background: var(--cream-dark); }
+    .np-cta .btn-outline {
       border-color: rgba(251,242,233,0.4);
       color: var(--cream);
     }
-    .ab-cta .btn-outline:hover {
+    .np-cta .btn-outline:hover {
       border-color: var(--cream);
       background: rgba(251,242,233,0.08);
       color: var(--cream);
     }
-    .ab-cta__address {
+    .np-cta__address {
       margin-top: clamp(40px, 5vw, 64px);
       display: flex;
       align-items: center;
@@ -810,56 +924,6 @@
       font-weight: 400;
       color: var(--cream);
       opacity: 0.7;
-    }
-
-    /* ==========================================================================
-       MAP SECTION
-       ========================================================================== */
-    .ab-map {
-      background: var(--cream);
-      padding: clamp(72px, 9vw, 120px) clamp(18px, 2.5vw, 25px) clamp(48px, 6vw, 80px);
-    }
-    .ab-map__inner {
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      height: clamp(300px, 40vw, 520px);
-    }
-    .ab-map__inner iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-    .ab-map__label {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: var(--cream);
-      border-radius: 14px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      box-shadow: 0 4px 20px rgba(55,36,38,0.12);
-      z-index: 10;
-      pointer-events: none;
-    }
-    .ab-map__label svg { flex-shrink: 0; margin-top: 2px; color: var(--terracotta); }
-    .ab-map__label-name {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.2;
-      margin-bottom: 3px;
-    }
-    .ab-map__label-addr {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--charcoal);
-      opacity: 0.65;
-      line-height: 1.5;
     }
 
     /* ==========================================================================
@@ -987,8 +1051,8 @@
           </div>
         </div>
 
-        <a href="/new-patients.html" class="site-nav__link">New Patients</a>
-        <a href="/about.html" class="site-nav__link site-nav__link--active">About</a>
+        <a href="/new-patients.html" class="site-nav__link site-nav__link--active">New Patients</a>
+        <a href="/about.html" class="site-nav__link">About</a>
         <a href="#" class="site-nav__link">Patient Portal</a>
       </nav>
 
@@ -1053,8 +1117,8 @@
         </div>
       </div>
 
-      <div class="site-nav__overlay-item"><a href="/new-patients.html" class="site-nav__overlay-link">New Patients</a></div>
-      <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link site-nav__overlay-link--cta">About</a></div>
+      <div class="site-nav__overlay-item"><a href="/new-patients.html" class="site-nav__overlay-link site-nav__overlay-link--cta">New Patients</a></div>
+      <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link">About</a></div>
       <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
       <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
     </div>
@@ -1069,276 +1133,405 @@
   <!-- Jump Nav -->
   <nav class="ab-jump-nav" id="ab-jump-nav" aria-label="Page sections">
     <div class="ab-jump-nav__inner">
-      <a class="ab-jump-nav__link" href="#our-story"  data-jn="our-story">Our Story</a>
-      <a class="ab-jump-nav__link" href="#our-values" data-jn="our-values">What We Stand For</a>
-      <a class="ab-jump-nav__link" href="#our-team"   data-jn="our-team">Meet the Team</a>
-      <a class="ab-jump-nav__link" href="#book"       data-jn="book">Book Now</a>
+      <a class="ab-jump-nav__link" href="#forms"    data-jn="forms">Forms</a>
+      <a class="ab-jump-nav__link" href="#services" data-jn="services">Services</a>
+      <a class="ab-jump-nav__link" href="#faq"      data-jn="faq">FAQ</a>
+      <a class="ab-jump-nav__link" href="#hours"    data-jn="hours">Hours</a>
+      <a class="ab-jump-nav__link" href="#book"     data-jn="book">Book Now</a>
     </div>
   </nav>
 
   <main>
 
     <!-- ===========================================================================
-         HERO
+         HERO — two-column editorial (mirrors treatment page)
          =========================================================================== -->
-    <div class="ab-hero-wrap">
-    <section class="ab-hero" aria-labelledby="about-hero-heading">
-      <video class="ab-hero__video" src="/videos/aacow_interior.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-      <div class="ab-hero__overlay" aria-hidden="true"></div>
-      <div class="ab-hero__content">
-        <h1 class="ab-hero__headline" id="about-hero-heading">
-          Our goal is making sure every patient goes home healthier and happier.
-        </h1>
-        <p class="ab-hero__subhead">
-          For over 45 years, we've been Central Texas's trusted choice for specialized allergy and asthma care — combining advanced medical expertise with a deep understanding of local environmental factors.
+    <section class="np-hero" aria-labelledby="np-hero-heading">
+      <div class="container">
+        <div class="np-hero__grid">
+
+          <div class="np-hero__panel anim-fade-up">
+            <span class="eyebrow">New Patients</span>
+            <h1 class="np-hero__headline" id="np-hero-heading">
+              Your first visit, <em>made simple</em>.
+            </h1>
+            <p class="np-hero__subhead">
+              We treat each patient as an individual with different needs, and work with you to find treatment options that fit your lifestyle and schedule. Below you'll find the forms, FAQs, and hours you need to plan your first visit.
+            </p>
+            <div class="btn-group">
+              <a href="#book" class="btn btn-primary">Request an Appointment</a>
+              <a href="#forms" class="btn btn-ghost">Download Forms</a>
+            </div>
+          </div>
+
+          <figure class="np-hero__media anim-fade-in anim-delay-2" aria-label="Waco Suspension Bridge over the Brazos River">
+            <img src="https://images.unsplash.com/photo-1673458409931-36ce2ca3d720?auto=format&fit=crop&w=1600&q=80" alt="Waco Suspension Bridge over the Brazos River" />
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================================
+         FORMS
+         =========================================================================== -->
+    <section class="np-forms section" id="forms" aria-labelledby="forms-heading">
+      <div class="container">
+
+        <div class="np-forms__header anim-fade-up">
+          <span class="eyebrow">Before Your First Visit</span>
+          <h2 class="np-forms__headline" id="forms-heading">New Patient Forms.</h2>
+          <p class="np-forms__sub">
+            Please read over, print, and complete these forms before your first visit. They help us know your history before you walk in — so we can spend the appointment focused on you.
+          </p>
+        </div>
+
+        <div class="np-forms__grid">
+
+          <!-- Form 1: New Patient Packet -->
+          <a href="#" class="np-forms__card anim-fade-up anim-delay-1">
+            <div class="np-forms__card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="9" y1="13" x2="15" y2="13"/>
+                <line x1="9" y1="17" x2="15" y2="17"/>
+                <line x1="9" y1="9"  x2="11" y2="9"/>
+              </svg>
+            </div>
+            <div>
+              <p class="np-forms__card-meta">PDF · 5 pages</p>
+              <p class="np-forms__card-title">New Patient Packet</p>
+            </div>
+            <p class="np-forms__card-body">
+              The complete intake — medical history, current symptoms, insurance info, and consent forms. Print and bring to your first appointment.
+            </p>
+            <span class="np-forms__card-link">
+              Download Packet
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v10M3 8l5 5 5-5M2 14h12"/></svg>
+            </span>
+          </a>
+
+          <!-- Form 2: Medications That Interfere -->
+          <a href="#" class="np-forms__card anim-fade-up anim-delay-2">
+            <div class="np-forms__card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="9" width="20" height="6" rx="3"/>
+                <path d="M12 9v6"/>
+                <path d="M5 12h2M17 12h2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="np-forms__card-meta">PDF · Medication List</p>
+              <p class="np-forms__card-title">Medications That Interfere with Testing</p>
+            </div>
+            <p class="np-forms__card-body">
+              Some common medications can affect allergy test results. Review this list before your visit so we can plan your testing accurately.
+            </p>
+            <span class="np-forms__card-link">
+              Download List
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v10M3 8l5 5 5-5M2 14h12"/></svg>
+            </span>
+          </a>
+
+          <!-- Form 3: Pollen Trends Chart -->
+          <a href="#" class="np-forms__card anim-fade-up anim-delay-3">
+            <div class="np-forms__card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="20" x2="21" y2="20"/>
+                <line x1="3" y1="20" x2="3"  y2="4"/>
+                <polyline points="6 16 10 11 13 13 18 7"/>
+                <circle cx="6"  cy="16" r="0.5"/>
+                <circle cx="18" cy="7"  r="0.5"/>
+              </svg>
+            </div>
+            <div>
+              <p class="np-forms__card-meta">PNG · High-Resolution</p>
+              <p class="np-forms__card-title">Annual Pollen Trends in Central Texas</p>
+            </div>
+            <p class="np-forms__card-body">
+              Our seasonal allergen chart — a visual map of which pollens peak when in Waco. Useful to bring to your appointment when discussing symptoms.
+            </p>
+            <span class="np-forms__card-link">
+              Download Chart
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v10M3 8l5 5 5-5M2 14h12"/></svg>
+            </span>
+          </a>
+
+        </div>
+
+        <p class="np-forms__heads-up anim-fade-up">
+          <strong>Heads up:</strong> If you can't fill out these forms ahead of time, please arrive <strong>20 minutes early</strong> to your scheduled appointment so you can complete them before being seen.
         </p>
-      </div>
-    </section>
-    </div><!-- /.ab-hero-wrap -->
 
-    <!-- ===========================================================================
-         STATS STRIP
-         =========================================================================== -->
-    <div class="ab-stats">
-      <div class="ab-stats__grid">
-        <div class="ab-stats__item anim-fade-up">
-          <span class="ab-stats__value">45+</span>
-          <span class="ab-stats__label">Years in Waco</span>
-        </div>
-        <div class="ab-stats__item anim-fade-up anim-delay-1">
-          <span class="ab-stats__value">10,000+</span>
-          <span class="ab-stats__label">Families Helped</span>
-        </div>
-        <div class="ab-stats__item anim-fade-up anim-delay-2">
-          <span class="ab-stats__value">Board</span>
-          <span class="ab-stats__label">Certified Physicians</span>
-        </div>
-        <div class="ab-stats__item anim-fade-up anim-delay-3">
-          <span class="ab-stats__value">5★</span>
-          <span class="ab-stats__label">Consistent Rating</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===========================================================================
-         OUR STORY
-         =========================================================================== -->
-    <section class="ab-story section" id="our-story" aria-labelledby="story-heading">
-      <div class="container">
-        <div class="ab-story__grid">
-
-          <div class="ab-story__copy anim-fade-up">
-            <span class="eyebrow">Our Legacy</span>
-            <h2 class="t-headline" id="story-heading">Trusted in<br>Central Texas<br>for Over 45 Years.</h2>
-
-            <p class="ab-story__body" style="margin-top: 32px;">
-              For over 45 years, Allergy &amp; Asthma Care of Waco has served as the trusted choice for specialized allergy and asthma treatment in Waco, TX, and the greater Central Texas area.
-            </p>
-            <p class="ab-story__body">
-              We combine advanced medical expertise with a deep understanding of the local environmental factors unique to Central Texas — equipped with state-of-the-art diagnostic tools to build personalized treatment plans.
-            </p>
-            <p class="ab-story__body">
-              We believe in more than just treating symptoms. Through one-on-one consultations and patient education, we give you the knowledge and resources to manage your health proactively — so you can rediscover the joy of a sneeze-free, wheeze-free life and embrace the beauty of the outdoors without limitations.
-            </p>
-
-            <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
-              <a href="#book" class="btn-primary btn-forest">Book an Appointment</a>
-              <a href="#our-team" class="btn-outline">Meet the Team</a>
-            </div>
-          </div>
-
-          <div class="ab-story__media anim-fade-in anim-delay-2">
-            <div class="ab-story__video-wrap">
-              <video src="/videos/aacow_interior.mp4" autoplay muted loop playsinline></video>
-            </div>
-            <div class="ab-story__location-card">
-              <p class="ab-story__location-card-title">Visit Our Clinic</p>
-              <p class="ab-story__location-card-addr">221 Jewell Drive<br>Waco, TX 76712</p>
-              <a href="https://maps.google.com/?q=221+Jewell+Drive+Waco+TX+76712" target="_blank" rel="noopener" class="ab-story__location-card-link">Get Directions →</a>
-            </div>
-          </div>
-
-        </div>
       </div>
     </section>
 
     <!-- ===========================================================================
-         VALUES / WHAT WE STAND FOR
+         SERVICES CALLOUT
          =========================================================================== -->
-    <section class="ab-values section" id="our-values" aria-labelledby="values-heading">
+    <section class="np-services section" id="services" aria-labelledby="services-heading">
       <div class="container">
 
-        <div class="ab-values__header anim-fade-up">
-          <span class="ab-values__eyebrow">What We Stand For</span>
-          <h2 class="ab-values__headline" id="values-heading">
-            Care That Goes<br>Beyond the Symptom.
+        <div class="np-services__header anim-fade-up">
+          <span class="eyebrow">How We Can Help</span>
+          <h2 class="np-services__headline" id="services-heading">
+            Curious what we can do for you?
           </h2>
+          <p class="np-services__sub">
+            Whether you need a clear diagnosis, a second opinion, or a refill, we'll meet you wherever you are in your allergy and asthma journey.
+          </p>
         </div>
 
-        <div class="ab-values__grid">
+        <div class="np-services__grid">
 
-          <div class="ab-values__card anim-fade-up anim-delay-1">
-            <div class="ab-values__card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2C8 2 4 5.5 4 10c0 6 8 13 8 13s8-7 8-13c0-4.5-4-8-8-8z"/>
-                <circle cx="12" cy="10" r="3"/>
+          <!-- Diagnosis -->
+          <a href="#book" class="np-services__card anim-fade-up anim-delay-1">
+            <div class="np-services__card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 2v8a4 4 0 0 0 8 0V2"/>
+                <path d="M11 8H7a4 4 0 0 0-4 4v3a5 5 0 0 0 5 5h2"/>
+                <circle cx="20" cy="20" r="2"/>
+                <path d="M19 14v4"/>
               </svg>
             </div>
-            <div>
-              <p class="ab-values__card-title">Local Expertise,<br>Not Corporate Care</p>
-            </div>
-            <p class="ab-values__card-body">
-              We aren't a franchise. We're a locally-owned practice that has served Central Texas families since 1978. Our doctors understand the specific allergens that thrive in Waco's climate — and they live here too.
-            </p>
-          </div>
+            <h3 class="np-services__card-title">Diagnosis</h3>
+            <span class="np-services__card-link">
+              Reach out
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
 
-          <div class="ab-values__card anim-fade-up anim-delay-2">
-            <div class="ab-values__card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+          <!-- Consults -->
+          <a href="#book" class="np-services__card anim-fade-up anim-delay-2">
+            <div class="np-services__card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
             </div>
-            <div>
-              <p class="ab-values__card-title">Evidence-Based Medicine</p>
-            </div>
-            <p class="ab-values__card-body">
-              Every treatment recommendation is grounded in current clinical research. Our physicians hold board certifications in Allergy &amp; Immunology and participate in ongoing medical education to bring you the latest in care.
-            </p>
-          </div>
+            <h3 class="np-services__card-title">Consults</h3>
+            <span class="np-services__card-link">
+              Reach out
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
 
-          <div class="ab-values__card anim-fade-up anim-delay-3">
-            <div class="ab-values__card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          <!-- Prescriptions -->
+          <a href="#book" class="np-services__card anim-fade-up anim-delay-3">
+            <div class="np-services__card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+                <line x1="9" y1="9"  x2="15" y2="9"/>
+                <line x1="9" y1="13" x2="15" y2="13"/>
+                <line x1="9" y1="17" x2="13" y2="17"/>
               </svg>
             </div>
-            <div>
-              <p class="ab-values__card-title">Whole-Family Care</p>
-            </div>
-            <p class="ab-values__card-body">
-              From children with food allergies to adults battling decades of seasonal symptoms, we care for patients at every stage. One practice for the whole family — familiar faces, consistent care.
-            </p>
-          </div>
+            <h3 class="np-services__card-title">Prescriptions</h3>
+            <span class="np-services__card-link">
+              Reach out
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
 
         </div>
       </div>
     </section>
 
     <!-- ===========================================================================
-         TEAM
+         FAQ
          =========================================================================== -->
-    <section class="ab-team section" id="our-team" aria-labelledby="team-heading">
+    <section class="np-faq section" id="faq" aria-labelledby="faq-heading">
       <div class="container">
 
-        <div class="ab-team__header anim-fade-up">
-          <span class="eyebrow">The People Behind Your Care</span>
-          <h2 class="t-headline" id="team-heading">Meet Our Team.</h2>
+        <div class="np-faq__header anim-fade-up">
+          <span class="eyebrow">Have Questions?</span>
+          <h2 class="np-faq__headline" id="faq-heading">We've got answers.</h2>
+          <p class="np-faq__sub">
+            Short reads on what to expect — from how testing works to managing allergies in Central Texas.
+          </p>
         </div>
 
-        <div class="ab-team__grid">
+        <ul class="np-faq__list anim-fade-up">
 
-          <!-- Dr. Pramila Daftary -->
-          <div class="ab-team__card anim-fade-up anim-delay-1">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6362dfb44635ee388756ce56_Allergy_AsthmaOfWacoWebResolution-6.jpg" alt="Dr. Pramila Daftary" /></div>
-            <div>
-              <p class="ab-team__card-name">Dr. Pramila Daftary</p>
-              <p class="ab-team__card-title">Allergist · Immunologist · Pediatrician</p>
-            </div>
-            <p class="ab-team__card-bio">
-              Board-certified with 28+ years in Waco practice, Dr. Daftary is a fellowship member of the American Board of Certified Allergists, American Academy of Allergy and Clinical Immunology, and American College of Allergy.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1l1.4 2.8 3.1.5-2.2 2.1.5 3.1L6 8.1l-2.8 1.4.5-3.1L1.5 4.3l3.1-.5L6 1z"/></svg>
-                Board-Certified
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>What are allergies?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               </span>
-              <span class="ab-team__cred-pill">28+ Years in Waco</span>
-            </div>
-          </div>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Allergies are the immune system's exaggerated response to typically harmless substances like pollen, dust, or certain foods. Symptoms can include sneezing, itching, hives, swelling, and difficulty breathing. At Allergy &amp; Asthma Care of Waco, we specialize in diagnosing and managing allergies for our patients in Texas.</div></div>
+          </li>
 
-          <!-- Dr. Dustin Fowler -->
-          <div class="ab-team__card anim-fade-up anim-delay-2">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/68646582576de6beeabbc420_WIN_A10%20copy.JPG" alt="Dr. Dustin Fowler" /></div>
-            <div>
-              <p class="ab-team__card-name">Dr. Dustin Fowler</p>
-              <p class="ab-team__card-title">Allergist &amp; Immunologist</p>
-            </div>
-            <p class="ab-team__card-bio">
-              Cum laude graduate of Baylor University (2010). Completed a combined Internal Medicine and Pediatrics residency at Medical University of South Carolina, then a fellowship in Allergy &amp; Immunology at UT Medical Branch in Galveston — serving as chief fellow.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1l1.4 2.8 3.1.5-2.2 2.1.5 3.1L6 8.1l-2.8 1.4.5-3.1L1.5 4.3l3.1-.5L6 1z"/></svg>
-                Board-Certified
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>What types of allergies and conditions does Allergy &amp; Asthma Care of Waco treat?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               </span>
-              <span class="ab-team__cred-pill">Chief Fellow, UTMB</span>
-            </div>
-          </div>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">At Allergy &amp; Asthma Care of Waco, we specialize in treating a wide range of allergies and related conditions, including seasonal allergies, food allergies, asthma, eczema, and sinusitis.</div></div>
+          </li>
 
-          <!-- Leslie Muenzler -->
-          <div class="ab-team__card anim-fade-up anim-delay-3">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/686461285c32f9c309f68ea5_WINNER%20-%20A21.jpg" alt="Leslie Muenzler" class="pos-upper" /></div>
-            <div>
-              <p class="ab-team__card-name">Leslie Muenzler</p>
-              <p class="ab-team__card-title">Family Nurse Practitioner</p>
-            </div>
-            <p class="ab-team__card-bio">
-              Joined the practice in 2014 with a Master of Science in Nursing from Angelo State University. Board certified by the American Association of Nurse Practitioners and the Texas Board of Nurses.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">AANP Certified</span>
-              <span class="ab-team__cred-pill">MSN, Angelo State</span>
-            </div>
-          </div>
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>Can allergies be cured?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">While allergies cannot be cured, they can be effectively managed with proper treatment and lifestyle modifications. Our team is dedicated to helping you achieve long-term relief from your allergy symptoms, allowing you to live a healthier and happier life in Waco, Texas, and the greater Central Texas area.</div></div>
+          </li>
 
-          <!-- Cheryl Jenkins -->
-          <div class="ab-team__card anim-fade-up anim-delay-1">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/636ad1c8e615be1deb353f06_Allergy_AsthmaOfWacoWebResolution-10.jpg" alt="Cheryl Jenkins" /></div>
-            <div>
-              <p class="ab-team__card-name">Cheryl Jenkins</p>
-              <p class="ab-team__card-title">LVN &amp; Research Coordinator</p>
-            </div>
-            <p class="ab-team__card-bio">
-              19 years as an LVN and 18 years as our Research Coordinator — all with this clinic. Cheryl is also a certified pollen and mold counter, a specialized credential that directly informs how we track and treat local allergen exposure.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">Certified Pollen &amp; Mold Counter</span>
-              <span class="ab-team__cred-pill">18 Yrs at AACOW</span>
-            </div>
-          </div>
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>How can I determine the cause of my allergy symptoms?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">We offer comprehensive allergy testing, including skin and blood tests, to accurately identify your allergy triggers. This helps us develop personalized treatment plans for optimal relief.</div></div>
+          </li>
 
-          <!-- Josie Terry -->
-          <div class="ab-team__card anim-fade-up anim-delay-2">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/686461fb779ec998262caa56_Josie_A30%20copy.JPG" alt="Josie Terry" class="pos-upper" /></div>
-            <div>
-              <p class="ab-team__card-name">Josie Terry</p>
-              <p class="ab-team__card-title">Licensed Vocational Nurse</p>
-            </div>
-            <p class="ab-team__card-bio">
-              Over 20 years of nursing experience, including 12 years with Allergy &amp; Asthma Care of Waco. Josie is often the steady, familiar presence that makes patients feel at ease from the moment they arrive.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">20+ Years Nursing</span>
-              <span class="ab-team__cred-pill">12 Yrs at AACOW</span>
-            </div>
-          </div>
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>What is immunotherapy, and how can it help with my allergies?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Immunotherapy, including allergy shots and drops, is a specialized treatment that builds immunity to allergens over time. This can significantly reduce allergy symptoms and improve your quality of life, especially for common allergens like pollen, dust, and pet dander.</div></div>
+          </li>
 
-          <!-- Dr. Katharine Vogelaar -->
-          <div class="ab-team__card anim-fade-up anim-delay-3">
-            <div class="ab-team__card-avatar"><img src="https://cdn.prod.website-files.com/6314e08377fe7e6ba036c56b/6864611e871a9dd7eb201bbe_WINNER%20-%20A19.jpg" alt="Dr. Katharine Vogelaar" class="pos-upper" /></div>
-            <div>
-              <p class="ab-team__card-name">Dr. Katharine Vogelaar</p>
-              <p class="ab-team__card-title">Family Nurse Practitioner</p>
-            </div>
-            <p class="ab-team__card-bio">
-              Specializes in emergency room and urgent care medicine. Also serves as a Clinical Assistant Professor at Baylor University's Louise Herrington School of Nursing, bringing both academic rigor and real-world clinical experience.
-            </p>
-            <div class="ab-team__card-cred">
-              <span class="ab-team__cred-pill">Baylor Clinical Faculty</span>
-              <span class="ab-team__cred-pill">Emergency &amp; Urgent Care</span>
-            </div>
-          </div>
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>How can I refill my prescriptions?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Refilling your prescriptions is simple. You can request a refill by calling our office during business hours or by using our online patient portal. We will promptly process your request and notify you when your prescription is ready for pickup.</div></div>
+          </li>
 
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>Are there advanced medications available for severe allergy and asthma symptoms?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Yes — we offer advanced medications and targeted infusions to provide lasting relief for severe allergy and asthma symptoms. Our experienced healthcare providers will work with you to determine the most effective treatment options for your specific needs.</div></div>
+          </li>
+
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>How can I manage my food allergies effectively?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Managing food allergies requires specialized guidance to ensure safe diets and effective symptom management. Our team provides personalized support and resources to help you navigate potential life-threatening food allergies with confidence.</div></div>
+          </li>
+
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>What are common allergens in the Central Texas area I should be aware of?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">In the Waco area, common allergens such as pollen from oak, cedar, and ragweed, as well as mold spores, can exacerbate allergy symptoms. Our allergy testing can help identify your specific triggers, allowing us to tailor your treatment plan accordingly.</div></div>
+          </li>
+
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>How can I effectively manage allergies during allergy season in Texas?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">During allergy season in Waco, it's essential to take proactive measures to manage your symptoms. Our team can provide personalized recommendations, including medication management, environmental control strategies, and immunotherapy options, to help you stay comfortable and symptom-free.</div></div>
+          </li>
+
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>How can I schedule an appointment?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Scheduling an appointment with us is easy. Simply give us a call at (254) 753-3646 or fill out our online appointment request form. Our friendly staff will assist you in finding a convenient time for your visit.</div></div>
+          </li>
+
+          <li class="np-faq__item">
+            <button class="np-faq__q" aria-expanded="false">
+              <span>Can I receive allergy care remotely?</span>
+              <span class="np-faq__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="np-faq__answer"><div class="np-faq__answer-inner">Yes, we offer virtual allergy care services. Telehealth consultations, online tracking, and customized treatment plans are available to provide accessible top-tier allergy and asthma care from the comfort of your own home.</div></div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===========================================================================
+         HOURS
+         =========================================================================== -->
+    <section class="np-hours section" id="hours" aria-labelledby="hours-heading">
+      <div class="container">
+
+        <div class="np-hours__header anim-fade-up">
+          <span class="eyebrow">Plan Your Visit</span>
+          <h2 class="np-hours__headline" id="hours-heading">Working Hours.</h2>
+          <p class="np-hours__sub">
+            Our office is open Monday through Friday. Allergy injections close 15 minutes before the front desk so we can monitor every patient on-site.
+          </p>
+        </div>
+
+        <div class="np-hours__panel anim-fade-up">
+          <div class="np-hours__row np-hours__row--head">
+            <span class="np-hours__col-label">Day</span>
+            <span class="np-hours__col-label">Regular Hours</span>
+            <span class="np-hours__col-label">Injection Hours</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Mon</span>
+            <span class="np-hours__time">8:00 AM – 6:00 PM</span>
+            <span class="np-hours__time">8:00 AM – 5:45 PM</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Tue</span>
+            <span class="np-hours__time">7:00 AM – 5:00 PM</span>
+            <span class="np-hours__time">7:00 AM – 4:45 PM</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Wed</span>
+            <span class="np-hours__time">8:00 AM – 5:00 PM</span>
+            <span class="np-hours__time">8:00 AM – 4:45 PM</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Thu</span>
+            <span class="np-hours__time">8:00 AM – 6:00 PM</span>
+            <span class="np-hours__time">8:00 AM – 5:45 PM</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Fri</span>
+            <span class="np-hours__time">8:00 AM – 5:00 PM</span>
+            <span class="np-hours__time">8:00 AM – 4:45 PM</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Sat</span>
+            <span class="np-hours__time np-hours__time--closed">Closed</span>
+            <span class="np-hours__time np-hours__time--closed">Closed</span>
+          </div>
+          <div class="np-hours__row">
+            <span class="np-hours__day">Sun</span>
+            <span class="np-hours__time np-hours__time--closed">Closed</span>
+            <span class="np-hours__time np-hours__time--closed">Closed</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1346,17 +1539,17 @@
     <!-- ===========================================================================
          FINAL CTA
          =========================================================================== -->
-    <section class="ab-cta section" id="book" aria-labelledby="cta-heading">
+    <section class="np-cta section" id="book" aria-labelledby="cta-heading">
       <div class="container">
-        <div class="ab-cta__inner anim-fade-up">
-          <span class="eyebrow">Start Your Journey</span>
-          <h2 class="ab-cta__headline" id="cta-heading">
-            Rediscover the Joy of a Sneeze-Free, Wheeze-Free Life.
+        <div class="np-cta__inner anim-fade-up">
+          <span class="eyebrow">Ready When You Are</span>
+          <h2 class="np-cta__headline" id="cta-heading">
+            Schedule your first visit.
           </h2>
-          <p class="ab-cta__sub">
-            Embrace the beauty of the outdoors without limitations. Whether it's your first appointment or you're ready to take the next step, Waco's most trusted allergy team is here for you.
+          <p class="np-cta__sub">
+            Tell us a little about your symptoms and we'll find a time that works. Our friendly staff will help you with everything from forms to insurance — so your first visit is one less thing to worry about.
           </p>
-          <div class="ab-cta__buttons">
+          <div class="np-cta__buttons">
             <a href="#" class="btn-primary">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="2" width="14" height="13" rx="2"/><path d="M1 6h14M5 1v2M11 1v2"/></svg>
               Request Appointment
@@ -1366,35 +1559,13 @@
               (254) 753-3646
             </a>
           </div>
-          <p class="ab-cta__address">
+          <p class="np-cta__address">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1C4.2 1 2 3.2 2 6c0 3.8 5 8 5 8s5-4.2 5-8c0-2.8-2.2-5-5-5zm0 6.5A1.5 1.5 0 1 1 7 4a1.5 1.5 0 0 1 0 3.5z" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-            221 Jewell Drive, Waco, TX 76712 · Mon–Fri 8 AM–6 PM
+            221 Jewell Drive, Waco, TX 76712 · info@allergywaco.com
           </p>
         </div>
       </div>
     </section>
-
-    <!-- ===========================================================================
-         MAP
-         =========================================================================== -->
-    <div class="ab-map">
-      <div class="ab-map__inner">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3359.7!2d-97.1551!3d31.5085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864f82e7b1c8c4e7%3A0x1!2s221+Jewell+Dr%2C+Waco%2C+TX+76712!5e0!3m2!1sen!2sus!4v1"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Allergy &amp; Asthma Care of Waco location"
-        ></iframe>
-        <div class="ab-map__label">
-          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1C4.2 1 2 3.2 2 6c0 3.8 5 8 5 8s5-4.2 5-8c0-2.8-2.2-5-5-5zm0 6.5A1.5 1.5 0 1 1 7 4a1.5 1.5 0 0 1 0 3.5z" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p class="ab-map__label-name">Allergy &amp; Asthma Care of Waco</p>
-            <p class="ab-map__label-addr">221 Jewell Drive · Waco, TX 76712</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </main>
 
@@ -1558,7 +1729,7 @@
     (function () {
       var nav = document.getElementById('ab-jump-nav');
       var links = nav.querySelectorAll('[data-jn]');
-      var sectionIds = ['our-story', 'our-values', 'our-team', 'book'];
+      var sectionIds = ['forms', 'services', 'faq', 'hours', 'book'];
 
       window.addEventListener('scroll', function () {
         nav.classList.toggle('is-visible', window.scrollY > 300);
@@ -1618,6 +1789,19 @@
         });
       }, { threshold: 0.12 });
       els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // ── FAQ Accordion ─────────────────────────────────────────────────────────
+    (function () {
+      var items = document.querySelectorAll('.np-faq__item');
+      items.forEach(function (item) {
+        var btn = item.querySelector('.np-faq__q');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = item.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
     })();
   </script>
 

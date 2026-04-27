@@ -97,8 +97,8 @@
       transition: background .2s, color .2s, transform .2s;
       border: none; white-space: nowrap; cursor: pointer;
     }
-    .btn-primary { background: var(--terracotta); color: #fff; border-radius: 16px; font-size: 18px; font-weight: 500; padding: 20px 40px; }
-    .btn-primary:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+    .btn-primary { background: var(--forest); color: #fff; border-radius: 16px; font-size: 18px; font-weight: 500; padding: 20px 40px; }
+    .btn-primary:hover { background: var(--forest-hover); transform: translateY(-1px); }
     .btn-forest { background: var(--forest); color: #fff; border-radius: 16px; font-size: 16px; font-weight: 500; padding: 14px 32px; }
     .btn-forest:hover { background: var(--forest-hover); transform: translateY(-1px); }
     .btn-ghost { background: rgba(255,255,255,.12); color: var(--cream); border-radius: 16px; font-size: 18px; font-weight: 500; padding: 20px 40px; }
@@ -850,8 +850,8 @@
        ========================================================================== */
     .as-cta {
       position: relative;
-      padding: clamp(16px,2.8vw,32px) 0 clamp(88px,10vw,140px);
-      background: var(--cream);
+      padding: clamp(72px,9vw,120px) 0 clamp(88px,10vw,140px);
+      background: var(--forest);
       overflow: hidden;
     }
     .as-cta__panel {
@@ -865,29 +865,30 @@
       font-family: var(--font-heading);
       font-size: clamp(42px,6vw,84px);
       font-weight: 700;
-      color: var(--charcoal);
+      color: var(--cream);
       margin-bottom: 16px;
       line-height: 1.02;
     }
     .as-cta__sub {
       font-size: clamp(16px,1.3vw,20px);
       font-weight: 300;
-      color: rgba(55,36,38,.72);
+      color: rgba(251,242,233,.85);
       margin: 0 auto 40px;
       max-width: 640px;
     }
     .as-cta .btn-group { justify-content: center; gap: 18px; }
     .as-cta .btn { min-width: 250px; }
     .as-cta .btn-primary {
-      background: var(--terracotta);
+      background: var(--cream);
+      color: var(--forest);
     }
-    .as-cta .btn-primary:hover { background: var(--terracotta-hover); }
+    .as-cta .btn-primary:hover { background: var(--cream-dark); }
     .as-cta .btn-ghost {
       background: transparent;
-      color: var(--charcoal);
-      border: 1px solid rgba(55,36,38,.22);
+      color: var(--cream);
+      border: 1px solid rgba(251,242,233,.4);
     }
-    .as-cta .btn-ghost:hover { background: rgba(55,36,38,.05); }
+    .as-cta .btn-ghost:hover { background: rgba(251,242,233,.08); border-color: var(--cream); }
 
     /* ==========================================================================
        FOOTER — matches Footer.tsx
@@ -993,7 +994,7 @@
         </div>
       </div>
 
-      <a href="#" class="site-nav__link">New Patients</a>
+      <a href="/new-patients.html" class="site-nav__link">New Patients</a>
       <a href="/about.html" class="site-nav__link">About</a>
       <a href="#" class="site-nav__link">Patient Portal</a>
     </nav>
@@ -1046,7 +1047,7 @@
         <a href="/blog.html" class="site-nav__overlay-sub-item"><span>Blog</span><svg class="sub-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
-    <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">New Patients</a></div>
+    <div class="site-nav__overlay-item"><a href="/new-patients.html" class="site-nav__overlay-link">New Patients</a></div>
     <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link">About</a></div>
     <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
     <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
@@ -1351,7 +1352,7 @@
         <ul class="site-footer__links">
           <li><a href="/">Home</a></li>
           <li><a href="/about.html">About Our Practice</a></li>
-          <li><a href="#">New Patients</a></li>
+          <li><a href="/new-patients.html">New Patients</a></li>
           <li><a href="#">Patient Portal</a></li>
           <li><a href="#">Careers</a></li>
         </ul>

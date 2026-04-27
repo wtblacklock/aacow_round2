@@ -22,7 +22,7 @@ const mobileTopLinks = [
   { label: 'Treatments',     submenu: treatments },
   { label: 'Allergy Seasons', href: '/allergy-seasons.html' },
   { label: 'Resources',      submenu: resources },
-  { label: 'New Patients',   href: '#' },
+  { label: 'New Patients',   href: '/new-patients.html' },
   { label: 'About',          href: '/about.html' },
   { label: 'Patient Portal', href: '#' },
 ];
@@ -109,7 +109,7 @@ export default function Navigation() {
                 </div>
               </div>
 
-              <a href="#" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">New Patients</a>
+              <a href="/new-patients.html" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">New Patients</a>
               <a href="/about.html" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">About</a>
               <a href="#" className="text-[16.5px] font-heading font-bold text-charcoal hover:text-terracotta transition-colors whitespace-nowrap">Patient Portal</a>
             </div>

@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm font-light">
               <li><a href="#" className="hover:text-accent transition-colors">Home</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">About Our Practice</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">New Patients</a></li>
+              <li><a href="/new-patients.html" className="hover:text-accent transition-colors">New Patients</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Patient Portal</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Careers</a></li>
             </ul>

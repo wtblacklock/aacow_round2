@@ -17,6 +17,8 @@
   --color-terracotta-hover: oklch(0.467 0.105 36);
   --color-sage: oklch(0.415 0.068 178);
   --color-sage-light: oklch(0.941 0.015 178);
+  --color-sage-tint: oklch(0.945 0.020 158);
+  --color-sage-tint-hover: oklch(0.915 0.030 158);
   --color-forest: oklch(0.330 0.075 158);
   --color-forest-hover: oklch(0.257 0.065 158);
   --color-amber: oklch(0.670 0.120 75);

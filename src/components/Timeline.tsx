@@ -40,7 +40,7 @@ export default function Timeline() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-accent/20" />
+          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-forest/25" />
 
           {steps.map((step, idx) => (
             <motion.div
@@ -51,13 +51,13 @@ export default function Timeline() {
               transition={{ delay: idx * 0.15, duration: 0.6 }}
               className="relative flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 rounded-full bg-cream-dark flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300">
-                <step.icon className="w-10 h-10 text-accent" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-cream-dark flex items-center justify-center text-sm font-heading text-charcoal">
+              <div className="w-24 h-24 rounded-full bg-sage-tint flex items-center justify-center mb-8 relative z-10 group-hover:-translate-y-2 transition-transform duration-300">
+                <step.icon className="w-10 h-10 text-forest" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-sage-tint flex items-center justify-center text-sm font-heading text-charcoal">
                   {idx + 1}
                 </div>
               </div>
-              <h3 className="text-xl font-heading text-charcoal mb-4 group-hover:text-accent transition-colors">
+              <h3 className="text-xl font-heading text-charcoal mb-4 group-hover:text-forest transition-colors">
                 {step.title}
               </h3>
               <p className="text-charcoal font-light leading-relaxed">

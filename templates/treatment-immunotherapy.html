@@ -262,14 +262,14 @@
       cursor: pointer;
     }
     .btn-primary {
-      background: var(--terracotta);
+      background: var(--forest);
       color: var(--white);
       border-radius: 16px;
       font-size: 18px;
       font-weight: 500;
       padding: 20px 40px;
     }
-    .btn-primary:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--forest-hover); transform: translateY(-1px); }
     .btn-dark {
       background: var(--charcoal);
       color: var(--white);
@@ -1132,7 +1132,7 @@
 
 
     .tx-final-cta {
-      background: var(--cream);
+      background: var(--forest);
       padding: clamp(96px, 12vw, 144px) 0;
       position: relative;
       overflow: hidden;
@@ -1144,18 +1144,20 @@
       padding-left: var(--pad-x);
       padding-right: var(--pad-x);
     }
+    .tx-final-cta .eyebrow { color: var(--cream); opacity: 0.7; }
     .tx-final-cta__headline {
       font-family: var(--font-heading);
       font-size: clamp(48px, 5.5vw, 72px);
       font-weight: 600;
-      color: var(--charcoal);
+      color: var(--cream);
       line-height: 1.05;
       margin-bottom: 32px;
     }
     .tx-final-cta__body {
       font-size: 20px;
       font-weight: 300;
-      color: var(--charcoal);
+      color: var(--cream);
+      opacity: 0.85;
       line-height: 1.8;
       margin-bottom: 48px;
       max-width: 640px;
@@ -1163,6 +1165,11 @@
       margin-right: auto;
     }
     .tx-final-cta .btn-group { justify-content: center; }
+    .tx-final-cta .btn-primary {
+      background: var(--cream);
+      color: var(--forest);
+    }
+    .tx-final-cta .btn-primary:hover { background: var(--cream-dark); }
     .tx-final-cta .btn-dark {
       background: var(--charcoal);
       color: var(--white);
@@ -1176,8 +1183,8 @@
     .tx-final-cta .btn-dark:hover { background: var(--accent); transform: translateY(-2px); }
     .tx-final-cta .btn-outline {
       background: transparent;
-      color: var(--charcoal);
-      border: 1.5px solid rgba(55,36,38,0.3);
+      color: var(--cream);
+      border: 1.5px solid rgba(251,242,233,0.4);
       border-radius: 16px;
       font-size: 18px;
       padding: 20px 40px;
@@ -1185,7 +1192,11 @@
       align-items: center;
       gap: 8px;
     }
-    .tx-final-cta .btn-outline:hover { background: rgba(55,36,38,0.05); }
+    .tx-final-cta .btn-outline:hover {
+      background: rgba(251,242,233,0.08);
+      border-color: var(--cream);
+      color: var(--cream);
+    }
 
     @media (max-width: 1040px) {
       .tx-facts .container { grid-template-columns: 1fr; }
@@ -1335,7 +1346,7 @@
           </div>
         </div>
 
-        <a href="#" class="site-nav__link">New Patients</a>
+        <a href="/new-patients.html" class="site-nav__link">New Patients</a>
         <a href="/#about" class="site-nav__link">About</a>
         <a href="#" class="site-nav__link">Patient Portal</a>
       </nav>
@@ -1406,7 +1417,7 @@
         </div>
       </div>
 
-      <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">New Patients</a></div>
+      <div class="site-nav__overlay-item"><a href="/new-patients.html" class="site-nav__overlay-link">New Patients</a></div>
       <div class="site-nav__overlay-item"><a href="/#about" class="site-nav__overlay-link">About</a></div>
       <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
       <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
@@ -1705,7 +1716,7 @@
           <ul class="site-footer__links">
             <li><a href="/">Home</a></li>
             <li><a href="#">About Our Practice</a></li>
-            <li><a href="#">New Patients</a></li>
+            <li><a href="/new-patients.html">New Patients</a></li>
             <li><a href="#">Patient Portal</a></li>
           </ul>
         </div>

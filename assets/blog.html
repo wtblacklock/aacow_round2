@@ -136,7 +136,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--terracotta);
+      background: var(--forest);
       color: white;
       border-radius: 14px;
       font-family: var(--font-sans);
@@ -148,7 +148,7 @@
       white-space: nowrap;
       cursor: pointer;
     }
-    .btn-primary:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--forest-hover); transform: translateY(-1px); }
 
     .btn-outline {
       display: inline-flex;
@@ -729,7 +729,7 @@
        BLOG CTA STRIP
        ========================================================================== */
     .blog-cta-strip {
-      background: var(--cream-dark);
+      background: var(--forest);
       padding: clamp(48px, 6vw, 96px) var(--pad-x);
       text-align: center;
     }
@@ -739,14 +739,14 @@
       font-size: clamp(34px, 5vw, 62px);
       font-weight: 600;
       line-height: 1.05;
-      color: var(--charcoal);
+      color: var(--cream);
       margin-bottom: 16px;
     }
     .blog-cta-strip__sub {
       font-size: clamp(14px, 1.2vw, 17px);
       font-weight: 300;
-      color: var(--charcoal);
-      opacity: 0.65;
+      color: var(--cream);
+      opacity: 0.85;
       line-height: 1.7;
       margin-bottom: clamp(28px, 3.5vw, 44px);
     }
@@ -756,6 +756,18 @@
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
+    }
+    .blog-cta-strip .eyebrow { color: var(--cream); opacity: 0.7; }
+    .blog-cta-strip .btn-primary { background: var(--cream); color: var(--forest); }
+    .blog-cta-strip .btn-primary:hover { background: var(--cream-dark); }
+    .blog-cta-strip .btn-outline {
+      border-color: rgba(251,242,233,0.4);
+      color: var(--cream);
+    }
+    .blog-cta-strip .btn-outline:hover {
+      border-color: var(--cream);
+      background: rgba(251,242,233,0.08);
+      color: var(--cream);
     }
 
     /* ── Interior green overrides ── */
@@ -816,7 +828,7 @@
           </div>
         </div>
 
-        <a href="#" class="site-nav__link">New Patients</a>
+        <a href="/new-patients.html" class="site-nav__link">New Patients</a>
         <a href="/about.html" class="site-nav__link">About</a>
         <a href="#" class="site-nav__link">Patient Portal</a>
       </nav>
@@ -882,7 +894,7 @@
         </div>
       </div>
 
-      <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">New Patients</a></div>
+      <div class="site-nav__overlay-item"><a href="/new-patients.html" class="site-nav__overlay-link">New Patients</a></div>
       <div class="site-nav__overlay-item"><a href="/about.html" class="site-nav__overlay-link">About</a></div>
       <div class="site-nav__overlay-item"><a href="#" class="site-nav__overlay-link">Patient Portal</a></div>
       <div class="site-nav__overlay-item"><a href="#book" class="site-nav__overlay-link site-nav__overlay-link--cta">Book Appointment</a></div>
@@ -1442,7 +1454,7 @@
         <ul class="site-footer__links">
           <li><a href="/">Home</a></li>
           <li><a href="/about.html">About Our Practice</a></li>
-          <li><a href="#">New Patients</a></li>
+          <li><a href="/new-patients.html">New Patients</a></li>
           <li><a href="#">Patient Portal</a></li>
           <li><a href="#">Careers</a></li>
         </ul>

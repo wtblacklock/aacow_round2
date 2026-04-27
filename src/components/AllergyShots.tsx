@@ -11,7 +11,7 @@ export default function AllergyShots() {
   ];
 
   return (
-    <section id="immunotherapy" className="py-28 lg:py-36 bg-cream">
+    <section id="immunotherapy" className="py-28 lg:py-36 bg-forest">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px]">
 
         <motion.div
@@ -24,31 +24,31 @@ export default function AllergyShots() {
 
           {/* Left — text content */}
           <div className="flex flex-col justify-center lg:pr-4">
-            <span className="text-forest text-[11px] font-medium tracking-widest uppercase mb-6 block">
+            <span className="text-cream/70 text-[11px] font-medium tracking-widest uppercase mb-6 block">
               Featured Treatment
             </span>
 
-            <h2 className="text-[38px] lg:text-[54px] font-heading font-semibold text-charcoal leading-[1.05] mb-6">
+            <h2 className="text-[38px] lg:text-[54px] font-heading font-semibold text-cream leading-[1.05] mb-6">
               The closest thing to a{' '}
               <em className="not-italic font-semibold">cure</em>.
             </h2>
 
-            <p className="text-[17px] text-charcoal font-light leading-relaxed mb-10 max-w-md">
+            <p className="text-[17px] text-cream/80 font-light leading-relaxed mb-10 max-w-md">
               Immunotherapy doesn't just mask symptoms — it changes how your immune system responds to allergens, providing relief that lasts.
             </p>
 
             <div className="space-y-4 mb-12">
               {benefits.map((benefit, idx) => (
                 <div key={idx} className="flex items-start gap-3.5">
-                  <CheckCircle2 className="w-5 h-5 text-forest shrink-0 mt-0.5" />
-                  <span className="text-[16px] text-charcoal font-light leading-snug">{benefit}</span>
+                  <CheckCircle2 className="w-5 h-5 text-cream shrink-0 mt-0.5" />
+                  <span className="text-[16px] text-cream/90 font-light leading-snug">{benefit}</span>
                 </div>
               ))}
             </div>
 
             <a
               href="#"
-              className="group inline-flex items-center justify-center gap-2 bg-forest hover:bg-forest-hover text-white px-7 py-4 rounded-xl text-[14px] font-semibold transition-all hover:-translate-y-0.5 self-start"
+              className="group inline-flex items-center justify-center gap-2 bg-cream hover:bg-cream-dark text-forest px-7 py-4 rounded-xl text-[14px] font-semibold transition-all hover:-translate-y-0.5 self-start"
             >
               Learn About Immunotherapy
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function RootCause() {
   return (
-    <section className="py-28 lg:py-36 bg-cream">
+    <section className="py-28 lg:py-36 bg-forest">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-[90px]">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
